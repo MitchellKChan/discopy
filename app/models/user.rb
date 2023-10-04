@@ -17,12 +17,13 @@
 PHONE_NUMBER_REGEX = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/
 
 class User < ApplicationRecord
-  has_secure_password # this handles password getter, setter, and is_password? for us
+  # this handles password getter, setter, and is_password? for us
+  has_secure_password 
 
   before_validation :ensure_session_token
 
   validates :email, :username, :display_name, :session_token, presence: true
-  validates :email, :username, :session_token, :phone_number, uniqueness: true
+  validates :email, :username, :session_token, uniqueness: true
   validates :email, 
     length: { in: 3..255 }, 
     format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -35,6 +36,8 @@ class User < ApplicationRecord
     length: { minimum: 8 },
     allow_nil: true
   validates :phone_number,
+    # uniqueness validated here to allow multiple users to not have a phone number
+    uniqueness: true,
     format: { with: PHONE_NUMBER_REGEX, message: "must be a phone number" },
     allow_nil: true
 
