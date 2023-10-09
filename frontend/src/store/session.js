@@ -1,4 +1,4 @@
-import csrfFetch from './csrf';
+import csrfFetch, { storeCSRFToken } from './csrf';
 
 // action constants
 const SET_CURRENT_USER = 'session/setCurrentUser';
@@ -29,13 +29,44 @@ export const login = (user) => async (dispatch) => {
         })
     });
     const payload = await res.json();
-    dispatch(setCurrentUser(payload.user));
+    storeCurrentUser(payload);
+    dispatch(setCurrentUser(payload));
     return res;
 }
 
+export const logout = () => async (dispatch) => {
+    const res = await csrfFetch('/api/session', {
+        method: 'DELETE'
+    });
+    const payload = await res.json();
+    storeCurrentUser(null);
+    dispatch(removeCurrentUser());
+    return res;
+}
+
+export const restoreSession = () => async (dispatch) => {
+    const res = await csrfFetch('/api/session');
+    storeCSRFToken(res);
+    const payload = await res.json();
+    storeCurrentUser(payload);
+    dispatch(setCurrentUser(payload));
+    return res;
+}
+
+// session helper functions
+const storeCurrentUser = (user) => {
+    if (user) sessionStorage.setItem("currentUser", JSON.stringify(user));
+    else sessionStorage.removeItem("currentUser");
+}
+
+// initial state constant for sessionReducer
+const initialState = { 
+    user: JSON.parse(sessionStorage.getItem("currentUser"))
+};
+
 
 // session reducer for managing session slice of state
-const sessionReducer = (state = { user: null }, action) => {
+const sessionReducer = (state = initialState, action) => {
     const newState = Object.assign({}, Object.freeze(state));
     switch (action.type) {
         case SET_CURRENT_USER:
