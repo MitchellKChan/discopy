@@ -23,12 +23,20 @@ const SplashPage = () => {
                         to talk every day and hang out more often.
                     </div>
                     <div className="socials">
-                        <a href="https://github.com/MitchellKChan/discopy">
+                        <a 
+                            href="https://github.com/MitchellKChan/discopy"
+                            target='blank'
+                            rel='noopener noreferrer'
+                        >
                             <div className="white-button large-button github">
                                 Github
                             </div>
                         </a>
-                        <a href="https://www.linkedin.com/in/mitchellkchan/">
+                        <a 
+                            href="https://www.linkedin.com/in/mitchellkchan/"
+                            target='blank'
+                            rel='noopener noreferrer'
+                        >
                             <div className="black-button large-button linkedin">
                                 LinkedIn
                             </div>
