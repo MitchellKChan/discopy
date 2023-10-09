@@ -4,8 +4,6 @@
     --danger: hsl(359 87.3% 59.8%);
 }
 
-/* application-wide styling */
-
 body {
     font-family:'Whitney Medium', sans-serif;
     font-size: 16px;
@@ -18,14 +16,13 @@ body {
 .white-button {
     background-color: #ffffff;
     color: #000000;
-    transition: box-shadow 0.5s;
+    transition: box-shadow 0.3s;
 }
 
 .black-button {
     background-color: #000000;
-    /* color: #ffffff; */
     opacity: 1.0;
-    transition: opacity 0.5s, box-shadow 0.5s;
+    transition: opacity 0.3s, box-shadow 0.3s;
 }
 
 /* button color hover effects */
@@ -35,7 +32,7 @@ body {
 }
 
 .black-button:hover {
-    opacity: 0.8;
+    opacity: 0.9;
     box-shadow: 3px 3px 3px #ffffff;
 }
 

@@ -81,4 +81,10 @@
     border-radius: 3px;
     padding: 15px;
     margin-top: 30px;
+    transition: background-color 0.3s;
+}
+
+.form-button:hover {
+    background-color: #3e48b9;
+    cursor: pointer;
 }
