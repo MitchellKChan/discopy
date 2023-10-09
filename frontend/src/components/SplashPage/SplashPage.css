@@ -1,7 +1,6 @@
 .splash-top {
     height: 500px;
-    background-color: #404eed;
-    color: #ffffff;
+    background-color: var(--logo-blue);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -11,7 +10,7 @@
 
 .nav {
     display: flex;
-    padding: 50px;
+    padding: 30px;
     justify-content: space-between;
     width: 100vw;
 }
