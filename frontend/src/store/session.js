@@ -1,4 +1,4 @@
-import csrfFetch from "./csrf";
+import csrfFetch from './csrf';
 
 // action constants
 const SET_CURRENT_USER = 'session/setCurrentUser';
@@ -43,7 +43,7 @@ const sessionReducer = (state = { user: null }, action) => {
             return newState;
         case REMOVE_CURRENT_USER:
             newState['user'] = null;
-            return newState
+            return newState;
         default:
             return state;
     }
