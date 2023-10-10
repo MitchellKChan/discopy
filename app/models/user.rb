@@ -5,10 +5,14 @@
 #  id              :bigint           not null, primary key
 #  email           :string           not null
 #  username        :string           not null
-#  display_name    :string           not null
+#  display_name    :string
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  phone_number    :string
+#  avatar          :string
+#  about_me        :string
+#  status          :string           not null
+#  custom_status   :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -22,7 +26,7 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
-  validates :email, :username, :display_name, :session_token, presence: true
+  validates :email, :username, :session_token, :status, presence: true
   validates :email, :username, :session_token, uniqueness: true
   validates :email, 
     length: { in: 3..255 }, 
@@ -30,8 +34,9 @@ class User < ApplicationRecord
   validates :username, 
     length: { in: 2..32 },
     format: { without: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
-  validates :display_name,
-    length: { in: 1..32 }
+  # validates :display_name,
+  #   length: { in: 1..32 },
+  #   allow_nil: true
   validates :password,
     length: { minimum: 8 },
     allow_nil: true
@@ -40,6 +45,8 @@ class User < ApplicationRecord
     uniqueness: true,
     format: { with: PHONE_NUMBER_REGEX, message: "must be a phone number" },
     allow_nil: true
+  validates :status,
+    inclusion: ["Online", "Offline", "Idle", "Do Not Disturb", "Invisible"]
 
   def self.find_by_credentials(credential, password)
     # determine the field you need to query: 

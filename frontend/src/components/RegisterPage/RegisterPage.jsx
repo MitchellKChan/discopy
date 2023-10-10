@@ -69,13 +69,11 @@ const RegisterPage = () => {
                             </label>
                             <label className="form-label">
                                 Display Name
-                                <span className="required">*</span>
                                 <br />
                                 <input
                                     type="text"
                                     onChange={(e) => handleChange("displayName", e.target.value)}
                                     value={registrationInfo.displayName}
-                                    required
                                 />
                             </label>
                             <label className="form-label">
