@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_03_232954) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_05_215623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages_tables", force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.string "body", null: false
+    t.string "sendable_type"
+    t.bigint "sendable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_messages_tables_on_author_id"
+    t.index ["sendable_type", "sendable_id"], name: "index_messages_tables_on_sendable"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
@@ -29,4 +40,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_03_232954) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "messages_tables", "users", column: "author_id"
 end

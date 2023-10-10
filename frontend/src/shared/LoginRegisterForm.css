@@ -1,0 +1,100 @@
+/* form page layout styling */
+
+.form-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--logo-blue);
+}
+
+.form-card {
+    width: 480px;
+    background-color: var(--form-bg);
+    border-radius: 5px;
+}
+
+/* form card content styling */
+
+.form-container {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-header div {
+    margin-bottom: 20px;
+}
+
+.header-text {
+    font-size: 24px;
+}
+
+.form-nav-to {
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.form-link {
+    margin: 0 5px;
+    color: var(--text-link);
+    text-decoration: none;
+}
+
+/* form fields styling */
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-label {
+    margin-bottom: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.required {
+    color: var(--danger);
+}
+
+.form-label input {
+    text-decoration: none;
+    padding: 10px;
+    width: 95%;
+    background-color: #1e1e1e;
+    border: none;
+    color: #ffffff;
+    line-height: 24px;
+    font-size: 16px;
+    border-radius: 3px;
+}
+
+.form-label input:focus {
+    outline: none;
+}
+
+.form-button {
+    font-size: 16px;
+    background-color: var(--logo-blue);
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    padding: 15px;
+    transition: background-color 0.3s;
+}
+
+.form-button:hover {
+    background-color: #3e48b9;
+    cursor: pointer;
+}
