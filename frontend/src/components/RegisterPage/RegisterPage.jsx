@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../store/session';
+import { register } from '../../store/session';
 import { Link, Redirect } from 'react-router-dom';
 
-import '../../shared/LoginRegisterForm.css';
-import './LoginPage.css';
+// import '../../shared/LoginRegisterForm.css';
+import './RegisterPage.css';
 
-const LoginPage = () => {
+const RegisterPage = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const [loginInfo, setLoginInfo] = useState({
-        credential: "",
+    const [registrationInfo, setRegistrationInfo] = useState({
+        email: "",
+        displayName: "",
+        username: "",
         password: ""
     });
     const [errors, setErrors] = useState([]);
@@ -18,8 +20,8 @@ const LoginPage = () => {
     if (sessionUser) return <Redirect to="/" />;
 
     const handleChange = (field, value) => {
-        setLoginInfo({
-            ...loginInfo, 
+        setRegistrationInfo({
+            ...registrationInfo, 
             [field]: value
         });
     }
@@ -27,7 +29,7 @@ const LoginPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(login(loginInfo))
+        return dispatch(register(registrationInfo))
             .catch(async (res) => {
                 let data;
                 try {
@@ -42,15 +44,13 @@ const LoginPage = () => {
             }
         );
     }
-
     return (
         <>
             <div className="form-page">
-                <div className="form-card login-card">
+                <div className="form-card register-card">
                     <div className="form-container">
                         <div className="form-header">
-                            <div className="header-text">Welcome back!</div>
-                            <div>We're so excited to see you again!</div>
+                            <div className="header-text">Create an account</div>
                         </div>
                         <form className="form-fields" onSubmit={handleSubmit}>
                             <ul>
@@ -62,8 +62,30 @@ const LoginPage = () => {
                                 <br />
                                 <input
                                     type="text"
-                                    onChange={(e) => handleChange("credential", e.target.value)}
-                                    value={loginInfo.credential}
+                                    onChange={(e) => handleChange("email", e.target.value)}
+                                    value={registrationInfo.email}
+                                    required
+                                />
+                            </label>
+                            <label className="form-label">
+                                Display Name
+                                <span className="required">*</span>
+                                <br />
+                                <input
+                                    type="text"
+                                    onChange={(e) => handleChange("displayName", e.target.value)}
+                                    value={registrationInfo.displayName}
+                                    required
+                                />
+                            </label>
+                            <label className="form-label">
+                                Username
+                                <span className="required">*</span>
+                                <br />
+                                <input
+                                    type="text"
+                                    onChange={(e) => handleChange("username", e.target.value)}
+                                    value={registrationInfo.username}
                                     required
                                 />
                             </label>
@@ -74,14 +96,14 @@ const LoginPage = () => {
                                 <input
                                     type="password"
                                     onChange={(e) => handleChange("password", e.target.value)}
-                                    value={loginInfo.password}
+                                    value={registrationInfo.password}
                                     required
                                 />
                             </label>
-                            <input className="form-button" type="submit" value="Log In" />
+                            <input className="form-button" type="submit" value="Register" />
                         </form>
                         <div className="form-nav-to">
-                            Need an account? <Link to="/register" className="form-link">Register</Link>
+                            <Link to="/login" className="form-link">Already have an account?</Link>
                         </div>
                     </div>
                 </div>
@@ -90,4 +112,4 @@ const LoginPage = () => {
     );
 }
 
-export default LoginPage;
+export default RegisterPage;
