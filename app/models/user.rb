@@ -51,7 +51,7 @@ class User < ApplicationRecord
   has_many :servers,
     foreign_key: :creator_id,
     class_name: :Server,
-    inverse_of: :author,
+    inverse_of: :creator,
     dependent: :destroy
 
   def self.find_by_credentials(credential, password)
