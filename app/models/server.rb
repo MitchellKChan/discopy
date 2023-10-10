@@ -16,4 +16,10 @@ class Server < ApplicationRecord
     belongs_to :creator,
         foreign_key: :creator_id,
         class_name: :User
+
+    has_many :joined_servers
+
+    has_many :members,
+        through: :joined_servers,
+        source: :member
 end

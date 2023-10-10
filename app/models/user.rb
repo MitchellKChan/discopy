@@ -54,6 +54,12 @@ class User < ApplicationRecord
     inverse_of: :creator,
     dependent: :destroy
 
+  has_many :joined_servers,
+    foreign_key: :member_id,
+    class_name: :JoinedServer,
+    inverse_of: :member,
+    dependent: :destroy
+
   def self.find_by_credentials(credential, password)
     # determine the field you need to query: 
     #   * `email` if `credential` matches `URI::MailTo::EMAIL_REGEXP`

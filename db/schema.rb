@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_040910) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_160550) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "joined_servers", force: :cascade do |t|
+    t.bigint "server_id", null: false
+    t.bigint "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_joined_servers_on_member_id"
+    t.index ["server_id", "member_id"], name: "index_joined_servers_on_server_id_and_member_id", unique: true
+    t.index ["server_id"], name: "index_joined_servers_on_server_id"
+  end
 
   create_table "servers", force: :cascade do |t|
     t.string "name", null: false
@@ -41,5 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_040910) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "joined_servers", "servers"
+  add_foreign_key "joined_servers", "users", column: "member_id"
   add_foreign_key "servers", "users", column: "creator_id"
 end
