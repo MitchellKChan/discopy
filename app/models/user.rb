@@ -48,6 +48,12 @@ class User < ApplicationRecord
   validates :status,
     inclusion: ["Online", "Offline", "Idle", "Do Not Disturb", "Invisible"]
 
+  has_many :servers,
+    foreign_key: :creator_id,
+    class_name: :Server,
+    inverse_of: :author,
+    dependent: :destroy
+
   def self.find_by_credentials(credential, password)
     # determine the field you need to query: 
     #   * `email` if `credential` matches `URI::MailTo::EMAIL_REGEXP`
