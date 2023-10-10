@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
-import './SplashPage.css'
+import { Link } from 'react-router-dom';
+import './SplashPage.css';
+// import './images/middleSection1.svg';
 
 const SplashPage = () => {
     const user = useSelector(state => state.session.user);
@@ -50,7 +51,10 @@ const SplashPage = () => {
                 <div className="splash-middle-container">
                     <div className="middle-section">
                         <div className="middle-section-content">
-                            <div>*Discord Graphic Placeholder*</div>
+                            <div><img 
+                                src={require("./images/middleSection1.svg").default}
+                                alt="middle-section-1" 
+                            /></div>
                         </div>
                         <div className="middle-section-content">
                             <div className="middle-section-headline">
@@ -63,7 +67,7 @@ const SplashPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="middle-section">
+                    <div className="middle-section second-middle-section">
                         <div className="middle-section-content">
                             <div className="middle-section-headline">
                                 Where hanging out is easy
@@ -75,12 +79,18 @@ const SplashPage = () => {
                             </div>
                         </div>
                         <div className="middle-section-content">
-                            <div>*Discord Graphic Placeholder*</div>
+                            <div><img 
+                                src={require("./images/middleSection2.svg").default}
+                                alt="middle-section-2" 
+                            /></div>
                         </div>
                     </div>
                     <div className="middle-section">
                         <div className="middle-section-content">
-                            <div>*Discord Graphic Placeholder*</div>
+                            <div><img 
+                                src={require("./images/middleSection1.svg").default}
+                                alt="middle-section-1" 
+                            /></div>
                         </div>
                         <div className="middle-section-content">
                             <div className="middle-section-headline">

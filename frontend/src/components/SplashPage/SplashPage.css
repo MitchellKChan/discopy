@@ -40,7 +40,7 @@
 }
 
 .splash-top-headline {
-    font-family: 'Ginto Nord Black', sans-serif;
+    font-family: 'Ginto Nord Black';
     font-size: 30px;
     text-transform: uppercase;
     margin-bottom: 15px;
@@ -55,7 +55,6 @@
 .socials {
     display: flex;
     justify-content: space-evenly;
-
 }
 
 .socials a {
@@ -67,4 +66,31 @@
 
 .splash-middle {
     color: #000000;
+}
+
+.middle-section {
+    display: flex;
+    align-items: center;
+    padding: 30px 45px
+}
+
+.second-middle-section {
+    background-color: var(--off-white);
+}
+
+.middle-section-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.middle-section-headline {
+    font-size: 44px;
+    line-height: 120%;
+    font-family: 'Noto Sans Bold';
+    margin-bottom: 20px;
+}
+
+.middle-section-message {
+    font-size: clamp(16px,1.5vw,20px);
+    line-height: 1.625;
 }
