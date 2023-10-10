@@ -1,6 +1,6 @@
 .splash-top {
     height: 626px;
-    background-color: var(--logo-blue);
+    background-color: var(--splash-blue);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -114,7 +114,7 @@
 
 /* large splash middle section styling */
 
-.middle-section.large {
+.middle-section.bottom {
     flex-direction: column;
     text-align: center;
 }
@@ -134,4 +134,25 @@
     margin-top: 10px;
     width: 100%;
     max-width: 1260px;
+}
+
+/* last splash middle section styling */
+
+.middle-section.bottom.last {
+    padding-top: 0;
+    position: relative;
+}
+
+.start-journey-bg {
+    position: absolute;
+    top: -30px;
+    width: 100%;
+}
+
+.middle-section-headline.last {
+    font-size: 28px;
+}
+
+.middle-section-button {
+    margin-top: 40px;
 }

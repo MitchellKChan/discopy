@@ -13,7 +13,7 @@ const SplashPage = () => {
                     <div className="logo">Discopy</div>
                     <Link to="/login" className="login">
                         <div className="white-button small-button">
-                            {user ? "Open Discord" : "Login"}
+                            {user ? "Open Discopy" : "Login"}
                         </div>
                     </Link>
                 </nav>
@@ -59,7 +59,7 @@ const SplashPage = () => {
                                 Create an invite-only place where you belong
                             </div>
                             <div className="middle-section-message">
-                                Discord servers are organized into topic-based channels 
+                                Discopy servers are organized into topic-based channels 
                                 where you can collaborate, share, and just talk about your 
                                 day without clogging up a group chat.
                             </div>
@@ -97,7 +97,7 @@ const SplashPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="middle-section large off-white-section">
+                    <div className="middle-section off-white-section bottom large">
                         <div className="middle-section-headline large">
                             Reliable tech for staying close
                         </div>
@@ -110,6 +110,20 @@ const SplashPage = () => {
                             src={require("./images/middleSection4.svg").default}
                             alt="middle-section-4" 
                         />
+                    </div>
+                    <div className="middle-section off-white-section bottom last">
+                        <div aria-hidden="true" className="start-journey-bg"><img 
+                            src={require("./images/startJourneyBg.svg").default}
+                            alt="start-journey-bg" 
+                        /></div>
+                        <div className="middle-section-headline last">
+                            Ready to start your journey?
+                        </div>
+                        <Link to="/login" className="login">
+                            <div className="blue-button large-button middle-section-button">
+                                {user ? "Open Discord" : "Login"}
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
