@@ -1,30 +1,8 @@
-/* Ginto Normal */
-
-@font-face {
-    font-family: 'Ginto Normal Regular';
-    src: local('Ginto Normal Regular'), url(./fonts/ABCGintoNormal-Regular-Trial.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'Ginto Normal Thin';
-    src: local('Ginto Normal Thinn'), url(./fonts/ABCGintoNormal-Thin-Trial.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'Ginto Normal Black';
-    src: local('Ginto Normal Black'), url(./fonts/ABCGintoNormal-Black-Trial.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'Ginto Normal Bold';
-    src: local('Ginto Normal Bold'), url(./fonts/ABCGintoNormal-Bold-Trial.woff) format('woff');
-}
-
 /* Ginto Nord */
 
 @font-face {
-    font-family: 'Ginto Nord Regular';
-    src: local('Ginto Nord Regular'), url(./fonts/ABCGintoNord-Regular-Trial.woff) format('woff');
+    font-family: 'Ginto Nord Bold';
+    src: local('Ginto Nord Bold'), url(./fonts/ABCGintoNord-Bold-Trial.woff) format('woff');
 }
 
 @font-face {
@@ -32,19 +10,45 @@
     src: local('Ginto Nord Black'), url(./fonts/ABCGintoNord-Black-Trial.woff) format('woff');
 }
 
+/* Noto Sans */
+
+@font-face {
+    font-family: 'Noto Sans Thin';
+    src: local('Noto Sans Thin'), url(./fonts/NotoSans-Thin.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto Sans Light';
+    src: local('Noto Sans Light'), url(./fonts/NotoSans-Light.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto Sans Regular';
+    src: local('Noto Sans Regular'), url(./fonts/NotoSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto Sans Medium';
+    src: local('Noto Sans Medium'), url(./fonts/NotoSans-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto Sans Bold';
+    src: local('Noto Sans Bold'), url(./fonts/NotoSans-Bold.ttf) format('truetype');
+}
+
 /* Whitney */
 
 @font-face {
     font-family: 'Whitney Bold';
-    src: local('Whitney Bold'), url(./fonts/whitneybold.otf) format('otf');
+    src: local('Whitney Bold'), url(./fonts/whitneybold.otf) format('opentype');
 }
 
 @font-face {
     font-family: 'Whitney Light';
-    
-    src: local('Whitney Light'), url(./fonts/whitneylight.otf) format('otf');
+    src: local('Whitney Light'), url(./fonts/whitneylight.otf) format('opentype');
 }
 @font-face {
     font-family: 'Whitney Medium';
-    src: local('Whitney Medium'), url(./fonts/whitneymedium.otf) format('otf');
+    src: local('Whitney Medium'), url(./fonts/whitneymedium.otf) format('opentype');
 }
