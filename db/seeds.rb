@@ -19,17 +19,16 @@ ApplicationRecord.transaction do
     # Create some initial users with usernames, display_names, emails, passwords, and phone_numbers:
     User.create!(
         username: 'mitchibonbon',
-        display_name: 'mitchibonbon',
         email: 'mitchi@bon.bon',
-        phone_number: '31337313337',
-        password: 'a10ng3RanDm0r35ECurEpA55w0Rd'
+        password: 'a10ng3RanDm0r35ECurEpA55w0Rd',
+        status: 'Offline'
     )
     User.create!(
       username: 'DemoUser',
       display_name: 'demo-lition',
       email: 'discopydemo@user.io',
-      phone_number: '1234567890',
-      password: 'password'
+      password: 'password',
+      status: 'Offline'
     )
 
     # Create a user with a username, display_names, email, password, but no phone_number:
@@ -37,7 +36,8 @@ ApplicationRecord.transaction do
       username: 'myspacetom',
       display_name: 'Tom',
       email: 'tom@my.space',
-      password: 'password'
+      password: 'password',
+      status: 'Offline'
     )
   
     # More users
@@ -46,8 +46,8 @@ ApplicationRecord.transaction do
         username: Faker::Internet.unique.username(specifier: 3),
         display_name: Faker::Internet.unique.username(specifier: 3),
         email: Faker::Internet.unique.email,
-        phone_number: rand.to_s[2..11],
-        password: 'password'
+        password: 'password',
+        status: 'Offline'
       }) 
     end
   
