@@ -50,13 +50,11 @@ const SplashPage = () => {
             <div className="splash-middle">
                 <div className="splash-middle-container">
                     <div className="middle-section">
-                        <div className="middle-section-content">
-                            <div><img 
-                                src={require("./images/middleSection1.svg").default}
-                                alt="middle-section-1" 
-                            /></div>
-                        </div>
-                        <div className="middle-section-content">
+                        <img 
+                            src={require("./images/middleSection1.svg").default}
+                            alt="middle-section-1" 
+                        />
+                        <div className="middle-section-content right">
                             <div className="middle-section-headline">
                                 Create an invite-only place where you belong
                             </div>
@@ -68,7 +66,7 @@ const SplashPage = () => {
                         </div>
                     </div>
                     <div className="middle-section second-middle-section">
-                        <div className="middle-section-content">
+                        <div className="middle-section-content left">
                             <div className="middle-section-headline">
                                 Where hanging out is easy
                             </div>
@@ -78,21 +76,17 @@ const SplashPage = () => {
                                 to talk without having to call.
                             </div>
                         </div>
-                        <div className="middle-section-content">
-                            <div><img 
-                                src={require("./images/middleSection2.svg").default}
-                                alt="middle-section-2" 
-                            /></div>
-                        </div>
+                        <img 
+                            src={require("./images/middleSection2.svg").default}
+                            alt="middle-section-2" 
+                        />
                     </div>
                     <div className="middle-section">
-                        <div className="middle-section-content">
-                            <div><img 
-                                src={require("./images/middleSection1.svg").default}
-                                alt="middle-section-1" 
-                            /></div>
-                        </div>
-                        <div className="middle-section-content">
+                        <img 
+                            src={require("./images/middleSection1.svg").default}
+                            alt="middle-section-1" 
+                        />
+                        <div className="middle-section-content right">
                             <div className="middle-section-headline">
                                 From few to a fandom
                             </div>
