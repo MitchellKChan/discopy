@@ -17,7 +17,7 @@ const SplashPage = () => {
                         </div>
                     </Link>
                 </nav>
-                <div className="splash-top-message">
+                <div className="splash-top-message-container">
                     <div className="splash-top-headline">Imagine a place...</div>
                     <div className="splash-top-message">
                         ...where you can belong to a gaming group, a sports league,
@@ -65,7 +65,7 @@ const SplashPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="middle-section second-middle-section">
+                    <div className="middle-section off-white-section">
                         <div className="middle-section-content left">
                             <div className="middle-section-headline">
                                 Where hanging out is easy
@@ -96,6 +96,20 @@ const SplashPage = () => {
                                 channels, and more.
                             </div>
                         </div>
+                    </div>
+                    <div className="middle-section large off-white-section">
+                        <div className="middle-section-headline large">
+                            Reliable tech for staying close
+                        </div>
+                        <div className="middle-section-message large">
+                            Low-latency voice and video feels like you're in the same room. 
+                            Wave hello over video, watch friends stream their games, or 
+                            gather up and have a drawing session with screen share.
+                        </div>
+                        <img 
+                            src={require("./images/middleSection4.svg").default}
+                            alt="middle-section-4" 
+                        />
                     </div>
                 </div>
             </div>

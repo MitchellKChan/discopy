@@ -13,6 +13,7 @@
     padding: 30px;
     justify-content: space-between;
     width: 100vw;
+    max-width: 1260px;
 }
 
 .logo {
@@ -30,24 +31,28 @@
 
 /* splash top stylying */
 
-.splash-top-message {
+.splash-top-message-container {
     padding-top: 30px;
     text-align: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin: 0 50px;
-    max-width: 800px;
+    max-width: 700px;
+    height: 70%;
 }
 
 .splash-top-headline {
     font-family: 'Ginto Nord Black';
-    font-size: 30px;
+    font-size: 56px;
     text-transform: uppercase;
     margin-bottom: 15px;
 }
 
 .splash-top-message {
-    margin-bottom: 20px;
+    margin: 40px 0 20px;
+    font-size: clamp(16px,18px,20px);
+    line-height: 1.625;
 }
 
 /* social styling */
@@ -75,9 +80,11 @@
     padding: 120px 40px;
 }
 
-.second-middle-section {
+.off-white-section {
     background-color: var(--off-white);
 }
+
+/* splash middle content styling */
 
 .middle-section-content {
     display: flex;
@@ -103,4 +110,28 @@
     padding-top: 20px;
     font-size: clamp(16px, 18px, 20px);
     line-height: 1.625;
+}
+
+/* large splash middle section styling */
+
+.middle-section.large {
+    flex-direction: column;
+    text-align: center;
+}
+
+.middle-section-headline.large {
+    font-size: 40px;
+    font-family: 'Ginto Nord Black';
+    text-transform: uppercase;
+}
+
+.middle-section-message.large {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.middle-section.large img {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 1260px;
 }
