@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_160550) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_163523) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_160550) do
 
   create_table "servers", force: :cascade do |t|
     t.string "name", null: false
-    t.boolean "public"
+    t.boolean "public", default: false, null: false
     t.bigint "creator_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
