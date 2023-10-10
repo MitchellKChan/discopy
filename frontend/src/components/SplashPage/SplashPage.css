@@ -28,9 +28,9 @@
     text-decoration: none;
 }
 
-/* splash message stylying */
+/* splash top stylying */
 
-.splash-message {
+.splash-top-message {
     padding-top: 30px;
     text-align: center;
     display: flex;
@@ -39,14 +39,14 @@
     max-width: 800px;
 }
 
-.headline {
+.splash-top-headline {
     font-family: 'Ginto Nord Black', sans-serif;
     font-size: 30px;
     text-transform: uppercase;
     margin-bottom: 15px;
 }
 
-.message {
+.splash-top-message {
     margin-bottom: 20px;
 }
 
@@ -61,4 +61,10 @@
 .socials a {
     color: inherit;
     text-decoration: none;
+}
+
+/* splash middle styling */
+
+.splash-middle {
+    color: #000000;
 }
