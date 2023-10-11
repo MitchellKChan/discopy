@@ -1,12 +1,12 @@
 databases:
-  - name: authenticate-me
-    user: authenticate-me
+  - name: discopy
+    user: discopy
     plan: free
-    region: ohio
+    region: oregon
 
 services:
   - type: web
-    name: authenticate-me
+    name: discopy
     plan: free
     region: oregon
     branch: main
@@ -16,7 +16,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: authenticate-me
+          name: discopy
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
