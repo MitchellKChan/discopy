@@ -31,8 +31,12 @@ const SplashPage = () => {
                             target='blank'
                             rel='noopener noreferrer'
                         >
-                            <div className="white-button large-button github">
-                                Github
+                            <div className="white-button large-button social">
+                                <img 
+                                    src={require("./images/github-mark.png")} 
+                                    alt="" 
+                                />
+                                <div>Github</div>
                             </div>
                         </a>
                         <a 
@@ -40,8 +44,13 @@ const SplashPage = () => {
                             target='blank'
                             rel='noopener noreferrer'
                         >
-                            <div className="black-button large-button linkedin">
-                                LinkedIn
+                            <div className="black-button large-button social">
+                                <img 
+                                    src={require("./images/linkedin_logo.png")} 
+                                    className="linkedin-logo"
+                                    alt="" 
+                                />
+                                <div>LinkedIn</div>
                             </div>
                         </a>
                     </div>

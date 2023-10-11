@@ -74,6 +74,19 @@
     text-decoration: none;
 }
 
+.social {
+    display: flex;
+}
+
+.social img {
+    width: 24px;
+    margin-right: 15px;
+}
+
+.linkedin-logo {
+    filter: invert(1);
+}
+
 /* splash top background styling */
 
 .splash-top-bg {
