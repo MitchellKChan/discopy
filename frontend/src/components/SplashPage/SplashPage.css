@@ -227,7 +227,7 @@
 /* splash footer styling */
 
 .splash-footer {
-    background-color: var(--not-quite-black);
+    background-color: var(--splash-footer);
     padding: 40px 0 40px;
     display: flex;
     justify-content: center;

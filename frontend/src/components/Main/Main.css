@@ -1,36 +1,53 @@
 /* main component layout styling */
 
 .main-container {
-    background-color: var(--form-bg);
+    background-color: blue;
     height: 100vh;
     width: 100vw;
     display: flex;
     font-size: 12px;
 }
+
 .main-container div {
     border: 1px solid #ffffff;
 }
+
 .main-servers-container {
+    background-color: var(--servers-bar);
     width: 72px;
-    height: 100vh;
 }
 
 .main-content-container {
     display: flex;
+    flex-grow: 1;
 }
 
 .content-sidebar-container {
+    background-color: var(--content-sidebar);
     width: 240px;
+}
+
+.content-body-container {
+    background-color: var(--form-bg);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.body-header-container {
+    height: 32px;
 }
 
 .body-content-container {
     display: flex;
+    flex-grow: 1;
 }
 
 .body-content-items-container {
-    width: auto;
+    flex-grow: 1;
 }
 
 .body-content-sidebar-container {
+    background-color: var(--content-body-sidebar);
     width: 340px;
 }
