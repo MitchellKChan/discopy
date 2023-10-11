@@ -57,7 +57,7 @@
 }
 
 .splash-top-message {
-    margin: 40px 0 20px;
+    margin: 40px 0 30px;
     font-size: clamp(16px,18px,20px);
     line-height: 1.625;
 }

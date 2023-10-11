@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './SplashPage.css';
-// import './images/middleSection1.svg';
 
 const SplashPage = () => {
     const user = useSelector(state => state.session.user);
