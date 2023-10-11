@@ -146,7 +146,7 @@ const SplashPage = () => {
                         </div>
                         <Link to="/login" className="login">
                             <div className="blue-button large-button middle-section-button">
-                                {user ? "Open Discord" : "Login"}
+                                {user ? "Open Discopy" : "Login"}
                             </div>
                         </Link>
                     </div>
