@@ -199,3 +199,12 @@
 .middle-section-button {
     margin-top: 40px;
 }
+
+/* splash footer styling */
+
+.splash-footer {
+    background-color: var(--not-quite-black);
+    padding: 40px 0 40px;
+    display: flex;
+    justify-content: center;
+}
