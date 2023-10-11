@@ -63,17 +63,30 @@
     width: 100%;
 }
 
-.form-label {
+.field-wrapper {
     margin-bottom: 20px;
     font-size: 12px;
+}
+
+.field-label {
     text-transform: uppercase;
+    font-family: 'Noto Sans Bold';
+    display: inline;
+}
+
+.login-error {
+    font-style: italic;
+}
+
+.invalid {
+    color: var(--text-danger);
 }
 
 .required {
-    color: var(--danger);
+    color: var(--status-danger);
 }
 
-.form-label input {
+.field-wrapper input {
     text-decoration: none;
     padding: 10px;
     width: 95%;
@@ -85,7 +98,7 @@
     border-radius: 3px;
 }
 
-.form-label input:focus {
+.field-wrapper input:focus {
     outline: none;
 }
 

@@ -72,13 +72,14 @@ const LoginPage = () => {
                             <div>We're so excited to see you again!</div>
                         </div>
                         <form className="form-fields" onSubmit={handleSubmit}>
-                            <ul>
-                                {errors.map(err => <li key={err}>{err}</li>)}
-                            </ul>
-                            <label className="form-label">
-                                Email
-                                <span className="required">*</span>
-                                <br />
+                            <label className="field-wrapper">
+                                <div className={`field-header ${errors.length > 0 ? "invalid" : ""}`}>
+                                    <div className="field-label">Email</div>
+                                    {errors.length > 0 ? 
+                                        <span className="login-error"> - Login or password is invalid.</span> :
+                                        <span className="required"> * </span>
+                                    }
+                                </div>
                                 <input
                                     type="text"
                                     onChange={(e) => handleChange("credential", e.target.value)}
@@ -86,10 +87,14 @@ const LoginPage = () => {
                                     required
                                 />
                             </label>
-                            <label className="form-label">
-                                Password
-                                <span className="required">*</span>
-                                <br />
+                            <label className="field-wrapper">
+                                <div className={`field-header ${errors.length > 0 ? "invalid" : ""}`}>
+                                    <div className="field-label">Password</div>
+                                    {errors.length > 0 ? 
+                                        <span className="login-error"> - Login or password is invalid.</span> :
+                                        <span className="required"> * </span>
+                                    }
+                                </div>
                                 <input
                                     type="password"
                                     onChange={(e) => handleChange("password", e.target.value)}

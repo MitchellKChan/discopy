@@ -56,7 +56,7 @@ const RegisterPage = () => {
                             <ul>
                                 {errors.map(err => <li key={err}>{err}</li>)}
                             </ul>
-                            <label className="form-label">
+                            <label className="field-wrapper">
                                 Email
                                 <span className="required">*</span>
                                 <br />
@@ -67,7 +67,7 @@ const RegisterPage = () => {
                                     required
                                 />
                             </label>
-                            <label className="form-label">
+                            <label className="field-wrapper">
                                 Display Name
                                 <br />
                                 <input
@@ -76,7 +76,7 @@ const RegisterPage = () => {
                                     value={registrationInfo.displayName}
                                 />
                             </label>
-                            <label className="form-label">
+                            <label className="field-wrapper">
                                 Username
                                 <span className="required">*</span>
                                 <br />
@@ -87,7 +87,7 @@ const RegisterPage = () => {
                                     required
                                 />
                             </label>
-                            <label className="form-label">
+                            <label className="field-wrapper">
                                 Password
                                 <span className="required">*</span>
                                 <br />

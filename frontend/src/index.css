@@ -4,7 +4,8 @@
     --off-white: #f6f6f6;
     --not-quite-black: #23272a;
     --form-bg: hsl(223 6.7% 20.6%);
-    --danger: hsl(359 87.3% 59.8%);
+    --status-danger: hsl(359 87.3% 59.8%);
+    --text-danger: hsl(358 92.9% 72.4%);
     --text-link: hsl(200 100% 49.4%);
 }
 
