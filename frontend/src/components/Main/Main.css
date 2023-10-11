@@ -1,0 +1,36 @@
+/* main component layout styling */
+
+.main-container {
+    background-color: var(--form-bg);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    font-size: 12px;
+}
+.main-container div {
+    border: 1px solid #ffffff;
+}
+.main-servers-container {
+    width: 72px;
+    height: 100vh;
+}
+
+.main-content-container {
+    display: flex;
+}
+
+.content-sidebar-container {
+    width: 240px;
+}
+
+.body-content-container {
+    display: flex;
+}
+
+.body-content-items-container {
+    width: auto;
+}
+
+.body-content-sidebar-container {
+    width: 340px;
+}

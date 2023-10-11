@@ -15,7 +15,7 @@ const LoginPage = () => {
     });
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/" />;
+    if (sessionUser) return <Redirect to="/channels" />;
 
     const handleChange = (field, value) => {
         setLoginInfo({

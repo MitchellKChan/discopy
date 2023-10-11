@@ -37,8 +37,8 @@ const SplashPage = () => {
                     <div className="socials">
                         <a 
                             href="https://github.com/MitchellKChan/discopy"
-                            target='blank'
-                            rel='noopener noreferrer'
+                            target="blank"
+                            rel="noopener noreferrer"
                         >
                             <div className="white-button large-button social">
                                 <img 
@@ -50,8 +50,8 @@ const SplashPage = () => {
                         </a>
                         <a 
                             href="https://www.linkedin.com/in/mitchellkchan/"
-                            target='blank'
-                            rel='noopener noreferrer'
+                            target="blank"
+                            rel="noopener noreferrer"
                         >
                             <div className="black-button large-button social">
                                 <img 
