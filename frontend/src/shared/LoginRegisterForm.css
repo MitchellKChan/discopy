@@ -21,8 +21,6 @@
     margin: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .form-header {
@@ -41,13 +39,20 @@
 
 .form-nav-to {
     margin-top: 20px;
-    font-size: 15px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .form-link {
     margin: 0 5px;
     color: var(--text-link);
     text-decoration: none;
+}
+
+.form-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 /* form fields styling */

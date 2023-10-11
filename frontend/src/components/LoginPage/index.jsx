@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../store/session';
+import { login, loginDemo } from '../../store/session';
 import { Link, Redirect } from 'react-router-dom';
 
 import '../../shared/LoginRegisterForm.css';
@@ -19,7 +19,7 @@ const LoginPage = () => {
 
     const handleChange = (field, value) => {
         setLoginInfo({
-            ...loginInfo, 
+            ...loginInfo,
             [field]: value
         });
     }
@@ -28,6 +28,25 @@ const LoginPage = () => {
         e.preventDefault();
         setErrors([]);
         return dispatch(login(loginInfo))
+            .catch(async (res) => {
+                let data;
+                try {
+                    // .clone() essentially allows you to read the response body twice
+                    data = await res.clone().json();
+                } catch {
+                    data = await res.text(); // Will hit this case if the server is down
+                }
+                if (data?.errors) setErrors(data.errors);
+                else if (data) setErrors([data]);
+                else setErrors([res.statusText]);
+            }
+            );
+    }
+
+    const handleDemoUser = (e) => {
+        e.preventDefault();
+        setErrors([]);
+        return dispatch(loginDemo())
             .catch(async (res) => {
                 let data;
                 try {
@@ -81,7 +100,10 @@ const LoginPage = () => {
                             <input className="form-button" type="submit" value="Log In" />
                         </form>
                         <div className="form-nav-to">
-                            Need an account? <Link to="/register" className="form-link">Register</Link>
+                            <div className="register-nav">
+                                Need an account? <Link to="/register" className="form-link">Register</Link>
+                            </div>
+                            <div className="demo-nav form-link" onClick={handleDemoUser}>Log Into Demo</div>
                         </div>
                     </div>
                 </div>

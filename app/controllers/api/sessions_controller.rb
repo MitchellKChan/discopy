@@ -12,7 +12,11 @@ class Api::SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_credentials(params[:credential], params[:password])
+    if params.has_key?(:demo)
+      @user = User.find_by(id: 2)
+    else
+      @user = User.find_by_credentials(params[:credential], params[:password])
+    end
     if @user
       login!(@user)
       render "api/users/show"
