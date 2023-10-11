@@ -12,6 +12,7 @@
 .form-card {
     width: 480px;
     background-color: var(--form-bg);
+    color: var(--form-field);
     border-radius: 5px;
 }
 
@@ -35,6 +36,12 @@
 
 .header-text {
     font-size: 24px;
+    color: #ffffff;
+}
+
+.form-tos {
+    margin-top: 10px;
+    font-size: 11px;
 }
 
 .form-nav-to {

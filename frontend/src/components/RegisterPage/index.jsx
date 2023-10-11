@@ -115,6 +115,11 @@ const RegisterPage = () => {
                             </label>
                             <input className="form-button" type="submit" value="Register" />
                         </form>
+                        <div className="form-tos">
+                            By registering, you agree to Discopy's 
+                            <Link to="#" className="form-link">Terms of Service</Link> and
+                            <Link to="#" className="form-link">Privacy Policy</Link>.
+                        </div>
                         <div className="form-nav-to">
                             <Link to="/login" className="form-link">Already have an account?</Link>
                         </div>

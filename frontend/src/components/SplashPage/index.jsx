@@ -155,7 +155,7 @@ const SplashPage = () => {
             <div className="splash-footer">
                 <nav className="nav">
                     <div className="logo">Discopy</div>
-                    <Link to="/login" className="login">
+                    <Link to="/register" className="login">
                         <div className="blue-button small-button">
                             {user ? "Open Discopy" : "Sign Up"}
                         </div>
