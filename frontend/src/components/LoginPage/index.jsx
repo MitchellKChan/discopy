@@ -58,8 +58,7 @@ const LoginPage = () => {
                 if (data?.errors) setErrors(data.errors);
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
-            }
-        );
+            });
     }
 
     return (
@@ -75,7 +74,7 @@ const LoginPage = () => {
                             <label className="field-wrapper">
                                 <div className={`field-header ${errors.length > 0 ? "invalid" : ""}`}>
                                     <div className="field-label">Email</div>
-                                    {errors.length > 0 ? 
+                                    {errors.length > 0 ?
                                         <span className="login-error"> - Login or password is invalid.</span> :
                                         <span className="required"> * </span>
                                     }
@@ -90,7 +89,7 @@ const LoginPage = () => {
                             <label className="field-wrapper">
                                 <div className={`field-header ${errors.length > 0 ? "invalid" : ""}`}>
                                     <div className="field-label">Password</div>
-                                    {errors.length > 0 ? 
+                                    {errors.length > 0 ?
                                         <span className="login-error"> - Login or password is invalid.</span> :
                                         <span className="required"> * </span>
                                     }
