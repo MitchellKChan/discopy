@@ -16,13 +16,14 @@ ApplicationRecord.transaction do
     ApplicationRecord.connection.reset_pk_sequence!('users')
   
     puts "Creating users..."
-    # Create some initial users with usernames, display_names, emails, passwords, and phone_numbers:
+    # Create some initial users with usernames, display_names, emails, passwords, and statuses:
     User.create!(
         username: 'mitchibonbon',
         email: 'mitchi@bon.bon',
         password: 'a10ng3RanDm0r35ECurEpA55w0Rd',
         status: 'Offline'
     )
+
     User.create!(
       username: 'DemoUser',
       display_name: 'demo-lition',
@@ -31,7 +32,14 @@ ApplicationRecord.transaction do
       status: 'Offline'
     )
 
-    # Create a user with a username, display_names, email, password, but no phone_number:
+    User.create!(
+      username: 'Baymax',
+      display_name: 'Personal Healthcare Companion',
+      email: 'baymax@bighero6.io',
+      password: 'badaladaladala',
+      status: 'Offline'
+    )
+
     User.create!(
       username: 'myspacetom',
       display_name: 'Tom',
@@ -39,17 +47,31 @@ ApplicationRecord.transaction do
       password: 'password',
       status: 'Offline'
     )
+
+    puts "Creating servers..."
+    # Create some initial servers with names, creator_ids, and public fields:
+    Server.create!(
+      name: "Big Hero 6 Fan Club",
+      creator_id: 3,
+      public: true
+    )
+
+    Server.create!(
+      name: "Myspace",
+      creator_id: 4,
+      public: true
+    )
   
-    # More users
-    5.times do 
-      User.create!({
-        username: Faker::Internet.unique.username(specifier: 3),
-        display_name: Faker::Internet.unique.username(specifier: 3),
-        email: Faker::Internet.unique.email,
-        password: 'password',
-        status: 'Offline'
-      }) 
-    end
+    # More users; may not need in final version but keeping for reference
+    # 5.times do 
+    #   User.create!({
+    #     username: Faker::Internet.unique.username(specifier: 3),
+    #     display_name: Faker::Internet.unique.username(specifier: 3),
+    #     email: Faker::Internet.unique.email,
+    #     password: 'password',
+    #     status: 'Offline'
+    #   }) 
+    # end
   
     puts "Done!"
   end

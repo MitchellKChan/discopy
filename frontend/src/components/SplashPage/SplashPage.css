@@ -1,11 +1,14 @@
 .splash-top {
-    height: 500px;
-    background-color: var(--logo-blue);
+    height: 626px;
+    background-color: var(--splash-blue);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
+
 /* nav styling */
 
 .nav {
@@ -13,10 +16,13 @@
     padding: 30px;
     justify-content: space-between;
     width: 100vw;
+    max-width: 1260px;
+    position: relative;
+    z-index: 100;
 }
 
 .logo {
-    font-family: 'Ginto Nord Black', sans-serif;
+    font-family: 'Ginto Nord Bold', sans-serif;
     font-size: 25px;
     display: flex;
     align-items: center;
@@ -28,26 +34,32 @@
     text-decoration: none;
 }
 
-/* splash message stylying */
+/* splash top message styling */
 
-.splash-message {
+.splash-top-message-container {
     padding-top: 30px;
     text-align: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin: 0 50px;
-    max-width: 800px;
+    max-width: 700px;
+    height: 70%;
+    position: relative;
+    z-index: 100;
 }
 
-.headline {
-    font-family: 'Ginto Nord Black', sans-serif;
-    font-size: 30px;
+.splash-top-headline {
+    font-family: 'Ginto Nord Black';
+    font-size: 56px;
     text-transform: uppercase;
     margin-bottom: 15px;
 }
 
-.message {
-    margin-bottom: 20px;
+.splash-top-message {
+    margin: 40px 0 30px;
+    font-size: clamp(16px,18px,20px);
+    line-height: 1.625;
 }
 
 /* social styling */
@@ -55,10 +67,157 @@
 .socials {
     display: flex;
     justify-content: space-evenly;
-
 }
 
 .socials a {
     color: inherit;
     text-decoration: none;
+}
+
+.social {
+    display: flex;
+}
+
+.social img {
+    width: 24px;
+    margin-right: 15px;
+}
+
+.linkedin-logo {
+    filter: invert(1);
+}
+
+/* splash top background styling */
+
+.splash-top-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+.bg-hills {
+    margin-left: -1280px;
+    position: absolute;
+    left: 50%;
+}
+
+.bg-shoes {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: block;
+    height: auto;
+    width: auto;
+    max-width: none;
+    margin-left: -1030px;
+}
+
+.bg-table {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 50%;
+    margin-left: 370px;
+}
+
+/* splash middle styling */
+
+.splash-middle {
+    color: #000000;
+}
+
+.middle-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 40px;
+}
+
+.off-white-section {
+    background-color: var(--off-white);
+}
+
+/* splash middle content styling */
+
+.middle-section-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 380px;
+}
+.middle-section-content.right {
+    margin-left: 70px;
+}
+
+.middle-section-content.left {
+    margin-right: 70px;
+}
+
+.middle-section-headline {
+    font-size: 44px;
+    line-height: 120%;
+    font-family: 'Noto Sans Bold';
+}
+
+.middle-section-message {
+    font-family: 'Noto Sans Light';
+    padding-top: 20px;
+    font-size: clamp(16px, 18px, 20px);
+    line-height: 1.625;
+}
+
+/* large splash middle section styling */
+
+.middle-section.bottom {
+    flex-direction: column;
+    text-align: center;
+}
+
+.middle-section-headline.large {
+    font-size: 40px;
+    font-family: 'Ginto Nord Black';
+    text-transform: uppercase;
+}
+
+.middle-section-message.large {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.middle-section.large img {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 1260px;
+}
+
+/* last splash middle section styling */
+
+.middle-section.bottom.last {
+    padding-top: 0;
+    position: relative;
+}
+
+.start-journey-bg {
+    position: absolute;
+    top: -30px;
+    width: 100%;
+}
+
+.middle-section-headline.last {
+    font-size: 28px;
+}
+
+.middle-section-button {
+    margin-top: 40px;
+}
+
+/* splash footer styling */
+
+.splash-footer {
+    background-color: var(--not-quite-black);
+    padding: 40px 0 40px;
+    display: flex;
+    justify-content: center;
 }

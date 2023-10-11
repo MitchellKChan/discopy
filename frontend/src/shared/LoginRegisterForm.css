@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--logo-blue);
+    background-color: var(--splash-blue);
 }
 
 .form-card {
@@ -86,7 +86,7 @@
 
 .form-button {
     font-size: 16px;
-    background-color: var(--logo-blue);
+    background-color: var(--brand-blue);
     color: #ffffff;
     border: none;
     border-radius: 3px;
