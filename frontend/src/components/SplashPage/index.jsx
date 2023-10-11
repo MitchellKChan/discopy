@@ -46,6 +46,23 @@ const SplashPage = () => {
                         </a>
                     </div>
                 </div>
+                <div aria-hidden="true" className="splash-top-bg">
+                    <img 
+                        src={require("./images/topSectionBg.svg").default}
+                        className="bg-hills"
+                        alt="" 
+                    />
+                    <img 
+                        src={require("./images/topSectionLeft.svg").default}
+                        className="bg-shoes"
+                        alt="" 
+                    />
+                    <img 
+                        src={require("./images/topSectionRight.svg").default}
+                        className="bg-table"
+                        alt="" 
+                    />
+                </div>
             </div>
             <div className="splash-middle">
                 <div className="splash-middle-container">
