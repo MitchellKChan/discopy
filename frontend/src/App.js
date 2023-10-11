@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import LoginPage from './components/LoginPage';
 import SplashPage from './components/SplashPage';
-import RegisterPage from './components/RegisterPage/RegisterPage';
+import RegisterPage from './components/RegisterPage';
 
 function App() {
   return (

@@ -30,6 +30,17 @@ export const login = (user) => async (dispatch) => {
     return res;
 }
 
+export const loginDemo = () => async (dispatch) => {
+    const res = await csrfFetch('/api/session', {
+        method: 'POST',
+        body: JSON.stringify({demo: true})
+    });
+    const payload = await res.json();
+    storeCurrentUser(payload);
+    dispatch(setCurrentUser(payload));
+    return res;
+}
+
 export const register = (user) => async (dispatch) => {
     const res = await csrfFetch('/api/users', {
         method: 'POST',
