@@ -1,9 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './SplashPage.css';
+import { logout } from '../../store/session';
 
 const SplashPage = () => {
+    const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     return (
         <>
@@ -15,6 +17,14 @@ const SplashPage = () => {
                             {user ? "Open Discopy" : "Login"}
                         </div>
                     </Link>
+                    {/* NOTE: splash page logout is temporary until other features are finished  */}
+                    {user ? 
+                        <div className="black-button small-button logout"
+                            onClick={() => dispatch(logout())}
+                        >
+                            Log Out
+                        </div> : <></>
+                    }
                 </nav>
                 <div className="splash-top-message-container">
                     <div className="splash-top-headline">Imagine a place...</div>
