@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './SplashPage.css';
 
 const SplashPage = () => {
-    const currentUser = useSelector(state => state.session.currentUser);
+    const currentUser = useSelector(state => state.entities.currentUser);
     return (
         <>
             <div className="splash-top">

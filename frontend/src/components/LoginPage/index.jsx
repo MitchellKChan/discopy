@@ -8,7 +8,7 @@ import './LoginPage.css';
 
 const LoginPage = () => {
     const dispatch = useDispatch();
-    const currentUser = useSelector(state => state.session.currentUser);
+    const currentUser = useSelector(state => state.entities.currentUser);
     const [loginInfo, setLoginInfo] = useState({
         credential: "",
         password: ""

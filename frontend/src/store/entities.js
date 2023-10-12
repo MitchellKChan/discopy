@@ -8,8 +8,7 @@ const REMOVE_CURRENT_USER = 'entities/removeCurrentUser';
 export const setCurrentUser = (user) => {
     return ({
         type: SET_CURRENT_USER,
-        currentUser: user.currentUser,
-        servers: user.servers
+        user
     });
 }
 
@@ -88,8 +87,12 @@ const entitiesReducer = (state = initialState, action) => {
     const newState = Object.assign({}, Object.freeze(state));
     switch (action.type) {
         case SET_CURRENT_USER:
-            newState["currentUser"] = action.currentUser;
-            newState["servers"] = action.servers;
+            if (action.user) {
+                newState["currentUser"] = action.user.currentUser;
+                newState["servers"] = action.user.servers;
+            } else {
+                newState["currentUser"] = action.user;
+            }
             return newState;
         case REMOVE_CURRENT_USER:
             // newState["currentUser"] = null;

@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import entitiesReducer from './entities';
 
 const rootReducer = combineReducers({
-    session: entitiesReducer
+    entities: entitiesReducer
 });
 
 let enhancer;
