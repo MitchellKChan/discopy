@@ -1,0 +1,1 @@
+json.partial! 'joined_server', joined_server: @joined_server

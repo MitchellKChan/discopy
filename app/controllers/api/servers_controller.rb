@@ -1,7 +1,6 @@
 class Api::ServersController < ApplicationController
   before_action :require_logged_in
 
-  debugger
   def create
     @server = Server.new(server_params)
     if @server.save
@@ -12,7 +11,6 @@ class Api::ServersController < ApplicationController
   end
 
   def update
-    debugger
     @server = Server.find_by(id: params[:id])
     if @server.update(server_params)
       render :show
