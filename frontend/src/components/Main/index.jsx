@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch, Redirect } from "react-router-dom";
-import { logout } from "../../store/session";
+import { logout } from "../../store/entities";
 
 import "./Main.css";
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../../store/session';
+import { register } from '../../store/entities';
 import { Link, Redirect } from 'react-router-dom';
 
 import '../../shared/LoginRegisterForm.css';
