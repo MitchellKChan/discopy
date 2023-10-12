@@ -8,7 +8,7 @@ import './RegisterPage.css';
 
 const RegisterPage = () => {
     const dispatch = useDispatch();
-    const currentUser = useSelector(state => state.session.user);
+    const currentUser = useSelector(state => state.session.currentUser);
     const [registrationInfo, setRegistrationInfo] = useState({
         email: "",
         displayName: "",

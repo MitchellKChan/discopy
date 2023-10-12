@@ -7,7 +7,7 @@ import "./Main.css";
 
 const Main = () => {
     const dispatch = useDispatch();
-    const currentUser = useSelector(state => state.session.user);
+    const currentUser = useSelector(state => state.session.currentUser);
     const match = useRouteMatch();
 
     if (!currentUser) return <Redirect to="/" />;

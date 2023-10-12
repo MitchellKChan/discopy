@@ -1,12 +1,10 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './SplashPage.css';
-import { logout } from '../../store/session';
 
 const SplashPage = () => {
-    const dispatch = useDispatch();
-    const currentUser = useSelector(state => state.session.user);
+    const currentUser = useSelector(state => state.session.currentUser);
     return (
         <>
             <div className="splash-top">
