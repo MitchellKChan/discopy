@@ -1,0 +1,84 @@
+/* main component layout styling */
+
+.main-container {
+    background-color: blue;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    font-size: 12px;
+}
+
+/* .main-container div {
+    border: 1px solid #000000;
+} */
+
+.main-servers-container {
+    background-color: var(--servers-bar);
+    width: 72px;
+}
+
+.main-content-container {
+    display: flex;
+    flex-grow: 1;
+}
+
+/* main content layout styling */
+
+.content-sidebar-container {
+    background-color: var(--content-sidebar);
+    width: 240px;
+    position: relative;
+}
+
+.user-container {
+    background-color: var(--content-body-sidebar);
+    height: 53px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.logout {
+    color: var(--text-link);
+    text-decoration: none;
+}
+
+.logout:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.content-body-container {
+    background-color: var(--form-bg);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* content body layout styling */
+
+.body-header-container {
+    height: 32px;
+}
+
+/* body content layout styling */
+
+.body-content-container {
+    display: flex;
+    flex-grow: 1;
+    border-top: 1px solid #000000;
+}
+
+.body-content-items-container {
+    flex-grow: 1;
+}
+
+/* body content sidebar layout styling */
+
+.body-content-sidebar-container {
+    background-color: var(--content-body-sidebar);
+    width: 340px;
+}

@@ -78,7 +78,7 @@ const storeCurrentUser = (user) => {
 
 // initial state constant for sessionReducer
 const initialState = { 
-    user: JSON.parse(sessionStorage.getItem("currentUser"))
+    currentUser: JSON.parse(sessionStorage.getItem("currentUser"))
 };
 
 
@@ -87,10 +87,10 @@ const sessionReducer = (state = initialState, action) => {
     const newState = Object.assign({}, Object.freeze(state));
     switch (action.type) {
         case SET_CURRENT_USER:
-            newState['user'] = action.user;
+            newState["currentUser"] = action.user;
             return newState;
         case REMOVE_CURRENT_USER:
-            newState['user'] = null;
+            newState["currentUser"] = null;
             return newState;
         default:
             return state;

@@ -34,16 +34,6 @@
     text-decoration: none;
 }
 
-/* NOTE: splash page logout is temporary until non-auth features are implemented */
-
-.logout {
-    margin-right: 50px;
-}
-
-.logout:hover {
-    cursor: pointer;
-}
-
 /* splash top message styling */
 
 .splash-top-message-container {
@@ -227,7 +217,7 @@
 /* splash footer styling */
 
 .splash-footer {
-    background-color: var(--not-quite-black);
+    background-color: var(--splash-footer);
     padding: 40px 0 40px;
     display: flex;
     justify-content: center;
