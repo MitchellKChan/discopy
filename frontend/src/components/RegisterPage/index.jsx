@@ -8,7 +8,7 @@ import './RegisterPage.css';
 
 const RegisterPage = () => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    const currentUser = useSelector(state => state.session.user);
     const [registrationInfo, setRegistrationInfo] = useState({
         email: "",
         displayName: "",
@@ -17,7 +17,7 @@ const RegisterPage = () => {
     });
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/channels" />;
+    if (currentUser) return <Redirect to="/channels" />;
 
     const invalidField = (field) => {
         const fieldErrors = errors.filter(err => err.includes(field));

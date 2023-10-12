@@ -8,14 +8,14 @@ import './LoginPage.css';
 
 const LoginPage = () => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    const currentUser = useSelector(state => state.session.user);
     const [loginInfo, setLoginInfo] = useState({
         credential: "",
         password: ""
     });
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/channels" />;
+    if (currentUser) return <Redirect to="/channels" />;
 
     const handleChange = (field, value) => {
         setLoginInfo({

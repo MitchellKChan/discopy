@@ -1,10 +1,17 @@
 import React from "react";
-import { useRouteMatch } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouteMatch, Redirect } from "react-router-dom";
+import { logout } from "../../store/session";
 
 import "./Main.css";
 
 const Main = () => {
+    const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.session.user);
     const match = useRouteMatch();
+
+    if (!currentUser) return <Redirect to="/" />;
+
     return (
         <>
             <div className="main-container">
@@ -14,6 +21,15 @@ const Main = () => {
                 <div className="main-content-container">
                     <div className="content-sidebar-container">
                         DirectMessageThreadIndex / ChannelIndex Sidebar Placeholder
+                        <div className="user-container">
+                            <div className="username">{currentUser.username}</div>
+                            <div 
+                                className="logout"
+                                onClick={() => dispatch(logout())}
+                            >
+                                Log Out
+                            </div>
+                        </div>
                     </div>
                     <div className="content-body-container">
                         <div className="body-header-container">

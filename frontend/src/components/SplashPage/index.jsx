@@ -6,7 +6,7 @@ import { logout } from '../../store/session';
 
 const SplashPage = () => {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user);
+    const currentUser = useSelector(state => state.session.user);
     return (
         <>
             <div className="splash-top">
@@ -14,17 +14,9 @@ const SplashPage = () => {
                     <div className="logo">Discopy</div>
                     <Link to="/login" className="login">
                         <div className="white-button small-button">
-                            {user ? "Open Discopy" : "Login"}
+                            {currentUser ? "Open Discopy" : "Login"}
                         </div>
                     </Link>
-                    {/* NOTE: splash page logout is temporary until other features are finished  */}
-                    {user ? 
-                        <div className="black-button small-button logout"
-                            onClick={() => dispatch(logout())}
-                        >
-                            Log Out
-                        </div> : <></>
-                    }
                 </nav>
                 <div className="splash-top-message-container">
                     <div className="splash-top-headline">Imagine a place...</div>
@@ -156,7 +148,7 @@ const SplashPage = () => {
                         </div>
                         <Link to="/login" className="login">
                             <div className="blue-button large-button middle-section-button">
-                                {user ? "Open Discopy" : "Login"}
+                                {currentUser ? "Open Discopy" : "Login"}
                             </div>
                         </Link>
                     </div>
@@ -167,7 +159,7 @@ const SplashPage = () => {
                     <div className="logo">Discopy</div>
                     <Link to="/register" className="login">
                         <div className="blue-button small-button">
-                            {user ? "Open Discopy" : "Sign Up"}
+                            {currentUser ? "Open Discopy" : "Sign Up"}
                         </div>
                     </Link>
                 </nav>
