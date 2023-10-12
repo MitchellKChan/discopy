@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, loginDemo } from '../../store/session';
+import { login, loginDemo } from '../../store/entities';
 import { Link, Redirect } from 'react-router-dom';
 
 import '../../shared/LoginRegisterForm.css';
@@ -8,7 +8,7 @@ import './LoginPage.css';
 
 const LoginPage = () => {
     const dispatch = useDispatch();
-    const currentUser = useSelector(state => state.session.currentUser);
+    const currentUser = useSelector(state => state.entities.currentUser);
     const [loginInfo, setLoginInfo] = useState({
         credential: "",
         password: ""

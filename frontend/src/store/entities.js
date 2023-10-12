@@ -1,8 +1,8 @@
 import csrfFetch, { storeCSRFToken } from './csrf';
 
 // action constants
-const SET_CURRENT_USER = 'session/setCurrentUser';
-const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
+const SET_CURRENT_USER = 'entities/setCurrentUser';
+const REMOVE_CURRENT_USER = 'entities/removeCurrentUser';
 
 // action creators
 export const setCurrentUser = (user) => {
@@ -70,31 +70,36 @@ export const restoreSession = () => async (dispatch) => {
     return res;
 }
 
-// session helper functions
+// entities helper functions
 const storeCurrentUser = (user) => {
     if (user) sessionStorage.setItem("currentUser", JSON.stringify(user));
     else sessionStorage.removeItem("currentUser");
 }
 
-// initial state constant for sessionReducer
+// initial state constant for entitiesReducer
 const initialState = { 
     currentUser: JSON.parse(sessionStorage.getItem("currentUser"))
 };
 
 
-// session reducer for managing session slice of state
-const sessionReducer = (state = initialState, action) => {
+// entities reducer for managing entities slice of state
+const entitiesReducer = (state = initialState, action) => {
     const newState = Object.assign({}, Object.freeze(state));
     switch (action.type) {
         case SET_CURRENT_USER:
-            newState["currentUser"] = action.user;
+            if (action.user) {
+                newState["currentUser"] = action.user.currentUser;
+                newState["servers"] = action.user.servers;
+            } else {
+                newState["currentUser"] = action.user;
+            }
             return newState;
         case REMOVE_CURRENT_USER:
-            newState["currentUser"] = null;
-            return newState;
+            // newState["currentUser"] = null;
+            return {};
         default:
             return state;
     }
 }
 
-export default sessionReducer;
+export default entitiesReducer;
