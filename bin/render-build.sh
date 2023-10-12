@@ -5,5 +5,4 @@ set -o errexit
 
 npm run build
 bundle install
-rails db:reset
-# rails db:migrate db:seed
+rails db:migrate db:seed
