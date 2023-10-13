@@ -72,7 +72,7 @@ export const restoreSession = () => async (dispatch) => {
 
 // entities helper functions
 const storeCurrentUser = (user) => {
-    if (user) sessionStorage.setItem("currentUser", JSON.stringify(user));
+    if (user) sessionStorage.setItem("currentUser", JSON.stringify(user.currentUser));
     else sessionStorage.removeItem("currentUser");
 }
 
@@ -88,11 +88,13 @@ const entitiesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CURRENT_USER:
             if (action.user) {
+                debugger;
                 newState["currentUser"] = action.user.currentUser;
                 newState["servers"] = action.user.servers;
                 console.log('state: ', state);
                 console.log('newState: ', newState);
             } else {
+                debugger;
                 newState["currentUser"] = action.user;
             }
             return newState;

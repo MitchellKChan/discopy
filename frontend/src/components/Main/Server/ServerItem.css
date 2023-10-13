@@ -1,14 +1,14 @@
 .server-item-container {
     display: flex;
-    margin: 5px;
+    /* margin: 8px 12px; */
 }
 
-.server-item {
+.server-item-wrapper {
     width: 48px;
     height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid #ffffff;
-    border-radius: 100%;
+    border-radius: 50%;
 }

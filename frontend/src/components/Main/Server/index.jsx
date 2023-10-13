@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
@@ -7,7 +7,10 @@ import ServerItem from './ServerItem';
 
 const ServerIndex = () => {
     const dispatch = useDispatch();
-    const servers = useSelector(state => state.entities.currentUser.servers);
+    const servers = useSelector(state => state.entities.servers);
+
+    useEffect(() => {
+    }, [servers]);
 
     return (
         <div className="main-servers-container">
