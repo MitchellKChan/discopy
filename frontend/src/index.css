@@ -1,16 +1,25 @@
 :root {
-    --splash-blue: #404eed;
-    --off-white: #f6f6f6;
-    --splash-footer: #23272a;
-    --brand-blue: #5865f2;
-    --form-bg: #313338;
-    --form-field: #b5bac1;
-    --status-danger: #f23f42;
-    --text-danger: #fa777c;
-    --text-link: #00a8fc;
-    --servers-bar: #1e1f22;
-    --content-sidebar: #2b2d31;
-    --content-body-sidebar: #232428;
+    /* splash page colors */
+    --splash-blue: hsl(235, 83%, 59%);
+    --off-white: hsl(0, 0%, 96%);
+    --splash-footer: hsl(206, 9%, 15%);
+    --brand-blue: hsl(235, 86%, 65%);
+
+    /* login / register page colors */
+    --form-bg: hsl(223, 7%, 21%);
+    --form-field: hsl(215, 9%, 73%);
+    --status-danger: hsl(359, 87%, 60%);
+    --text-danger: hsl(358, 93%, 72%);
+    --text-link: hsl(200, 100%, 49%);
+
+    /* main component colors */
+    --servers-bar: hsl(225, 6%, 13%);
+    --content-sidebar: hsl(220, 7%, 18%);
+    --content-body-sidebar: hsl(228, 7%, 15%);
+
+    /* server components colors */
+    --servers-tool-item: hsl(145, 65%, 39.2%);
+    --servers-separator: hsl(228, 6%, 33%);
 }
 
 body {

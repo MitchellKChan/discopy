@@ -14,12 +14,21 @@ const ServerIndex = () => {
 
     return (
         <div className="main-servers-container">
-            {/* <ServerItem /> */}
+            <ServerItem symbol="DMs" />
+            <div className="main-servers-child servers-separator-container">
+                <div className="servers-separator"></div>
+            </div>
             {Object.values(servers).map(server => {
                 return (
                     <ServerItem key={server.id} server={server} />
                 );
             })}
+            <div className="main-servers-child servers-separator-container">
+                <div className="servers-separator"></div>
+            </div>
+            <ServerItem symbol="ADD" />
+            <ServerItem symbol="EXP" />
+            <ServerItem symbol="DL" />
         </div>
     );
 }
