@@ -1,23 +1,21 @@
-import React from "react";
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouteMatch, Redirect } from "react-router-dom";
-import { logout } from "../../store/entities";
+import { Redirect } from 'react-router-dom';
+import { logout } from '../../store/entities';
 
 import "./Main.css";
+import ServerIndex from './Server';
 
 const Main = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.entities.currentUser);
-    const match = useRouteMatch();
 
     if (!currentUser) return <Redirect to="/" />;
 
     return (
         <>
             <div className="main-container">
-                <div className="main-servers-container">
-                    ServersIndex Placeholder
-                </div>
+                <ServerIndex />
                 <div className="main-content-container">
                     <div className="content-sidebar-container">
                         DirectMessageThreadIndex / ChannelIndex Sidebar Placeholder

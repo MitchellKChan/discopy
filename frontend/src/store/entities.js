@@ -90,12 +90,13 @@ const entitiesReducer = (state = initialState, action) => {
             if (action.user) {
                 newState["currentUser"] = action.user.currentUser;
                 newState["servers"] = action.user.servers;
+                console.log('state: ', state);
+                console.log('newState: ', newState);
             } else {
                 newState["currentUser"] = action.user;
             }
             return newState;
         case REMOVE_CURRENT_USER:
-            // newState["currentUser"] = null;
             return {};
         default:
             return state;

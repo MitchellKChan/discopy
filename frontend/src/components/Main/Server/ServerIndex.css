@@ -1,0 +1,6 @@
+.main-servers-container {
+    background-color: var(--servers-bar);
+    width: 72px;
+    display: flex;
+    flex-direction: column;
+}
