@@ -25,7 +25,7 @@ export const login = (user) => async (dispatch) => {
         body: JSON.stringify(user)
     });
     const payload = await res.json();
-    storeCurrentUser(payload);
+    storeCurrentEntities(payload);
     dispatch(setCurrentUser(payload));
     return res;
 }
@@ -36,7 +36,7 @@ export const loginDemo = () => async (dispatch) => {
         body: JSON.stringify({demo: true})
     });
     const payload = await res.json();
-    storeCurrentUser(payload);
+    storeCurrentEntities(payload);
     dispatch(setCurrentUser(payload));
     return res;
 }
@@ -47,7 +47,7 @@ export const register = (user) => async (dispatch) => {
         body: JSON.stringify(user)
     });
     const payload = await res.json();
-    storeCurrentUser(payload);
+    storeCurrentEntities(payload);
     dispatch(setCurrentUser(payload));
     return res;
 }
@@ -56,7 +56,7 @@ export const logout = () => async (dispatch) => {
     const res = await csrfFetch('/api/session', {
         method: 'DELETE'
     });
-    storeCurrentUser(null);
+    storeCurrentEntities(null);
     dispatch(removeCurrentUser());
     return res;
 }
@@ -65,22 +65,19 @@ export const restoreSession = () => async (dispatch) => {
     const res = await csrfFetch('/api/session');
     storeCSRFToken(res);
     const payload = await res.json();
-    storeCurrentUser(payload);
+    storeCurrentEntities(payload);
     dispatch(setCurrentUser(payload));
     return res;
 }
 
 // entities helper functions
-const storeCurrentUser = (user) => {
-    if (user) sessionStorage.setItem("currentUser", JSON.stringify(user));
-    else sessionStorage.removeItem("currentUser");
+const storeCurrentEntities = (user) => {
+    if (user) sessionStorage.setItem("currentEntities", JSON.stringify(user));
+    else sessionStorage.removeItem("currentEntities");
 }
 
 // initial state constant for entitiesReducer
-const initialState = { 
-    currentUser: JSON.parse(sessionStorage.getItem("currentUser"))
-};
-
+const initialState = JSON.parse(sessionStorage.getItem("currentEntities"));
 
 // entities reducer for managing entities slice of state
 const entitiesReducer = (state = initialState, action) => {
@@ -95,7 +92,6 @@ const entitiesReducer = (state = initialState, action) => {
             }
             return newState;
         case REMOVE_CURRENT_USER:
-            // newState["currentUser"] = null;
             return {};
         default:
             return state;

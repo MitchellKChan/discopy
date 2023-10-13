@@ -1,0 +1,39 @@
+.server-item-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dm {
+    margin-top: 8px;
+}
+
+.server-item-wrapper {
+    width: 48px;
+    height: 48px;
+}
+
+.server-item {
+    flex-grow: 1;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.unselected-item {
+    background-color: var(--form-bg);
+}
+
+.dm-item {
+    background-color: var(--brand-blue);
+}
+
+.tool-item {
+    background-color: var(--servers-tool-item);
+}
+
+.server-initial {
+    font-size: 18px;
+}

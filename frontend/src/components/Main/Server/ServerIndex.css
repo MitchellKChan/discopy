@@ -1,0 +1,23 @@
+.main-servers-container {
+    background-color: var(--servers-bar);
+    width: 72px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-servers-child {
+    margin: 0 0 8px;
+}
+
+.servers-separator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.servers-separator {
+    height: 2px;
+    width: 32px;
+    border-radius: 1px;
+    background-color: var(--servers-separator);
+}

@@ -8,15 +8,6 @@
     font-size: 12px;
 }
 
-/* .main-container div {
-    border: 1px solid #000000;
-} */
-
-.main-servers-container {
-    background-color: var(--servers-bar);
-    width: 72px;
-}
-
 .main-content-container {
     display: flex;
     flex-grow: 1;
