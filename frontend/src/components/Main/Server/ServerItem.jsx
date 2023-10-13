@@ -1,8 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { showModal } from '../../../store/modal';
 
 import './ServerItem.css';
 
 const ServerItem = ({ server, symbol }) => {
+    const dispatch = useDispatch();
 
     const containerClassNames = () => {
         const dmClass = symbol === "DMs" ? "dm" : "";
@@ -25,7 +28,11 @@ const ServerItem = ({ server, symbol }) => {
     }
 
     const handleHover = (e) => {
-        console.log("hovering");
+        // console.log("hovering");
+    }
+
+    const handleClick = (e) => {
+        if (symbol === "ADD") dispatch(showModal("server"));
     }
     
     return (
@@ -33,6 +40,7 @@ const ServerItem = ({ server, symbol }) => {
             className={containerClassNames()} 
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}
+            onClick={handleClick}
         >
             <div className="server-item-wrapper">
                 <div className={itemClassNames()}>

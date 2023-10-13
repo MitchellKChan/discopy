@@ -4,10 +4,12 @@ import LoginPage from './components/LoginPage';
 import SplashPage from './components/SplashPage';
 import RegisterPage from './components/RegisterPage';
 import Main from './components/Main';
+import Modal from './components/Modal/Modal';
 
 function App() {
   return (
     <>
+      <Modal />
       <Switch>
         <Route exact path="/login">
           <LoginPage />

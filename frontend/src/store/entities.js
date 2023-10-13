@@ -1,8 +1,8 @@
 import csrfFetch, { storeCSRFToken } from './csrf';
 
 // action constants
-const SET_CURRENT_USER = 'entities/setCurrentUser';
-const REMOVE_CURRENT_USER = 'entities/removeCurrentUser';
+export const SET_CURRENT_USER = 'entities/setCurrentUser';
+export const REMOVE_CURRENT_USER = 'entities/removeCurrentUser';
 
 // action creators
 export const setCurrentUser = (user) => {

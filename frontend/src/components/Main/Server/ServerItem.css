@@ -20,6 +20,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.3s, border-radius 0.3s;
+}
+
+.server-item:hover {
+    background-color: #000000;
+    border-radius: 25%;
+    cursor: pointer;
 }
 
 .unselected-item {
