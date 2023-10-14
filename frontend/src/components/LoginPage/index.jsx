@@ -80,6 +80,7 @@ const LoginPage = () => {
                                     }
                                 </div>
                                 <input
+                                    className="field-wrapper-input"
                                     type="text"
                                     onChange={(e) => handleChange("credential", e.target.value)}
                                     value={loginInfo.credential}
@@ -95,6 +96,7 @@ const LoginPage = () => {
                                     }
                                 </div>
                                 <input
+                                    className="field-wrapper-input"
                                     type="password"
                                     onChange={(e) => handleChange("password", e.target.value)}
                                     value={loginInfo.password}

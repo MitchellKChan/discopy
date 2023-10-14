@@ -3,6 +3,8 @@
     --form-light-bg: #ffffff;
     --form-light-text: rgb(6, 6, 7);
     --form-light-message: rgb(78, 80, 88);
+    --form-light-input-bg: hsla(0, 0%, 0%, 0.08);
+    --form-light-input-text: rgb(49, 51, 56);
 
     /* splash page colors */
     --splash-blue: hsl(235, 83%, 59%);
@@ -81,4 +83,10 @@ body {
     font-size: 20px;
     padding: 16px 32px;
     border-radius: 28px;
+}
+
+/* text colors */
+
+.form-light-message {
+    color: var(--form-light-message);
 }

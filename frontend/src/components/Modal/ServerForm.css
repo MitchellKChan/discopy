@@ -1,10 +1,16 @@
 .server-form-container {
-    height: 558px;
+    height: 404px;
     width: 440px;
     background-color: var(--form-light-bg);
     border-radius: 4px;
     color: var(--form-light-text);
 }
+
+.server-form-wrapper {
+    margin: 16px;
+}
+
+/* server form header styling */
 
 .server-form-header {
     display: flex;
@@ -42,4 +48,18 @@
 .form-header-close:hover {
     color: var(--form-light-text);
     cursor: pointer;
+}
+
+/* server form field styling */
+
+.server-field-input {
+    background-color: var(--form-light-input-bg);
+    color: var(--form-light-input-text);
+    text-decoration: none;
+    padding: 10px;
+    width: 95%;
+    border: none;
+    line-height: 24px;
+    font-size: 16px;
+    border-radius: 3px;
 }
