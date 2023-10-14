@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { hideModal } from '../../store/modal';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-// import '../../shared/LoginRegisterForm.css';
 import './ServerForm.css';
 
 
@@ -51,6 +51,13 @@ const ServerForm = () => {
                         />
                     </label>
                 </form>
+                <div className="form-tos server-tos">
+                    By creating a server, you agree to Discopy's
+                    <Link to="#" className="form-link">Community Guidelines</Link>
+                </div>
+            </div>
+            <div className="server-form-footer">
+                <input className="form-button" type="submit" value="Create" />
             </div>
         </div>
     );

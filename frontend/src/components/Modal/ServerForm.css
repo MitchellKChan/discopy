@@ -4,10 +4,14 @@
     background-color: var(--form-light-bg);
     border-radius: 4px;
     color: var(--form-light-text);
+    position: relative;
 }
 
 .server-form-wrapper {
     margin: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 /* server form header styling */
@@ -18,7 +22,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 30px 16px 0;
+    padding: 30px 16px 10px;
 }
 
 .form-header-title {
@@ -62,4 +66,19 @@
     line-height: 24px;
     font-size: 16px;
     border-radius: 3px;
+}
+
+/* server form tos styling */
+
+.server-tos {
+    margin-top: 0;
+}
+
+/* server form footer styling */
+.server-form-footer {
+    background-color: var(--form-light-input-bg);
+    position: absolute;
+    width: 100%;
+    height: 38px;
+    bottom: 0;
 }
