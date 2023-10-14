@@ -30,7 +30,7 @@
 }
 
 .unselected-item {
-    background-color: var(--form-bg);
+    background-color: var(--form-dark-bg);
 }
 
 .dm-item {

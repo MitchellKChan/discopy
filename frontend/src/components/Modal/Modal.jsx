@@ -1,6 +1,7 @@
 import React from 'react';
 import { hideModal } from '../../store/modal';
 import { useDispatch, useSelector } from 'react-redux'
+import ServerForm from './ServerForm';
 
 import './Modal.css';
 
@@ -13,7 +14,7 @@ const Modal = () => {
     let component;
     switch (modal) {
         case "server":
-            component = <div>Hello there from Modal; triggered by ADD server</div>;
+            component = <ServerForm />;
             break;
         case "other":
             break;
@@ -27,7 +28,7 @@ const Modal = () => {
 
     return (
         <div className="modal-background" onClick={handleClick}>
-            <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <div className="modal-container" onClick={e => e.stopPropagation()}>
                 { component }
             </div>
         </div>

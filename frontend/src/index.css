@@ -1,4 +1,9 @@
 :root {
+    /* modal container colors */
+    --form-light-bg: #ffffff;
+    --form-light-text: rgb(6, 6, 7);
+    --form-light-message: rgb(78, 80, 88);
+
     /* splash page colors */
     --splash-blue: hsl(235, 83%, 59%);
     --off-white: hsl(0, 0%, 96%);
@@ -6,8 +11,8 @@
     --brand-blue: hsl(235, 86%, 65%);
 
     /* login / register page colors */
-    --form-bg: hsl(223, 7%, 21%);
-    --form-field: hsl(215, 9%, 73%);
+    --form-dark-bg: hsl(223, 7%, 21%);
+    --form-dark-field: hsl(215, 9%, 73%);
     --status-danger: hsl(359, 87%, 60%);
     --text-danger: hsl(358, 93%, 72%);
     --text-link: hsl(200, 100%, 49%);

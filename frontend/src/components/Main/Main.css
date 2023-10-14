@@ -43,7 +43,7 @@
 }
 
 .content-body-container {
-    background-color: var(--form-bg);
+    background-color: var(--form-dark-bg);
     flex-grow: 1;
     display: flex;
     flex-direction: column;

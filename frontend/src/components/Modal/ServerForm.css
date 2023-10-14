@@ -1,0 +1,45 @@
+.server-form-container {
+    height: 558px;
+    width: 440px;
+    background-color: var(--form-light-bg);
+    border-radius: 4px;
+    color: var(--form-light-text);
+}
+
+.server-form-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 30px 16px 0;
+}
+
+.form-header-title {
+    font-size: 24px;
+    font-family: 'Noto Sans Bold';
+}
+
+.form-header-message {
+    text-align: center;
+    color: var(--form-light-message);
+    font-size: 16px;
+    margin-top: 8px;
+    width: 408px;
+}
+
+.form-header-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--form-light-message);
+    transition: color 0.3s;
+}
+
+.form-header-close:hover {
+    color: var(--form-light-text);
+    cursor: pointer;
+}
