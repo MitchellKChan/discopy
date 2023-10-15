@@ -18,6 +18,7 @@ const ServerForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("handling submit outside form");
     }
 
     return (
@@ -37,7 +38,7 @@ const ServerForm = () => {
                         x
                     </button>
                 </div>
-                <form className="form-fields" onSubmit={handleSubmit}>
+                <form id="newServerForm" className="form-fields" onSubmit={handleSubmit}>
                     <label className="field-wrapper">
                         <div className="field-header">
                             <div className="field-label form-light-message">Server Name</div>
@@ -57,7 +58,14 @@ const ServerForm = () => {
                 </div>
             </div>
             <div className="server-form-footer">
-                <input className="form-button" type="submit" value="Create" />
+                <button 
+                    className="form-button" 
+                    type="submit" 
+                    form="newServerForm"
+                    disabled={serverName.length < 1}
+                >
+                    <div className="server-form-button-label">Create</div>
+                </button>
             </div>
         </div>
     );

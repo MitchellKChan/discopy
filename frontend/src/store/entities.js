@@ -1,3 +1,4 @@
+import * as ServerApiUtil from '../utils/serverApiUtils';
 import csrfFetch, { storeCSRFToken } from './csrf';
 
 // action constants
@@ -71,8 +72,8 @@ export const restoreSession = () => async (dispatch) => {
 }
 
 // entities helper functions
-const storeCurrentEntities = (user) => {
-    if (user) sessionStorage.setItem("currentEntities", JSON.stringify(user));
+const storeCurrentEntities = (entities) => {
+    if (entities) sessionStorage.setItem("currentEntities", JSON.stringify(entities));
     else sessionStorage.removeItem("currentEntities");
 }
 
@@ -93,6 +94,9 @@ const entitiesReducer = (state = initialState, action) => {
             return newState;
         case REMOVE_CURRENT_USER:
             return {};
+        case ServerApiUtil.RECEIVE_SERVER:
+            newState["servers"][action.server.id] = action.server;
+            return newState;
         default:
             return state;
     }
