@@ -85,6 +85,13 @@ body {
     border-radius: 28px;
 }
 
+/* navlink styling */
+
+.navlink {
+    text-decoration: none;
+    color: #ffffff;
+}
+
 /* text colors */
 
 .form-light-message {

@@ -82,7 +82,8 @@ const initialState = JSON.parse(sessionStorage.getItem("currentEntities"));
 
 // entities reducer for managing entities slice of state
 const entitiesReducer = (state = initialState, action) => {
-    const newState = Object.assign({}, Object.freeze(state));
+    // const newState = Object.assign({}, Object.freeze(state));
+    const newState = {...state};
     switch (action.type) {
         case SET_CURRENT_USER:
             if (action.user) {

@@ -18,7 +18,9 @@ function App() {
           <RegisterPage />
         </Route>
         <Route path="/channels">
-          <Main />
+          <Route path="/:serverId">
+            <Main />
+          </Route>
         </Route>
         <Route path="/">
           <SplashPage />

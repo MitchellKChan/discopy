@@ -17,7 +17,7 @@ const RegisterPage = () => {
     });
     const [errors, setErrors] = useState([]);
 
-    if (currentUser) return <Redirect to="/channels" />;
+    if (currentUser) return <Redirect to="/channels/@me" />;
 
     const invalidField = (field) => {
         const fieldErrors = errors.filter(err => err.includes(field));

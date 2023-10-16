@@ -1,27 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import ServerItem from './ServerItem';
+import { NavLink } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 
 import './ServerIndex.css';
-import ServerItem from './ServerItem';
 
 const ServerIndex = () => {
-    const servers = useSelector(state => state.entities.servers);
-    const [usersServers, setUsersServers] = useState([]);
-
-    useEffect(() => {
-        console.log(servers);
-        setUsersServers(servers);
-    }, [servers])
+    const { url } = useRouteMatch();
+    const servers = useSelector(state => {
+        const temp = state.entities.servers; 
+        console.log('server state in selector',temp);
+        return temp;
+    });
 
     return (
         <div className="main-servers-container">
-            <ServerItem symbol="DMs" />
+            <NavLink to={`${url}/@me`} className="navlink">
+                <ServerItem symbol="DMs" />
+            </NavLink>
             <div className="main-servers-child servers-separator-container">
                 <div className="servers-separator"></div>
             </div>
-            {Object.values(usersServers).map(server => {
+            {Object.values(servers).map(server => {
                 return (
-                    <ServerItem key={server.id} server={server} />
+                    <NavLink to={`${url}/${server.id}`} className="navlink">
+                        <ServerItem key={server.id} server={server} />
+                    </NavLink>
                 );
             })}
             <ServerItem symbol="ADD" />

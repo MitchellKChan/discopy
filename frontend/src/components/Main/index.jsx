@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { logout } from '../../store/entities';
+import { useParams } from 'react-router-dom';
 
 import "./Main.css";
 import ServerIndex from './Server';
@@ -9,6 +10,9 @@ import ServerIndex from './Server';
 const Main = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.entities.currentUser);
+    const servers = useSelector(state => state.entities.servers);
+    const { serverId } = useParams();
+    console.log('serverId', serverId);
 
     if (!currentUser) return <Redirect to="/" />;
 
@@ -18,7 +22,17 @@ const Main = () => {
                 <ServerIndex />
                 <div className="main-content-container">
                     <div className="content-sidebar-container">
-                        DirectMessageThreadIndex / ChannelIndex Sidebar Placeholder
+                        <div className="content-sidebar-header-container">
+                            <div className="content-sidebar-header">
+                                {serverId === "@me" ? 
+                                    "Find or start a conversation" :
+                                    "hello there"
+                                }
+                            </div>
+                        </div>
+                        <div className="content-sidebar-item-container">
+                            DirectMessageThreadIndex / ChannelIndex Sidebar Placeholder
+                        </div>
                         <div className="user-container">
                             <div className="username">{currentUser.username}</div>
                             <div 
@@ -44,6 +58,13 @@ const Main = () => {
                     </div>
                 </div>
             </div>
+            {Children.map(child => {
+                return (
+                    <>
+                        ${child}
+                    </>
+                );
+            })}
         </>
     );
 }

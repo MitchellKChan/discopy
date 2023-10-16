@@ -3,7 +3,7 @@
     width: 72px;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 
 .main-servers-container::-webkit-scrollbar {
