@@ -10,7 +10,6 @@ import ServerIndex from './Server';
 const Main = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.entities.currentUser);
-    const servers = useSelector(state => state.entities.servers);
     const parms = useParams();
     console.log('serverId', parms.serverId);
     console.log('parms', parms);

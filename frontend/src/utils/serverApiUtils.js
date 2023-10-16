@@ -50,15 +50,18 @@ export const deleteServer = (serverId) => async (dispatch) => {
 }
 
 // servers reducer for managing servers slice of state within entities
-// const serversReducer = (state = initialState, action) => {
-//     const newState = Object.assign({}, Object.freeze(state));
-//     switch (action.type) {
-//         case RECEIVE_SERVER:
-//             newState[action.server.id] = action.server;
-//             return newState;
-//         default:
-//             return state;
-//     }
-// }
+const serversReducer = (state = {}, action) => {
+    const newState = Object.assign({}, Object.freeze(state));
+    switch (action.type) {
+        case RECEIVE_SERVER:
+            newState[action.server.id] = action.server;
+            return newState;
+        case REMOVE_SERVER:
+            delete[action.server.id];
+            return newState;
+        default:
+            return state;
+    }
+}
 
-// export default serversReducer;
+export default serversReducer;

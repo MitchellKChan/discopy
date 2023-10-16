@@ -1,4 +1,4 @@
-import * as ServerApiUtil from '../utils/serverApiUtils';
+import serversReducer, * as ServerApiUtil from '../utils/serverApiUtils';
 import csrfFetch, { storeCSRFToken } from './csrf';
 
 // action constants
@@ -95,7 +95,8 @@ const entitiesReducer = (state = initialState, action) => {
         case REMOVE_CURRENT_USER:
             return {};
         case ServerApiUtil.RECEIVE_SERVER:
-            newState["servers"][action.server.id] = action.server;
+            newState["servers"] = serversReducer(newState["servers"], action);
+            storeCurrentEntities(newState);
             return newState;
         default:
             return state;

@@ -8,21 +8,20 @@ import './ServerIndex.css';
 
 const ServerIndex = () => {
     const { url } = useRouteMatch();
-    const entities = useSelector(state => state.entities);
+    const servers = useSelector(state => state.entities.servers);
 
     return (
         <div className="main-servers-container">
-            {console.log(entities.servers)}
             <NavLink to={`${url}/@me`} className="navlink">
                 <ServerItem symbol="DMs" />
             </NavLink>
             <div className="main-servers-child servers-separator-container">
                 <div className="servers-separator"></div>
             </div>
-            {Object.values(entities.servers).map(server => {
+            {Object.values(servers).map(server => {
                 return (
-                    <NavLink to={`${url}/${server.id}`} className="navlink">
-                        <ServerItem key={server.id} server={server} />
+                    <NavLink key={server.id} to={`${url}/${server.id}`} className="navlink">
+                        <ServerItem  server={server} />
                     </NavLink>
                 );
             })}
