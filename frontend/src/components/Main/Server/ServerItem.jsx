@@ -1,13 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { showModal } from '../../../store/modal';
-import { useRouteMatch } from 'react-router-dom';
 
 import './ServerItem.css';
 
 const ServerItem = ({ server, symbol }) => {
     const dispatch = useDispatch();
-    const { url } = useRouteMatch();
 
     const containerClassNames = () => {
         const dmClass = symbol === "DMs" ? "dm" : "";
@@ -38,6 +36,7 @@ const ServerItem = ({ server, symbol }) => {
             switch (symbol) {
                 case "ADD":
                     dispatch(showModal("newServer"));
+                    break;
                 default:
                     break;
             }

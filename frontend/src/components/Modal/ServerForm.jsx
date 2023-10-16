@@ -4,15 +4,16 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './ServerForm.css';
-import { createServer } from '../../utils/serverApiUtils';
+import { createServer, deleteServer, updateServer } from '../../utils/serverApiUtils';
 
 
-const ServerForm = ({ type, server }) => {
+const ServerForm = ({ type, server = {} }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.entities.currentUser);
 
     const [serverName, setServerName] = useState(
-        type === "new" ? `${user.username}'s server` :
+        type === "new" ? 
+            `${user.username}'s server` :
             `${server.name}`
     );
 
@@ -22,18 +23,30 @@ const ServerForm = ({ type, server }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const server = {
-            name: serverName,
-            creatorId: user.id,
-            public: true
-        };
-        dispatch(createServer(server));
+        if (type === "new") {
+            const newServer = {
+                name: serverName,
+                creatorId: user.id
+            };
+            dispatch(createServer(newServer));
+        } else {
+            const updatedServer = {
+                ...server,
+                name: serverName
+            }
+            dispatch(updateServer(updatedServer));
+        }
         dispatch(hideModal());
     }
 
     const handleLeaveOrDelete = (e) => {
         e.preventDefault();
-        console.log("leaving or deleting");
+        if (server.creatorId === user.id) {
+            dispatch(deleteServer(server.id));
+        } else {
+            console.log(e.target.value);
+        }
+        dispatch(hideModal());
     }
 
     return (
@@ -61,7 +74,7 @@ const ServerForm = ({ type, server }) => {
                         x
                     </button>
                 </div>
-                {server.creatorId === user.id ?
+                {type === "new" || server.creatorId === user.id ?
                     <form id="newServerForm" className="form-fields" onSubmit={handleSubmit}>
                         <label className="field-wrapper">
                             <div className="field-header">
@@ -99,7 +112,7 @@ const ServerForm = ({ type, server }) => {
                         </div>
                     </button>
                 }
-                {server.creatorId === user.id ?
+                {type === "new" || server.creatorId === user.id ?
                     <button
                         className="form-button"
                         type="submit"
