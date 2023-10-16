@@ -10,9 +10,8 @@ import ServerIndex from './Server';
 const Main = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.entities.currentUser);
-    const parms = useParams();
-    console.log('serverId', parms.serverId);
-    console.log('parms', parms);
+    const servers = useSelector(state => state.entities.servers);
+    const { serverId } = useParams();
 
     if (!currentUser) return <Redirect to="/" />;
 
@@ -24,9 +23,9 @@ const Main = () => {
                     <div className="content-sidebar-container">
                         <div className="content-sidebar-header-container">
                             <div className="content-sidebar-header">
-                                {parms.serverId === "@me" ? 
+                                {serverId === "@me" ? 
                                     "Find or start a conversation" :
-                                    "hello there"
+                                    `${servers[serverId].name}`
                                 }
                             </div>
                         </div>
