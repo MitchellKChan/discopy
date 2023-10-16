@@ -34,11 +34,10 @@ const ServerItem = ({ server, symbol }) => {
     }
 
     const handleClick = (e) => {
-        // if (symbol === "ADD") dispatch(showModal("server"));
         if (symbol) {
             switch (symbol) {
                 case "ADD":
-                    dispatch(showModal("server"));
+                    dispatch(showModal("newServer"));
                 default:
                     break;
             }

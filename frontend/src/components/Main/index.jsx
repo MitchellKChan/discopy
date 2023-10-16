@@ -30,7 +30,7 @@ const Main = () => {
                                     </div> :
                                     <div 
                                         className="content-sidebar-header-server"
-                                        onClick={() => dispatch(showModal())}
+                                        onClick={() => dispatch(showModal("editServer"))}
                                     >
                                         <div>
                                             {`${servers[serverId].name}`}

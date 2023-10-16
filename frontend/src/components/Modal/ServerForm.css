@@ -83,9 +83,18 @@
     padding: 16px;
     bottom: 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
+.leave-or-delete-server {
+    background-color: var(--status-danger);
+    transition: background-color 0.3s;
+}
+
+.leave-or-delete-server:hover {
+    background-color: #b93e3e;
+    cursor: pointer;
+}
 .server-form-button-label {
     font-size: 14px;
 }

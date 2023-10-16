@@ -7,11 +7,14 @@ import './ServerForm.css';
 import { createServer } from '../../utils/serverApiUtils';
 
 
-const ServerForm = () => {
+const ServerForm = ({ type }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.entities.currentUser);
 
-    const [serverName, setServerName] = useState(`${user.username}'s server`);
+    const [serverName, setServerName] = useState(
+        type === "new" ? `${user.username}'s server` :
+            `current server name`
+    );
 
     const handleChange = (name) => {
         setServerName(name);
@@ -28,15 +31,26 @@ const ServerForm = () => {
         dispatch(hideModal());
     }
 
+    const handleLeaveOrDelete = (e) => {
+        e.preventDefault();
+        console.log("leaving or deleting");
+    }
+
     return (
         <div className="server-form-container">
             <div className="server-form-wrapper">
                 <div className="server-form-header">
-                    <div className="form-header-title">Create a server</div>
+                    <div className="form-header-title">
+                        {type === "new" ? "Create a server" :
+                            "Edit server"
+                        }
+                    </div>
                     <div className="form-header-message">
                         Your server is where you and your
-                        friends hang out.  Make yours and
-                        start talking.
+                        friends hang out.
+                        {type === "new" ? "  Make yours and start talking." :
+                            "  Edit yours how you like."
+                        }
                     </div>
                     <button
                         className="form-header-close"
@@ -59,19 +73,37 @@ const ServerForm = () => {
                         />
                     </label>
                 </form>
-                <div className="form-tos server-tos">
-                    By creating a server, you agree to Discopy's
-                    <Link to="#" className="form-link">Community Guidelines</Link>
-                </div>
+                {type === "new" ?
+                    <div className="form-tos server-tos">
+                        By creating a server, you agree to Discopy's
+                        <Link to="#" className="form-link">Community Guidelines</Link>
+                    </div> :
+                    <></>
+                }
+
             </div>
             <div className="server-form-footer">
-                <button 
-                    className="form-button" 
-                    type="submit" 
+                {type === "new" ? <div></div> :
+                    <button
+                        className="form-button leave-or-delete-server"
+                        onClick={(e) => handleLeaveOrDelete(e)}
+                    >
+                        <div className="server-form-button-label">
+                            Delete Server
+                        </div>
+                    </button>
+                }
+                <button
+                    className="form-button"
+                    type="submit"
                     form="newServerForm"
                     disabled={serverName.length < 1}
                 >
-                    <div className="server-form-button-label">Create</div>
+                    <div className="server-form-button-label">
+                        {type === "new" ? "Create" :
+                            "Update"
+                        }
+                    </div>
                 </button>
             </div>
         </div>

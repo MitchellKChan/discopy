@@ -13,8 +13,11 @@ const Modal = () => {
 
     let component;
     switch (modal) {
-        case "server":
-            component = <ServerForm />;
+        case "newServer":
+            component = <ServerForm type="new" />;
+            break;
+        case "editServer":
+            component = <ServerForm type="edit" />;
             break;
         case "other":
             break;
