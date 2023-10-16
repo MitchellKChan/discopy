@@ -17,10 +17,10 @@ function App() {
         <Route exact path="/register">
           <RegisterPage />
         </Route>
-        <Route path="/channels">
-          <Route path="/:serverId">
+        <Route path="/channels/:serverId">
+          {/* <Route path="/:serverId"> */}
             <Main />
-          </Route>
+          {/* </Route> */}
         </Route>
         <Route path="/">
           <SplashPage />

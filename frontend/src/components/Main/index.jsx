@@ -11,8 +11,9 @@ const Main = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.entities.currentUser);
     const servers = useSelector(state => state.entities.servers);
-    const { serverId } = useParams();
-    console.log('serverId', serverId);
+    const parms = useParams();
+    console.log('serverId', parms.serverId);
+    console.log('parms', parms);
 
     if (!currentUser) return <Redirect to="/" />;
 
@@ -24,7 +25,7 @@ const Main = () => {
                     <div className="content-sidebar-container">
                         <div className="content-sidebar-header-container">
                             <div className="content-sidebar-header">
-                                {serverId === "@me" ? 
+                                {parms.serverId === "@me" ? 
                                     "Find or start a conversation" :
                                     "hello there"
                                 }
