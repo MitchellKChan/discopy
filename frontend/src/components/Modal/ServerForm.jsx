@@ -2,9 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { hideModal } from '../../store/modal';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import './ServerForm.css';
-import { createServer, deleteServer, updateServer } from '../../utils/serverApiUtils';
+import { createServer, deleteServer, leaveServer, updateServer } from '../../utils/serverApiUtils';
 
 
 const ServerForm = ({ type, server = {} }) => {
@@ -44,9 +45,10 @@ const ServerForm = ({ type, server = {} }) => {
         if (server.creatorId === user.id) {
             dispatch(deleteServer(server.id));
         } else {
-            console.log(e.target.value);
+            dispatch(leaveServer(server.id));
         }
         dispatch(hideModal());
+        return <Redirect to="/channels/@me" />
     }
 
     return (

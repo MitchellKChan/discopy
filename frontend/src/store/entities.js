@@ -98,6 +98,10 @@ const entitiesReducer = (state = initialState, action) => {
             newState["servers"] = serversReducer(newState["servers"], action);
             storeCurrentEntities(newState);
             return newState;
+        case ServerApiUtil.REMOVE_SERVER:
+            newState["servers"] = serversReducer(newState["servers"], action);
+            storeCurrentEntities(newState);
+            return newState;
         default:
             return state;
     }

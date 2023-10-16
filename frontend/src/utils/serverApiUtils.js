@@ -45,7 +45,16 @@ export const deleteServer = (serverId) => async (dispatch) => {
         method: 'DELETE'
     });
     const payload = await res.json();
-    dispatch(removeServer(serverId));
+    dispatch(removeServer(payload.serverId));
+    return res;
+}
+
+export const leaveServer = (serverId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/joined_servers/${serverId}`, {
+        method: 'DELETE'
+    });
+    const payload = await res.json();
+    dispatch(removeServer(payload.joinedServerId));
     return res;
 }
 
@@ -57,7 +66,7 @@ const serversReducer = (state = {}, action) => {
             newState[action.server.id] = action.server;
             return newState;
         case REMOVE_SERVER:
-            delete[action.server.id];
+            delete newState[action.serverId];
             return newState;
         default:
             return state;

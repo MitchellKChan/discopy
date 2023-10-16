@@ -14,7 +14,7 @@ const Main = () => {
     const servers = useSelector(state => state.entities.servers);
     const { serverId } = useParams();
 
-    if (!currentUser) return <Redirect to="/" />;
+    if (!currentUser || !serverId ) return <Redirect to="/" />;
 
     return (
         <>

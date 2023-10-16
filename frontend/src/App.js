@@ -8,8 +8,7 @@ import Modal from './components/Modal/Modal';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
-  const params = useParams();
-  console.log(params);
+
   return (
     <>
       <Modal />
