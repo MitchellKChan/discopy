@@ -19,32 +19,32 @@ export const removeServer = (serverId) => {
     });
 }
 
-// // server thunk action creators
-// export const createServer = (server) = async (dispatch) => {
-//     const res = await csrfFetch('/api/servers', {
-//         method: 'POST',
-//         body: JSON.stringify(server)
-//     });
-//     const payload = await res.json();
-//     dispatch(receiveServer(payload));
-//     return res;
-// }
+// server thunk action creators
+export const createServer = (server) => async (dispatch) => {
+    const res = await csrfFetch('/api/servers', {
+        method: 'POST',
+        body: JSON.stringify(server)
+    });
+    const payload = await res.json();
+    dispatch(receiveServer(payload));
+    return res;
+}
 
-// export const updateServer = (server) = async (dispatch) => {
-//     const res = await csrfFetch(`/api/servers/${server.id}`, {
-//         method: 'PATCH',
-//         body: JSON.stringify(server)
-//     });
-//     const payload = await res.json();
-//     dispatch(receiveServer(payload));
-//     return res;
-// }
+export const updateServer = (server) => async (dispatch) => {
+    const res = await csrfFetch(`/api/servers/${server.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(server)
+    });
+    const payload = await res.json();
+    dispatch(receiveServer(payload));
+    return res;
+}
 
-// export const deleteServer = (serverId) => async (dispatch) => {
-//     const res = await csrfFetch(`/api/servers/${serverId}`, {
-//         method: 'DELETE'
-//     });
-//     const payload = await res.json();
-//     dispatch(removeServer(serverId));
-//     return res;
-// }
+export const deleteServer = (serverId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/servers/${serverId}`, {
+        method: 'DELETE'
+    });
+    const payload = await res.json();
+    dispatch(removeServer(serverId));
+    return res;
+}

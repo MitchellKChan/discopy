@@ -18,11 +18,11 @@ const ServerIndex = () => {
                     <ServerItem key={server.id} server={server} />
                 );
             })}
+            <ServerItem symbol="ADD" />
+            <ServerItem symbol="EXP" />
             <div className="main-servers-child servers-separator-container">
                 <div className="servers-separator"></div>
             </div>
-            <ServerItem symbol="ADD" />
-            <ServerItem symbol="EXP" />
             <ServerItem symbol="DL" />
         </div>
     );

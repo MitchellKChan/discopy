@@ -4,13 +4,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './ServerForm.css';
+import { createServer } from '../../utils/serverApiUtils';
 
 
 const ServerForm = () => {
     const dispatch = useDispatch();
-    const username = useSelector(state => state.entities.currentUser.username);
+    const user = useSelector(state => state.entities.currentUser);
 
-    const [serverName, setServerName] = useState(`${username}'s server`);
+    const [serverName, setServerName] = useState(`${user.username}'s server`);
 
     const handleChange = (name) => {
         setServerName(name);
@@ -18,7 +19,13 @@ const ServerForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("handling submit outside form");
+        const server = {
+            name: serverName,
+            creatorId: user.id,
+            public: true
+        };
+        dispatch(createServer(server));
+        dispatch(hideModal());
     }
 
     return (
