@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { logout } from '../../store/entities';
 import { useParams } from 'react-router-dom';
+import { showModal } from '../../store/modal';
 
 import "./Main.css";
 import ServerIndex from './Server';
@@ -23,9 +24,25 @@ const Main = () => {
                     <div className="content-sidebar-container">
                         <div className="content-sidebar-header-container">
                             <div className="content-sidebar-header">
-                                {serverId === "@me" ? 
-                                    "Find or start a conversation" :
-                                    `${servers[serverId].name}`
+                                {serverId === "@me" ?
+                                    <div className="content-sidebar-header-dm">
+                                        Find or start a conversation
+                                    </div> :
+                                    <div 
+                                        className="content-sidebar-header-server"
+                                        onClick={() => dispatch(showModal())}
+                                    >
+                                        <div>
+                                            {`${servers[serverId].name}`}
+                                        </div>
+                                        <div>
+                                            <img
+                                                src={require("./images/angle-down.svg").default}
+                                                className="angle-down"
+                                                alt=""
+                                            />
+                                        </div>
+                                    </div>
                                 }
                             </div>
                         </div>
@@ -34,7 +51,7 @@ const Main = () => {
                         </div>
                         <div className="user-container">
                             <div className="username">{currentUser.username}</div>
-                            <div 
+                            <div
                                 className="logout"
                                 onClick={() => dispatch(logout())}
                             >
