@@ -17,13 +17,13 @@ json.servers do
     # create objects for all servers the currentUser has created
     @user.servers.each do |server|
         json.set! server.id do
-            json.extract! server, :id, :name, :public
+            json.extract! server, :id, :name, :creator_id, :public
         end
     end
     # create objects for all servers the currentUser has joined
     @user.joined_servers.each do |joined_server|
         json.set! joined_server.server.id do
-            json.extract! joined_server.server, :id, :name, :public
+            json.extract! joined_server.server, :id, :name, :creator_id, :public
         end    
     end
 end
