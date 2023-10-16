@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { logout } from '../../store/entities';
 import { useParams } from 'react-router-dom';
-import { showModal } from '../../store/modal';
+import { showEditServerModal } from '../../store/modal';
 
 import "./Main.css";
 import ServerIndex from './Server';
@@ -30,7 +30,7 @@ const Main = () => {
                                     </div> :
                                     <div 
                                         className="content-sidebar-header-server"
-                                        onClick={() => dispatch(showModal("editServer"))}
+                                        onClick={() => dispatch(showEditServerModal("editServer", servers[serverId]))}
                                     >
                                         <div>
                                             {`${servers[serverId].name}`}

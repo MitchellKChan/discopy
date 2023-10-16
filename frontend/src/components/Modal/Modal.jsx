@@ -12,12 +12,12 @@ const Modal = () => {
     if (!modal) return null;
 
     let component;
-    switch (modal) {
+    switch (modal.modal) {
         case "newServer":
             component = <ServerForm type="new" />;
             break;
         case "editServer":
-            component = <ServerForm type="edit" />;
+            component = <ServerForm type="edit" server={modal.server} />;
             break;
         case "other":
             break;

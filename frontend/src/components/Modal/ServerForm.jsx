@@ -7,13 +7,13 @@ import './ServerForm.css';
 import { createServer } from '../../utils/serverApiUtils';
 
 
-const ServerForm = ({ type }) => {
+const ServerForm = ({ type, server }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.entities.currentUser);
 
     const [serverName, setServerName] = useState(
         type === "new" ? `${user.username}'s server` :
-            `current server name`
+            `${server.name}`
     );
 
     const handleChange = (name) => {
@@ -41,14 +41,16 @@ const ServerForm = ({ type }) => {
             <div className="server-form-wrapper">
                 <div className="server-form-header">
                     <div className="form-header-title">
-                        {type === "new" ? "Create a server" :
+                        {type === "new" ?
+                            "Create a server" :
                             "Edit server"
                         }
                     </div>
                     <div className="form-header-message">
                         Your server is where you and your
                         friends hang out.
-                        {type === "new" ? "  Make yours and start talking." :
+                        {type === "new" ?
+                            "  Make yours and start talking." :
                             "  Edit yours how you like."
                         }
                     </div>
@@ -59,20 +61,22 @@ const ServerForm = ({ type }) => {
                         x
                     </button>
                 </div>
-                <form id="newServerForm" className="form-fields" onSubmit={handleSubmit}>
-                    <label className="field-wrapper">
-                        <div className="field-header">
-                            <div className="field-label form-light-message">Server Name</div>
-                        </div>
-                        <input
-                            className="server-field-input"
-                            type="text"
-                            onChange={(e) => handleChange(e.target.value)}
-                            value={serverName}
-                            required
-                        />
-                    </label>
-                </form>
+                {server.creatorId === user.id ?
+                    <form id="newServerForm" className="form-fields" onSubmit={handleSubmit}>
+                        <label className="field-wrapper">
+                            <div className="field-header">
+                                <div className="field-label form-light-message">Server Name</div>
+                            </div>
+                            <input
+                                className="server-field-input"
+                                type="text"
+                                onChange={(e) => handleChange(e.target.value)}
+                                value={serverName}
+                                required
+                            />
+                        </label>
+                    </form> : <></>
+                }
                 {type === "new" ?
                     <div className="form-tos server-tos">
                         By creating a server, you agree to Discopy's
@@ -80,31 +84,35 @@ const ServerForm = ({ type }) => {
                     </div> :
                     <></>
                 }
-
             </div>
             <div className="server-form-footer">
-                {type === "new" ? <div></div> :
+                {type === "new" ?
+                    <div></div> :
                     <button
                         className="form-button leave-or-delete-server"
                         onClick={(e) => handleLeaveOrDelete(e)}
                     >
                         <div className="server-form-button-label">
-                            Delete Server
+                            {server.creatorId === user.id ?
+                                "Delete Server" : "Leave Server"
+                            }
                         </div>
                     </button>
                 }
-                <button
-                    className="form-button"
-                    type="submit"
-                    form="newServerForm"
-                    disabled={serverName.length < 1}
-                >
-                    <div className="server-form-button-label">
-                        {type === "new" ? "Create" :
-                            "Update"
-                        }
-                    </div>
-                </button>
+                {server.creatorId === user.id ?
+                    <button
+                        className="form-button"
+                        type="submit"
+                        form="newServerForm"
+                        disabled={serverName.length < 1}
+                    >
+                        <div className="server-form-button-label">
+                            {type === "new" ?
+                                "Create" : "Update"
+                            }
+                        </div>
+                    </button> : <></>
+                }
             </div>
         </div>
     );
