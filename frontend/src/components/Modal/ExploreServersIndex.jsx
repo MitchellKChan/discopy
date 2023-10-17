@@ -1,24 +1,22 @@
+import { useDispatch } from "react-redux";
 import { hideModal } from "../../store/modal";
 import { useHistory } from "react-router-dom";
 
+import './ExploreServersIndex.css';
+
 const ExploreServersIndex = () => {
+    const dispatch = useDispatch();
+
     return (
-        <div className="server-form-container">
+        <div className="server-form-container explore-servers-container">
             <div className="server-form-wrapper">
                 <div className="server-form-header">
                     <div className="form-header-title">
-                        {type === "new" ?
-                            "Create a server" :
-                            "Edit server"
-                        }
+                        Find your community on Discopy
                     </div>
-                    <div className="form-header-message">
-                        Your server is where you and your
-                        friends hang out.
-                        {type === "new" ?
-                            "  Make yours and start talking." :
-                            "  Edit yours how you like."
-                        }
+                    <div className="form-header-message explore-servers-message">
+                        From gaming, to music, to learning, 
+                        there's a place for you.
                     </div>
                     <button
                         className="form-header-close"
@@ -26,6 +24,9 @@ const ExploreServersIndex = () => {
                     >
                         x
                     </button>
+                </div>
+                <div className="explore-servers-items-container">
+                    {}
                 </div>
             </div>
         </div>

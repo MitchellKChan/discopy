@@ -86,10 +86,12 @@ const entitiesReducer = (state = initialState, action) => {
     const newState = Object.assign({}, Object.freeze(state));
     switch (action.type) {
         case SET_CURRENT_USER:
-            newState["currentUser"] = action.user.currentUser;
-            action.user.servers ? newState["servers"] = action.user.servers : newState["servers"] = {};
-            action.user.joinedServers ? newState["joinedServers"] = action.user.joinedServers : newState["joinedServers"] = {};
-
+            if (action.user) {
+                newState["currentUser"] = action.user.currentUser;
+                newState["servers"] = action.user.servers;
+                newState["joinedServers"] = action.user.joinedServers;
+            } 
+            
             return newState;
         case REMOVE_CURRENT_USER:
             return {};

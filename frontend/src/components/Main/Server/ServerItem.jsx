@@ -37,6 +37,9 @@ const ServerItem = ({ server, symbol }) => {
                 case "ADD":
                     dispatch(showModal("newServer"));
                     break;
+                case "EXP":
+                    dispatch(showModal("joinServer"));
+                    break;
                 default:
                     break;
             }

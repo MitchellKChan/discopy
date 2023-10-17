@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import ServerForm from './ServerForm';
 
 import './Modal.css';
+import ExploreServersIndex from './ExploreServersIndex';
 
 const Modal = () => {
     const dispatch = useDispatch();
@@ -22,6 +23,9 @@ const Modal = () => {
                 server={modal.server}
                 joinedServer={modal.joinedServer}
             />;
+            break;
+        case "joinServer":
+            component = <ExploreServersIndex />
             break;
         case "other":
             break;
