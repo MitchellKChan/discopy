@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  name       :string           not null
-#  public     :boolean
+#  public     :boolean          default(FALSE), not null
 #  creator_id :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -16,6 +16,9 @@ class Server < ApplicationRecord
     belongs_to :creator,
         foreign_key: :creator_id,
         class_name: :User
+
+    has_many :channels,
+        dependent: :destroy
 
     has_many :joined_servers,
         dependent: :destroy
