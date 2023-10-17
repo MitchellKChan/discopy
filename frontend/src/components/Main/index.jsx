@@ -13,9 +13,13 @@ const Main = () => {
     const currentUser = useSelector(state => state.entities.currentUser);
     const servers = useSelector(state => state.entities.servers);
     const joinedServers = useSelector(state => state.entities.joinedServers);
+    const channels = useSelector(state => state.entities.channels);
 
     const { serverId } = useParams();
     if (!currentUser || !serverId) return <Redirect to="/" />;
+
+    const serversChannels = Object.values(channels).filter(channel => channel.serverId == serverId);
+    console.log(serversChannels);
 
     let joinedServer;
     if (joinedServers) joinedServer = Object.values(joinedServers).find(joinedServer => {
@@ -57,7 +61,17 @@ const Main = () => {
                             </div>
                         </div>
                         <div className="content-sidebar-item-container">
-                            DirectMessageThreadIndex / ChannelIndex Sidebar Placeholder
+                            {serverId === "@me" ?
+                                <div>directMessages</div> :
+                                <div>
+                                    {serversChannels.map(channel => {
+                                        return (
+                                            <div>{channel.name}</div>
+                                        );
+                                    })}
+                                </div>
+
+                            }
                         </div>
                         <div className="user-container">
                             <div className="username">{currentUser.username}</div>
