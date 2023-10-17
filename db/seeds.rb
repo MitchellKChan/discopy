@@ -49,6 +49,28 @@ ApplicationRecord.transaction do
     JoinedServer.create!(server_id: 1,member_id: 4)
     JoinedServer.create!(server_id: 2,member_id: 2)
     JoinedServer.create!(server_id: 2,member_id: 4)
+
+    puts "Creating channels..."
+    # Create some initial channels with names and server_ids:
+    Channel.create!(name: "general",server_id: 1)
+    Channel.create!(name: "missions",server_id: 1)
+    Channel.create!(name: "armor-designs",server_id: 1)
+    Channel.create!(name: "general",server_id: 2)
+    Channel.create!(name: "toms-channel",server_id: 2)
+    Channel.create!(name: "general",server_id: 3)
+    Channel.create!(name: "general",server_id: 4)
+    Channel.create!(name: "general",server_id: 5)
+    Channel.create!(name: "general",server_id: 6)
+    Channel.create!(name: "general",server_id: 7)
+    Channel.create!(name: "general",server_id: 8)
+    Channel.create!(name: "general",server_id: 9)
+    Channel.create!(name: "general",server_id: 10)
+    Channel.create!(name: "general",server_id: 11)
+    Channel.create!(name: "general",server_id: 12)
+    Channel.create!(name: "general",server_id: 13)
+    Channel.create!(name: "general",server_id: 14)
+    Channel.create!(name: "general",server_id: 15)
+
   
     # More users; may not need in final version but keeping for reference
     # 5.times do 
