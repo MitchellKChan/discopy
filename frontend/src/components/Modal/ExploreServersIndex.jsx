@@ -47,17 +47,16 @@ const ExploreServersIndex = () => {
                 </div>
                 <div className="explore-servers-items-container">
                     {Object.values(joinableServers).map(server => {
-                        console.log('server', server);
-                        console.log(Object.values(servers));
-                        return (
-                            <button
-                                onClick={(e) => handleClick(e, server.id)}
-                                key={server.id}
-                                disabled={Object.keys(servers).includes(server.id.to_s)}
-                            >
-                                {server.name}
-                            </button>
-                        );
+                        if (!Object.keys(servers).includes(String(server.id))) {
+                            return (
+                                <button
+                                    onClick={(e) => handleClick(e, server.id)}
+                                    key={server.id}
+                                >
+                                    {server.name}
+                                </button>
+                            );
+                        }
                     })}
                 </div>
             </div>
