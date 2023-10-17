@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/register">
           <RegisterPage />
         </Route>
-        <Route path="/channels/:serverId">
+        <Route path="/channels">
           <Main />
         </Route>
         <Route path="/">

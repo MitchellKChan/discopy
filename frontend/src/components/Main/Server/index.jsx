@@ -11,7 +11,7 @@ const ServerIndex = () => {
 
     return (
         <div className="main-servers-container">
-            <NavLink to={`@me`} className="navlink">
+            <NavLink to={`/channels/@me`} className="navlink">
                 <ServerItem symbol="DMs" />
             </NavLink>
             <div className="main-servers-child servers-separator-container">
@@ -19,7 +19,7 @@ const ServerIndex = () => {
             </div>
             {Object.values(servers).map(server => {
                 return (
-                    <NavLink key={server.id} to={`${server.id}`} className="navlink">
+                    <NavLink key={server.id} to={`/channels/${server.id}`} className="navlink">
                         <ServerItem server={server} />
                     </NavLink>
                 );
