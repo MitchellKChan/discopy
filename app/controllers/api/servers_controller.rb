@@ -1,6 +1,8 @@
 class Api::ServersController < ApplicationController
   before_action :require_logged_in
 
+  wrap_parameters include: Server.attribute_names + ["creatorId"]
+
   def create
     @server = Server.new(server_params)
     if @server.save

@@ -1,8 +1,10 @@
+import serversReducer, * as ServerApiUtil from '../utils/serverApiUtils';
+import joinedServersReducer, * as JoinedServerApiUtil from '../utils/joinedServerApiUtil';
 import csrfFetch, { storeCSRFToken } from './csrf';
 
 // action constants
-const SET_CURRENT_USER = 'entities/setCurrentUser';
-const REMOVE_CURRENT_USER = 'entities/removeCurrentUser';
+export const SET_CURRENT_USER = 'entities/setCurrentUser';
+export const REMOVE_CURRENT_USER = 'entities/removeCurrentUser';
 
 // action creators
 export const setCurrentUser = (user) => {
@@ -33,7 +35,7 @@ export const login = (user) => async (dispatch) => {
 export const loginDemo = () => async (dispatch) => {
     const res = await csrfFetch('/api/session', {
         method: 'POST',
-        body: JSON.stringify({demo: true})
+        body: JSON.stringify({ demo: true })
     });
     const payload = await res.json();
     storeCurrentEntities(payload);
@@ -71,8 +73,8 @@ export const restoreSession = () => async (dispatch) => {
 }
 
 // entities helper functions
-const storeCurrentEntities = (user) => {
-    if (user) sessionStorage.setItem("currentEntities", JSON.stringify(user));
+const storeCurrentEntities = (entities) => {
+    if (entities) sessionStorage.setItem("currentEntities", JSON.stringify(entities));
     else sessionStorage.removeItem("currentEntities");
 }
 
@@ -87,12 +89,28 @@ const entitiesReducer = (state = initialState, action) => {
             if (action.user) {
                 newState["currentUser"] = action.user.currentUser;
                 newState["servers"] = action.user.servers;
-            } else {
-                newState["currentUser"] = action.user;
+                newState["joinedServers"] = action.user.joinedServers;
+                newState["joinableServers"] = action.user.joinableServers;
             }
             return newState;
         case REMOVE_CURRENT_USER:
             return {};
+        case ServerApiUtil.RECEIVE_SERVER:
+            newState["servers"] = serversReducer(newState["servers"], action);
+            storeCurrentEntities(newState);
+            return newState;
+        case ServerApiUtil.REMOVE_SERVER:
+            newState["servers"] = serversReducer(newState["servers"], action);
+            storeCurrentEntities(newState);
+            return newState;
+        case JoinedServerApiUtil.RECEIVE_JOINED_SERVER:
+            newState["joinedServers"] = joinedServersReducer(newState["joinedServers"], action);
+            storeCurrentEntities(newState);
+            return newState;
+        case JoinedServerApiUtil.REMOVE_JOINED_SERVER:
+            newState["joinedServers"] = joinedServersReducer(newState["joinedServers"], action);
+            storeCurrentEntities(newState);
+            return newState;
         default:
             return state;
     }

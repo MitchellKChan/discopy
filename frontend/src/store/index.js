@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import entitiesReducer from './entities';
+import modalReducer from './modal';
 
 const rootReducer = combineReducers({
-    entities: entitiesReducer
+    entities: entitiesReducer,
+    modal: modalReducer
 });
 
 let enhancer;

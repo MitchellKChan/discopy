@@ -8,6 +8,10 @@ class Api::UsersController < ApplicationController
     @user["status"] = "Offline"
     if @user.save
       login!(@user)
+      @joinable_servers = Server
+        .select(:id, :name, :creator_id, :public)
+        .where(public: true)
+        .where.not(creator_id: @user.id)
       render :show
     else
       render json: {errors: @user.errors.full_messages}, status: 422

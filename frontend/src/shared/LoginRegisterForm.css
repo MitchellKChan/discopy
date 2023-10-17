@@ -11,8 +11,8 @@
 
 .form-card {
     width: 480px;
-    background-color: var(--form-bg);
-    color: var(--form-field);
+    background-color: var(--form-dark-bg);
+    color: var(--form-dark-field);
     border-radius: 5px;
 }
 
@@ -93,7 +93,7 @@
     color: var(--status-danger);
 }
 
-.field-wrapper input {
+.field-wrapper-input {
     text-decoration: none;
     padding: 10px;
     width: 95%;

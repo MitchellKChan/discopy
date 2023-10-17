@@ -1,0 +1,100 @@
+.server-form-container {
+    height: 404px;
+    width: 440px;
+    background-color: var(--form-light-bg);
+    border-radius: 4px;
+    color: var(--form-light-text);
+    position: relative;
+}
+
+.server-form-wrapper {
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* server form header styling */
+
+.server-form-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 30px 16px 10px;
+}
+
+.form-header-title {
+    font-size: 24px;
+    font-family: 'Noto Sans Bold';
+}
+
+.form-header-message {
+    text-align: center;
+    color: var(--form-light-message);
+    font-size: 16px;
+    margin-top: 8px;
+    width: 408px;
+}
+
+.form-header-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--form-light-message);
+    transition: color 0.3s;
+}
+
+.form-header-close:hover {
+    color: var(--form-light-text);
+    cursor: pointer;
+}
+
+/* server form field styling */
+
+.server-field-input {
+    background-color: var(--form-light-input-bg);
+    color: var(--form-light-input-text);
+    text-decoration: none;
+    padding: 10px;
+    width: 95%;
+    border: none;
+    line-height: 24px;
+    font-size: 16px;
+    border-radius: 3px;
+}
+
+/* server form tos styling */
+
+.server-tos {
+    margin-top: 0;
+}
+
+/* server form footer styling */
+.server-form-footer {
+    background-color: var(--form-light-input-bg);
+    position: absolute;
+    width: 408px;
+    height: 48px;
+    padding: 16px;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leave-or-delete-server {
+    background-color: var(--status-danger);
+    transition: background-color 0.3s;
+}
+
+.leave-or-delete-server:hover {
+    background-color: #b93e3e;
+    cursor: pointer;
+}
+.server-form-button-label {
+    font-size: 14px;
+}

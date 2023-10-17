@@ -1,33 +1,34 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import ServerItem from './ServerItem';
+import { NavLink } from 'react-router-dom';
 
 import './ServerIndex.css';
-import ServerItem from './ServerItem';
 
 const ServerIndex = () => {
-    const dispatch = useDispatch();
-    const servers = useSelector(state => state.entities.servers);
-
-    useEffect(() => {
-    }, [servers]);
+    let servers = useSelector(state => state.entities.servers);
+    if (!servers) servers = {};
 
     return (
         <div className="main-servers-container">
-            <ServerItem symbol="DMs" />
+            <NavLink to={`@me`} className="navlink">
+                <ServerItem symbol="DMs" />
+            </NavLink>
             <div className="main-servers-child servers-separator-container">
                 <div className="servers-separator"></div>
             </div>
             {Object.values(servers).map(server => {
                 return (
-                    <ServerItem key={server.id} server={server} />
+                    <NavLink key={server.id} to={`${server.id}`} className="navlink">
+                        <ServerItem server={server} />
+                    </NavLink>
                 );
             })}
+            <ServerItem symbol="ADD" />
+            <ServerItem symbol="EXP" />
             <div className="main-servers-child servers-separator-container">
                 <div className="servers-separator"></div>
             </div>
-            <ServerItem symbol="ADD" />
-            <ServerItem symbol="EXP" />
             <ServerItem symbol="DL" />
         </div>
     );

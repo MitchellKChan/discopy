@@ -1,9 +1,13 @@
 class Api::JoinedServersController < ApplicationController
   before_action :require_logged_in
 
+  wrap_parameters include: JoinedServer.attribute_names + ["serverId"] + ["memberId"]
+
   def create
+    # debugger
     @joined_server = JoinedServer.new(joined_server_params)
     if @joined_server.save
+      # debugger
       render :show
     else
       render json: {errors: @joined_server.errors.full_messages}, status: 422

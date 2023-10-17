@@ -3,6 +3,14 @@
     width: 72px;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
+}
+
+.main-servers-container::-webkit-scrollbar {
+    width: 0;
+}
+.main-servers-container::-webkit-scrollbar-track {
+    background-color: var(--servers-bar);
 }
 
 .main-servers-child {

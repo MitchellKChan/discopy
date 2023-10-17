@@ -15,7 +15,7 @@ const LoginPage = () => {
     });
     const [errors, setErrors] = useState([]);
 
-    if (currentUser) return <Redirect to="/channels" />;
+    if (currentUser) return <Redirect to="/channels/@me" />;
 
     const handleChange = (field, value) => {
         setLoginInfo({
@@ -80,6 +80,7 @@ const LoginPage = () => {
                                     }
                                 </div>
                                 <input
+                                    className="field-wrapper-input"
                                     type="text"
                                     onChange={(e) => handleChange("credential", e.target.value)}
                                     value={loginInfo.credential}
@@ -95,6 +96,7 @@ const LoginPage = () => {
                                     }
                                 </div>
                                 <input
+                                    className="field-wrapper-input"
                                     type="password"
                                     onChange={(e) => handleChange("password", e.target.value)}
                                     value={loginInfo.password}

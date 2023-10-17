@@ -17,7 +17,7 @@ const RegisterPage = () => {
     });
     const [errors, setErrors] = useState([]);
 
-    if (currentUser) return <Redirect to="/channels" />;
+    if (currentUser) return <Redirect to="/channels/@me" />;
 
     const invalidField = (field) => {
         const fieldErrors = errors.filter(err => err.includes(field));
@@ -67,6 +67,7 @@ const RegisterPage = () => {
                                     }
                                 </div>
                                 <input
+                                    className="field-wrapper-input"
                                     type="text"
                                     onChange={(e) => handleChange("email", e.target.value)}
                                     value={registrationInfo.email}
@@ -78,6 +79,7 @@ const RegisterPage = () => {
                                     <div className="field-label">Display Name</div>
                                 </div>
                                 <input
+                                    className="field-wrapper-input"
                                     type="text"
                                     onChange={(e) => handleChange("displayName", e.target.value)}
                                     value={registrationInfo.displayName}
@@ -92,6 +94,7 @@ const RegisterPage = () => {
                                     }
                                 </div>
                                 <input
+                                    className="field-wrapper-input"
                                     type="text"
                                     onChange={(e) => handleChange("username", e.target.value)}
                                     value={registrationInfo.username}
@@ -107,6 +110,7 @@ const RegisterPage = () => {
                                     }
                                 </div>
                                 <input
+                                    className="field-wrapper-input"
                                     type="password"
                                     onChange={(e) => handleChange("password", e.target.value)}
                                     value={registrationInfo.password}
