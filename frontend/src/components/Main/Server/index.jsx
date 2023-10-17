@@ -7,6 +7,8 @@ import './ServerIndex.css';
 
 const ServerIndex = () => {
     let servers = useSelector(state => state.entities.servers);
+    let channels = useSelector(state => state.entities.channels);
+
     if (!servers) servers = {};
 
     return (
@@ -18,8 +20,12 @@ const ServerIndex = () => {
                 <div className="servers-separator"></div>
             </div>
             {Object.values(servers).map(server => {
+                const general = Object.values(channels).find(channel => {
+                    return channel.serverId == server.id
+                });
+
                 return (
-                    <NavLink key={server.id} to={`/channels/${server.id}`} className="navlink">
+                    <NavLink key={server.id} to={`/channels/${server.id}/${general.id}`} className="navlink">
                         <ServerItem server={server} />
                     </NavLink>
                 );
