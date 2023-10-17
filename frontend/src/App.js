@@ -5,7 +5,6 @@ import SplashPage from './components/SplashPage';
 import RegisterPage from './components/RegisterPage';
 import Main from './components/Main';
 import Modal from './components/Modal/Modal';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
 

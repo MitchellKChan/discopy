@@ -2,15 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { hideModal } from '../../store/modal';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
-
-import './ServerForm.css';
+import { useHistory } from 'react-router-dom';
 import { createServer, deleteServer, leaveServer, updateServer } from '../../utils/serverApiUtils';
 
+import './ServerForm.css';
 
 const ServerForm = ({ type, server = {} }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.entities.currentUser);
+    const history = useHistory();
 
     const [serverName, setServerName] = useState(
         type === "new" ? 
@@ -45,10 +45,10 @@ const ServerForm = ({ type, server = {} }) => {
         if (server.creatorId === user.id) {
             dispatch(deleteServer(server.id));
         } else {
-            dispatch(leaveServer(server.id));
+            dispatch(leaveServer(server.id, user.id));
         }
         dispatch(hideModal());
-        return <Redirect to="/channels/@me" />
+        history.push('/channels/@me');
     }
 
     return (

@@ -49,9 +49,13 @@ export const deleteServer = (serverId) => async (dispatch) => {
     return res;
 }
 
-export const leaveServer = (serverId) => async (dispatch) => {
+export const leaveServer = (serverId, userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/joined_servers/${serverId}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        body: {
+            serverId,
+            userId
+        }
     });
     const payload = await res.json();
     dispatch(removeServer(payload.joinedServerId));
