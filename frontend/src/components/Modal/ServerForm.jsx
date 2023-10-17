@@ -46,7 +46,6 @@ const ServerForm = ({ type, server = {}, joinedServer = {} }) => {
         if (server.creatorId === user.id) {
             dispatch(deleteServer(server.id));
         } else {
-            console.log(joinedServer);
             dispatch(leaveServer(joinedServer.id));
             dispatch(removeServer(server.id));
         }

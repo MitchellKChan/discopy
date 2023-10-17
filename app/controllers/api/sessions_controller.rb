@@ -5,6 +5,10 @@ class Api::SessionsController < ApplicationController
   def show
     @user = current_user
     if @user
+      @joinable_servers = Server
+        .select(:id, :name, :creator_id, :public)
+        .where(public: true)
+        .where.not(creator_id: @user.id)
       render "api/users/show"
     else
       render json: nil
@@ -19,6 +23,10 @@ class Api::SessionsController < ApplicationController
     end
     if @user
       login!(@user)
+      @joinable_servers = Server
+        .select(:id, :name, :creator_id, :public)
+        .where(public: true)
+        .where.not(creator_id: @user.id)
       render "api/users/show"
     else
       render json: {errors: ["Invalid credentials"]}, status: 422

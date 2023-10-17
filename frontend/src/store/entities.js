@@ -35,7 +35,7 @@ export const login = (user) => async (dispatch) => {
 export const loginDemo = () => async (dispatch) => {
     const res = await csrfFetch('/api/session', {
         method: 'POST',
-        body: JSON.stringify({demo: true})
+        body: JSON.stringify({ demo: true })
     });
     const payload = await res.json();
     storeCurrentEntities(payload);
@@ -87,12 +87,11 @@ const entitiesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CURRENT_USER:
             if (action.user) {
-                debugger;
                 newState["currentUser"] = action.user.currentUser;
                 newState["servers"] = action.user.servers;
                 newState["joinedServers"] = action.user.joinedServers;
-            } 
-            
+                newState["joinableServers"] = action.user.joinableServers;
+            }
             return newState;
         case REMOVE_CURRENT_USER:
             return {};
@@ -104,8 +103,13 @@ const entitiesReducer = (state = initialState, action) => {
             newState["servers"] = serversReducer(newState["servers"], action);
             storeCurrentEntities(newState);
             return newState;
+        case JoinedServerApiUtil.RECEIVE_JOINED_SERVER:
+            newState["joinedServers"] = joinedServersReducer(newState["joinedServers"], action);
+            storeCurrentEntities(newState);
+            return newState;
         case JoinedServerApiUtil.REMOVE_JOINED_SERVER:
             newState["joinedServers"] = joinedServersReducer(newState["joinedServers"], action);
+            storeCurrentEntities(newState);
             return newState;
         default:
             return state;

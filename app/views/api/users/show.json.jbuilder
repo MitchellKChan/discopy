@@ -12,16 +12,19 @@ json.current_user do
         :created_at
 end
 
+created_servers = @user.servers.includes(:members)
+joined_servers = @user.joined_servers.includes(:server)
+
 # servers object contains all info on servers related to the current_user
 json.servers do
     # create objects for all servers the current_user has created
-    @user.servers.each do |server|
+    created_servers.each do |server|
         json.set! server.id do
             json.extract! server, :id, :name, :creator_id, :public
         end
     end
     # create objects for all servers the current_user has joined
-    @user.joined_servers.each do |joined_server|
+    joined_servers.each do |joined_server|
         json.set! joined_server.server.id do
             json.extract! joined_server.server, :id, :name, :creator_id, :public
         end    
@@ -33,6 +36,15 @@ json.joined_servers do
     @user.joined_servers.each do |joined_server|
         json.set! joined_server.id do 
             json.extract! joined_server, :id, :server_id, :member_id
+        end
+    end
+end
+
+joinable_servers = @joinable_servers
+json.joinable_servers do
+    joinable_servers.each do |joinable_server|
+        json.set! joinable_server.id do
+            json.extract! joinable_server, :id, :name, :creator_id, :public
         end
     end
 end
