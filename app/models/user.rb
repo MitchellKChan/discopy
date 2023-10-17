@@ -60,6 +60,18 @@ class User < ApplicationRecord
     inverse_of: :member,
     dependent: :destroy
 
+  has_many :sent_direct_messages,
+    foreign_key: :first_user_id,
+    class_name: :DirectMessage,
+    inverse_of: :first_user,
+    dependent: :destroy
+
+  has_many :received_direct_messages,
+    foreign_key: :second_user_id,
+    class_name: :DirectMessage,
+    inverse_of: :second_user,
+    dependent: :destroy
+
   def self.find_by_credentials(credential, password)
     # determine the field you need to query: 
     #   * `email` if `credential` matches `URI::MailTo::EMAIL_REGEXP`

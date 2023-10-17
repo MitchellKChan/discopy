@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_17_150310) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_17_161226) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_150310) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["server_id"], name: "index_channels_on_server_id"
+  end
+
+  create_table "direct_messages", force: :cascade do |t|
+    t.bigint "first_user_id", null: false
+    t.bigint "second_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["first_user_id", "second_user_id"], name: "index_direct_messages_on_first_user_id_and_second_user_id", unique: true
+    t.index ["first_user_id"], name: "index_direct_messages_on_first_user_id"
+    t.index ["second_user_id"], name: "index_direct_messages_on_second_user_id"
   end
 
   create_table "joined_servers", force: :cascade do |t|
@@ -60,6 +70,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_150310) do
   end
 
   add_foreign_key "channels", "servers"
+  add_foreign_key "direct_messages", "users", column: "first_user_id"
+  add_foreign_key "direct_messages", "users", column: "second_user_id"
   add_foreign_key "joined_servers", "servers"
   add_foreign_key "joined_servers", "users", column: "member_id"
   add_foreign_key "servers", "users", column: "creator_id"
