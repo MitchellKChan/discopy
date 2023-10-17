@@ -11,11 +11,12 @@ export const showModal = (modal) => {
     });
 }
 
-export const showEditServerModal = (modal, server) => {
+export const showEditServerModal = (modal, server, joinedServer) => {
     return ({
         type: SHOW_EDIT_SERVER_MODAL,
         modal,
-        server
+        server,
+        joinedServer
     });
 }
 

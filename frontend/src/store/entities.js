@@ -1,4 +1,5 @@
 import serversReducer, * as ServerApiUtil from '../utils/serverApiUtils';
+import joinedServersReducer, * as JoinedServerApiUtil from '../utils/joinedServerApiUtil';
 import csrfFetch, { storeCSRFToken } from './csrf';
 
 // action constants
@@ -88,6 +89,7 @@ const entitiesReducer = (state = initialState, action) => {
             if (action.user) {
                 newState["currentUser"] = action.user.currentUser;
                 newState["servers"] = action.user.servers;
+                newState["joinedServers"] = action.user.joinedServers;
             } else {
                 newState["currentUser"] = action.user;
             }
@@ -101,6 +103,9 @@ const entitiesReducer = (state = initialState, action) => {
         case ServerApiUtil.REMOVE_SERVER:
             newState["servers"] = serversReducer(newState["servers"], action);
             storeCurrentEntities(newState);
+            return newState;
+        case JoinedServerApiUtil.REMOVE_JOINED_SERVER:
+            newState["joinedServers"] = joinedServersReducer(newState["joinedServers"], action);
             return newState;
         default:
             return state;

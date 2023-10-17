@@ -3,11 +3,12 @@ import { hideModal } from '../../store/modal';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { createServer, deleteServer, leaveServer, updateServer } from '../../utils/serverApiUtils';
+import { createServer, deleteServer, removeServer, updateServer } from '../../utils/serverApiUtils';
+import { leaveServer } from '../../utils/joinedServerApiUtil';
 
 import './ServerForm.css';
 
-const ServerForm = ({ type, server = {} }) => {
+const ServerForm = ({ type, server = {}, joinedServer = {} }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.entities.currentUser);
     const history = useHistory();
@@ -45,7 +46,9 @@ const ServerForm = ({ type, server = {} }) => {
         if (server.creatorId === user.id) {
             dispatch(deleteServer(server.id));
         } else {
-            dispatch(leaveServer(server.id, user.id));
+            console.log(joinedServer);
+            dispatch(leaveServer(joinedServer.id));
+            dispatch(removeServer(server.id));
         }
         dispatch(hideModal());
         history.push('/channels/@me');

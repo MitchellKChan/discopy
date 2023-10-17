@@ -12,9 +12,14 @@ const Main = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.entities.currentUser);
     const servers = useSelector(state => state.entities.servers);
-    const { serverId } = useParams();
+    const joinedServers = useSelector(state => state.entities.joinedServers);
 
-    if (!currentUser || !serverId ) return <Redirect to="/" />;
+    const { serverId } = useParams();
+    if (!currentUser || !serverId) return <Redirect to="/" />;
+
+    const joinedServer = Object.values(joinedServers).find(joinedServer => {
+        return joinedServer.serverId == serverId && joinedServer.memberId == currentUser.id;
+    });
 
     return (
         <>
@@ -28,9 +33,13 @@ const Main = () => {
                                     <div className="content-sidebar-header-dm">
                                         Find or start a conversation
                                     </div> :
-                                    <div 
+                                    <div
                                         className="content-sidebar-header-server"
-                                        onClick={() => dispatch(showEditServerModal("editServer", servers[serverId]))}
+                                        onClick={() => dispatch(showEditServerModal(
+                                            "editServer",
+                                            servers[serverId],
+                                            joinedServer
+                                        ))}
                                     >
                                         <div>
                                             {`${servers[serverId].name}`}

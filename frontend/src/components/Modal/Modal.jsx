@@ -17,7 +17,11 @@ const Modal = () => {
             component = <ServerForm type="new" />;
             break;
         case "editServer":
-            component = <ServerForm type="edit" server={modal.server} />;
+            component = <ServerForm
+                type="edit"
+                server={modal.server}
+                joinedServer={modal.joinedServer}
+            />;
             break;
         case "other":
             break;
@@ -32,7 +36,7 @@ const Modal = () => {
     return (
         <div className="modal-background" onClick={handleClick}>
             <div className="modal-container" onClick={e => e.stopPropagation()}>
-                { component }
+                {component}
             </div>
         </div>
     );

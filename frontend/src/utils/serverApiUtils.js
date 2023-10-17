@@ -49,20 +49,7 @@ export const deleteServer = (serverId) => async (dispatch) => {
     return res;
 }
 
-export const leaveServer = (serverId, userId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/joined_servers/${serverId}`, {
-        method: 'DELETE',
-        body: {
-            serverId,
-            userId
-        }
-    });
-    const payload = await res.json();
-    dispatch(removeServer(payload.joinedServerId));
-    return res;
-}
-
-// servers reducer for managing servers slice of state within entities
+// servers reducer for managing slice of state within entities
 const serversReducer = (state = {}, action) => {
     const newState = Object.assign({}, Object.freeze(state));
     switch (action.type) {

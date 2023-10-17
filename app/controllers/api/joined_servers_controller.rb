@@ -11,8 +11,7 @@ class Api::JoinedServersController < ApplicationController
   end
 
   def destroy
-    @joined_server = JoinedServer.find_by(server_id: params[:server_id], member_id: params[:member_id])
-    debugger
+    @joined_server = JoinedServer.find_by(id: params[:id])
     joinedServerId = @joined_server.id
     @joined_server.destroy
     render json: { joinedServerId: joinedServerId }
