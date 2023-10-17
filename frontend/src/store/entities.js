@@ -87,6 +87,7 @@ const entitiesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CURRENT_USER:
             if (action.user) {
+                debugger;
                 newState["currentUser"] = action.user.currentUser;
                 newState["servers"] = action.user.servers;
                 newState["joinedServers"] = action.user.joinedServers;

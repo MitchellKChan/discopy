@@ -6,7 +6,8 @@ import { NavLink } from 'react-router-dom';
 import './ServerIndex.css';
 
 const ServerIndex = () => {
-    const servers = useSelector(state => state.entities.servers);
+    let servers = useSelector(state => state.entities.servers);
+    if (!servers) servers = {};
 
     return (
         <div className="main-servers-container">

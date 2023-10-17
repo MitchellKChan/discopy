@@ -17,7 +17,8 @@ const Main = () => {
     const { serverId } = useParams();
     if (!currentUser || !serverId) return <Redirect to="/" />;
 
-    const joinedServer = Object.values(joinedServers).find(joinedServer => {
+    let joinedServer;
+    if (joinedServers) joinedServer = Object.values(joinedServers).find(joinedServer => {
         return joinedServer.serverId == serverId && joinedServer.memberId == currentUser.id;
     });
 
