@@ -23,9 +23,15 @@ const ServerIndex = () => {
                 const general = Object.values(channels).find(channel => {
                     return channel.serverId == server.id
                 });
+                let link;
+                if (!general) {
+                    link = `/channels/${server.id}`;
+                } else {
+                    link = `/channels/${server.id}/${general.id}`;
+                }
 
                 return (
-                    <NavLink key={server.id} to={`/channels/${server.id}/${general.id}`} className="navlink">
+                    <NavLink key={server.id} to={link} className="navlink">
                         <ServerItem server={server} />
                     </NavLink>
                 );
