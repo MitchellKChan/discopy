@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchChannel } from '../../../utils/channelApiUtils';
 import BodyItem from './BodyItem';
 import { createMessage } from '../../../utils/messageApiUtils';
+import consumer from '../../../consumer';
 
 import './Body.css';
 
@@ -20,6 +21,19 @@ const Body = ({ serverId = "@me", type }) => {
 
     useEffect(() => {
         if (isValidChannelId(channelId)) dispatch(fetchChannel(channelId));
+
+        // create a subscription
+        const subscription = consumer.subscriptions.create(
+            { channel: "ChannelsChannel", id: channelId },
+            {
+                received: message => {
+                    console.log("Received message: ", message)
+                }
+            }
+        );
+
+        // unsubscribe when leaving 
+        return () => subscription?.unsubscribe();
     }, [channelId]);
 
     let title = "@me";
@@ -70,7 +84,7 @@ const Body = ({ serverId = "@me", type }) => {
                             </label>
                         </form>
                     </div> : <></>}
-                    
+
                 </div>
                 <div className="body-content-sidebar-container">
                     ActiveNowIndex / UserProfile / MemberListIndex Container Placeholder
