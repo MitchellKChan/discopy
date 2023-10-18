@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { joinServer } from "../../utils/joinedServerApiUtils";
 
 import './ExploreServersIndex.css';
-import { receiveServer } from "../../utils/serverApiUtils";
+import { fetchServer, receiveServer } from "../../utils/serverApiUtils";
 
 const ExploreServersIndex = () => {
     const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const ExploreServersIndex = () => {
             memberId: currentUser.id
         }
         dispatch(joinServer(joinedServer));
-        dispatch(receiveServer(joinableServers[serverId]));
+        dispatch(fetchServer(serverId));
         dispatch(hideModal());
         history.push("/channels/@me");
     }

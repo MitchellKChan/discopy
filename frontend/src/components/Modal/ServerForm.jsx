@@ -7,7 +7,6 @@ import { createServer, deleteServer, removeServer, updateServer } from '../../ut
 import { leaveServer } from '../../utils/joinedServerApiUtils';
 
 import './ServerForm.css';
-import { fetchChannel } from '../../utils/channelApiUtils';
 
 const ServerForm = ({ type, server = {}, joinedServer = {} }) => {
     const dispatch = useDispatch();

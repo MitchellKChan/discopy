@@ -62,7 +62,6 @@ const channelsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_CHANNEL:
             newState[action.channel.id] = action.channel;
-            debugger
             return newState;
         case REMOVE_CHANNEL:
             delete newState[action.channelId];

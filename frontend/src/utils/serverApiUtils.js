@@ -35,7 +35,6 @@ export const createServer = (server) => async (dispatch) => {
         body: JSON.stringify(server)
     });
     const payload = await res.json();
-    debugger
     dispatch(receiveServer(payload));
     receiveChannels(dispatch, payload.channels);
     return res;

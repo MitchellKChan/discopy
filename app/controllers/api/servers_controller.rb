@@ -17,7 +17,6 @@ class Api::ServersController < ApplicationController
     if @server.save
       # auto create a 'general' channel for new servers
       general_channel = Channel.new(name: "general", server_id: @server.id)
-      debugger
       if general_channel.save
         render :show
       end
