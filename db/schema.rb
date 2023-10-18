@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_17_150310) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_18_000846) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_150310) do
     t.index ["member_id"], name: "index_joined_servers_on_member_id"
     t.index ["server_id", "member_id"], name: "index_joined_servers_on_server_id_and_member_id", unique: true
     t.index ["server_id"], name: "index_joined_servers_on_server_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "body", null: false
+    t.bigint "parent_message_id"
+    t.bigint "author_id", null: false
+    t.string "sendable_type", null: false
+    t.bigint "sendable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_messages_on_author_id"
+    t.index ["parent_message_id"], name: "index_messages_on_parent_message_id"
+    t.index ["sendable_type", "sendable_id"], name: "index_messages_on_sendable"
   end
 
   create_table "servers", force: :cascade do |t|
@@ -62,5 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_150310) do
   add_foreign_key "channels", "servers"
   add_foreign_key "joined_servers", "servers"
   add_foreign_key "joined_servers", "users", column: "member_id"
+  add_foreign_key "messages", "messages", column: "parent_message_id"
+  add_foreign_key "messages", "users", column: "author_id"
   add_foreign_key "servers", "users", column: "creator_id"
 end
