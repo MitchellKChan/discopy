@@ -91,6 +91,7 @@ const entitiesReducer = (state = initialState, action) => {
                 newState["servers"] = action.user.servers;
                 newState["joinedServers"] = action.user.joinedServers;
                 newState["joinableServers"] = action.user.joinableServers;
+                newState["channels"] = action.user.channels;
             }
             return newState;
         case REMOVE_CURRENT_USER:
