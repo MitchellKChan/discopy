@@ -3,10 +3,20 @@ class Api::ServersController < ApplicationController
 
   wrap_parameters include: Server.attribute_names + ["creatorId"]
 
+  def show
+    @server = Server.find_by(id: params[:id])
+    if @server
+      render :show
+    else
+      render json: {errors: @server.errors.full_messages}, status: 422
+    end
+  end
+
   def create
     @server = Server.new(server_params)
     if @server.save
-      general_channel = Channel.new(name: "general", server_id: @server.id)
+      # auto create a 'general' channel for new servers
+      # general_channel = Channel.new(name: "general", server_id: @server.id)
       render :show
     else
       render json: {errors: @server.errors.full_messages}, status: 422
