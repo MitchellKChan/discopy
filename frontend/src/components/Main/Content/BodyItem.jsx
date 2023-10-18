@@ -1,6 +1,6 @@
-const BodyItem = () => {
+const BodyItem = ({ message }) => {
     return (
-        <></>
+        <div>{message.body}</div>
     );
 }
 
