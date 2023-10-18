@@ -6,7 +6,8 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(server_params)
     if @server.save
-      general_channel = Channel.new(name: "general", server_id: @server.id)
+      # auto create a 'general' channel for new servers
+      # general_channel = Channel.new(name: "general", server_id: @server.id)
       render :show
     else
       render json: {errors: @server.errors.full_messages}, status: 422
