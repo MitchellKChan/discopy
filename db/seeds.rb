@@ -45,10 +45,10 @@ ApplicationRecord.transaction do
     # Create some initial joined_servers with server_ids and member_ids:
     JoinedServer.create!(server_id: 1,member_id: 1)
     JoinedServer.create!(server_id: 1,member_id: 2)
-    JoinedServer.create!(server_id: 1,member_id: 3)
     JoinedServer.create!(server_id: 1,member_id: 4)
+    JoinedServer.create!(server_id: 1,member_id: 5)
     JoinedServer.create!(server_id: 2,member_id: 2)
-    JoinedServer.create!(server_id: 2,member_id: 4)
+    JoinedServer.create!(server_id: 2,member_id: 5)
 
     puts "Creating channels..."
     # Create some initial channels with names and server_ids:
@@ -70,6 +70,19 @@ ApplicationRecord.transaction do
     Channel.create!(name: "general",server_id: 13)
     Channel.create!(name: "general",server_id: 14)
     Channel.create!(name: "general",server_id: 15)
+
+    puts "Creating channel messages..."
+    # Create some initial messages with bodies, author_ids, sendable_types and sendable_ids:
+    Message.create!(body: "Welcome to the general channel!",author_id: 3,sendable_type: 'Channel',sendable_id: 1)
+    Message.create!(body: "Please say hello to everyone if you'd like.",author_id: 3,sendable_type: 'Channel',sendable_id: 1)
+    Message.create!(body: "hey i'm mitchibonbon",author_id: 1,sendable_type: 'Channel',sendable_id: 1)
+    Message.create!(body: "Hey Baymax, huge fan!",author_id: 4,sendable_type: 'Channel',sendable_id: 1)
+    Message.create!(body: "hi to everyone else also",author_id: 4,sendable_type: 'Channel',sendable_id: 1)
+    Message.create!(body: "yo.  i have too many other hobbies",author_id: 5,sendable_type: 'Channel',sendable_id: 1)
+    Message.create!(body: "feel free to check out some of my other servers",author_id: 5,sendable_type: 'Channel',sendable_id: 1)
+    Message.create!(body: "welcome to my channel here in the Mysapce server!",author_id: 4,sendable_type: 'Channel',sendable_id: 5)
+    Message.create!(body: "i helped build Myspace back in the day.  Let me know if you want to chat",author_id: 4,sendable_type: 'Channel',sendable_id: 5)
+    Message.create!(body: "i used to use myspace all the time!  glad you're still around tom <3",author_id: 5,sendable_type: 'Channel',sendable_id: 5)
 
   
     # More users; may not need in final version but keeping for reference

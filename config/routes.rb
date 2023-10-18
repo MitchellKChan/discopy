@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create]
     resource :session, only: [:create, :show, :destroy]
-    resources :servers, only: [:create, :update, :destroy]
+    resources :servers, only: [:create, :show, :update, :destroy]
     resources :joined_servers, only: [:create, :destroy]
     resources :channels, only: [:create, :update, :destroy]
     resources :messages, only: [:create, :update, :destroy]

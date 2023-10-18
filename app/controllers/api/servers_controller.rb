@@ -3,6 +3,15 @@ class Api::ServersController < ApplicationController
 
   wrap_parameters include: Server.attribute_names + ["creatorId"]
 
+  def show
+    @server = Server.find_by(id: params[:id])
+    if @server
+      render :show
+    else
+      render json: {errors: @server.errors.full_messages}, status: 422
+    end
+  end
+
   def create
     @server = Server.new(server_params)
     if @server.save
