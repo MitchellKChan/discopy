@@ -1,4 +1,5 @@
 import csrfFetch from "../store/csrf";
+import { receiveMessage } from "./messageApiUtils";
 
 // channel action constants
 export const RECEIVE_CHANNEL = 'entities/receiveChannel';
@@ -24,6 +25,7 @@ export const fetchChannel = (channelId) => async (dispatch) => {
     const res = await csrfFetch(`/api/channels/${channelId}`);
     const payload = await res.json();
     dispatch(receiveChannel(payload));
+    if (payload.messages) receiveMessages(dispatch, payload.messages);
     return res;
 }
 
@@ -34,6 +36,7 @@ export const createChannel = (channel) => async (dispatch) => {
     });
     const payload = await res.json();
     dispatch(receiveChannel(payload));
+    if (payload.messages) receiveMessages(dispatch, payload.messages);
     return res;
 }
 
@@ -54,6 +57,11 @@ export const deleteChannel = (channelId) => async (dispatch) => {
     const payload = await res.json();
     dispatch(removeChannel(payload.channelId));
     return res;
+}
+
+// servers helper function
+export const receiveMessages = (dispatch, messages) => {
+    Object.values(messages).forEach(message => dispatch(receiveMessage(message)));
 }
 
 // channels reducer for managing slice of state within entities
