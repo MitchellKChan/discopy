@@ -1,0 +1,21 @@
+.body-item-container {
+    display: flex;
+    margin-top: 17px;
+    padding: 2px 48px 2px 72px;
+    position: relative;
+}
+
+.body-item-icon {
+    position: absolute;
+    left: 16px;
+    width: 40px;
+}
+
+.body-item-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.body-item-author {
+    font-family: 'Noto Sans Medium';
+}
