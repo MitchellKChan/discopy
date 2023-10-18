@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { createServer, deleteServer, removeServer, updateServer } from '../../utils/serverApiUtils';
-import { leaveServer } from '../../utils/joinedServerApiUtil';
+import { leaveServer } from '../../utils/joinedServerApiUtils';
 
 import './ServerForm.css';
+import { fetchChannel } from '../../utils/channelApiUtils';
 
 const ServerForm = ({ type, server = {}, joinedServer = {} }) => {
     const dispatch = useDispatch();

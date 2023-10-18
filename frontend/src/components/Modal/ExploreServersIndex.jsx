@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { hideModal } from "../../store/modal";
 import { useHistory } from "react-router-dom";
-import { joinServer } from "../../utils/joinedServerApiUtil";
+import { joinServer } from "../../utils/joinedServerApiUtils";
 
 import './ExploreServersIndex.css';
 import { receiveServer } from "../../utils/serverApiUtils";

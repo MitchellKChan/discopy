@@ -6,8 +6,8 @@ import { NavLink } from 'react-router-dom';
 import './ServerIndex.css';
 
 const ServerIndex = () => {
-    let servers = useSelector(state => state.entities.servers);
-    let channels = useSelector(state => state.entities.channels);
+    let servers = useSelector(state => state.entities.servers ? state.entities.servers : {});
+    let channels = useSelector(state => state.entities.channels ? state.entities.channels : {});
 
     if (!servers) servers = {};
 

@@ -1,4 +1,5 @@
 import csrfFetch from "../store/csrf";
+import { receiveChannel } from "./channelApiUtils";
 
 // server action constants
 export const RECEIVE_SERVER = 'entities/receiveServer';
@@ -20,13 +21,23 @@ export const removeServer = (serverId) => {
 }
 
 // server thunk action creators
+export const fetchServer = (serverId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/servers/${serverId}`);
+    const payload = await res.json();
+    dispatch(receiveServer(payload));
+    receiveChannels(dispatch, payload.channels);
+    return res;
+}
+
 export const createServer = (server) => async (dispatch) => {
     const res = await csrfFetch('/api/servers', {
         method: 'POST',
         body: JSON.stringify(server)
     });
     const payload = await res.json();
+    debugger
     dispatch(receiveServer(payload));
+    receiveChannels(dispatch, payload.channels);
     return res;
 }
 
@@ -47,6 +58,11 @@ export const deleteServer = (serverId) => async (dispatch) => {
     const payload = await res.json();
     dispatch(removeServer(payload.serverId));
     return res;
+}
+
+// servers helper function
+export const receiveChannels = (dispatch, channels) => {
+    Object.values(channels).forEach(channel => dispatch(receiveChannel(channel)));
 }
 
 // servers reducer for managing slice of state within entities

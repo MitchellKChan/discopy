@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, NavLink, Route, useRouteMatch, Redirect, Switch } from 'react-router-dom';
 import { showEditServerModal } from '../../../store/modal';
 import { logout } from '../../../store/entities';
 import Body from './Body';
+import { fetchServer } from '../../../utils/serverApiUtils';
 
 const Content = () => {
     const dispatch = useDispatch();
-    const currentUser = useSelector(state => state.entities.currentUser);
-    const servers = useSelector(state => state.entities.servers);
-    const joinedServers = useSelector(state => state.entities.joinedServers);
-    const channels = useSelector(state => state.entities.channels);
     const { url } = useRouteMatch();
     const { serverId } = useParams();
 
-    if (!serverId) return <Redirect to="/" />;
+    const currentUser = useSelector(state => state.entities.currentUser);
+    const servers = useSelector(state => state.entities.servers);
+    const joinedServers = useSelector(state => state.entities.joinedServers);
+    const channels = useSelector(state => state.entities.channels ? state.entities.channels : null);
 
-    const serversChannels = Object.values(channels).filter(channel => channel.serverId == serverId);
+    const server = servers ? servers[serverId] : null;
+
+    const isValidServerId = (serverId) => servers && Object.keys(servers).includes(serverId);
+
+    useEffect(() => {
+        if (isValidServerId(serverId) && !server) dispatch(fetchServer(serverId));
+    }, [serverId]);
+
+    if (serverId !== "@me" && !isValidServerId(serverId)) return <Redirect to="/channels/@me" />;
+
+    let serversChannels = {};
+    if (channels) serversChannels = Object.values(channels).filter(channel => channel.serverId == serverId);
 
     let joinedServer;
     if (joinedServers) joinedServer = Object.values(joinedServers).find(joinedServer => {
@@ -36,12 +47,12 @@ const Content = () => {
                                 className="content-sidebar-header-server"
                                 onClick={() => dispatch(showEditServerModal(
                                     "editServer",
-                                    servers[serverId],
+                                    server,
                                     joinedServer
                                 ))}
                             >
                                 <div>
-                                    {`${servers[serverId].name}`}
+                                    {`${server.name}`}
                                 </div>
                                 <div>
                                     <img
@@ -85,8 +96,9 @@ const Content = () => {
             </div>
             <Switch>
                 <Route path={`${url}/:channelId`}>
-                    <Body channels={serversChannels} />
+                    <Body />
                 </Route>
+                {/* route to enable rendering for 'channels/@me' */}
                 <Route path={`${url}`}>
                     <Body />
                 </Route>

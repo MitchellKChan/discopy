@@ -1,5 +1,6 @@
 import serversReducer, * as ServerApiUtil from '../utils/serverApiUtils';
-import joinedServersReducer, * as JoinedServerApiUtil from '../utils/joinedServerApiUtil';
+import joinedServersReducer, * as JoinedServerApiUtil from '../utils/joinedServerApiUtils';
+import channelsReducer, * as ChannelApiUtil from '../utils/channelApiUtils';
 import csrfFetch, { storeCSRFToken } from './csrf';
 
 // action constants
@@ -110,6 +111,14 @@ const entitiesReducer = (state = initialState, action) => {
             return newState;
         case JoinedServerApiUtil.REMOVE_JOINED_SERVER:
             newState["joinedServers"] = joinedServersReducer(newState["joinedServers"], action);
+            storeCurrentEntities(newState);
+            return newState;
+        case ChannelApiUtil.RECEIVE_CHANNEL:
+            newState["channels"] = channelsReducer(newState["channels"], action);
+            storeCurrentEntities(newState);
+            return newState;
+        case ChannelApiUtil.REMOVE_CHANNEL:
+            newState["channels"] = channelsReducer(newState["channels"], action);
             storeCurrentEntities(newState);
             return newState;
         default:

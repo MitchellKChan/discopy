@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, Redirect, useRouteMatch, Switch } from 'react-router-dom';
-import { Route } from 'react-router-dom';
 
 const Body = () => {
     const { channelId } = useParams();
