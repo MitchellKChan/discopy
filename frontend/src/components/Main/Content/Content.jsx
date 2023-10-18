@@ -96,7 +96,7 @@ const Content = () => {
             </div>
             <Switch>
                 <Route path={`${url}/:channelId`}>
-                    <Body />
+                    <Body serverId={serverId} type="Channel" />
                 </Route>
                 {/* route to enable rendering for 'channels/@me' */}
                 <Route path={`${url}`}>
