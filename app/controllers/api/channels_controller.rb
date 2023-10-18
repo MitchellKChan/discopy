@@ -2,6 +2,15 @@ class Api::ChannelsController < ApplicationController
   before_action :require_logged_in
 
   wrap_parameters include: Channel.attribute_names + ["serverId"]
+
+  def show
+    @channel = Channel.find_by(id: params[:id])
+    if @channel
+        render :show
+      else
+        render json: {errors: @channel.errors.full_messages}, status: 422
+      end
+  end
   
   def create
     @channel = Channel.new(channels_params)
