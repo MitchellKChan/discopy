@@ -1,10 +1,18 @@
 import csrfFetch from "../store/csrf";
 
 // message action constants
+export const RECEIVE_MESSAGES = 'entities/receiveMessages';
 export const RECEIVE_MESSAGE = 'entities/receiveMessage';
 export const REMOVE_MESSAGE = 'entities/removeMessage';
 
 // message action creators
+export const receiveMessages = (messages) => {
+    return ({
+        type: RECEIVE_MESSAGES,
+        messages
+    });
+}
+
 export const receiveMessage = (message) => {
     return ({
         type: RECEIVE_MESSAGE,
@@ -12,16 +20,16 @@ export const receiveMessage = (message) => {
     });
 }
 
-export const removeMessage = (mmessageId) => {
+export const removeMessage = (messageId) => {
     return ({
         type: REMOVE_MESSAGE,
-        mmessageId
+        messageId
     });
 }
 
 // message thunk action creators
-export const fetchMessage = (mmessageId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/messages/${mmessageId}`);
+export const fetchMessage = (messageId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/messages/${messageId}`);
     const payload = await res.json();
     dispatch(receiveMessage(payload));
     return res;
@@ -47,12 +55,12 @@ export const updateMessage = (message) => async (dispatch) => {
     return res;
 }
 
-export const deleteMessage = (mmessageId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/messages/${mmessageId}`, {
+export const deleteMessage = (messageId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/messages/${messageId}`, {
         method: 'DELETE'
     });
     const payload = await res.json();
-    dispatch(removeMessage(payload.mmessageId));
+    dispatch(removeMessage(payload.messageId));
     return res;
 }
 
@@ -60,11 +68,13 @@ export const deleteMessage = (mmessageId) => async (dispatch) => {
 const messagesReducer = (state = {}, action) => {
     const newState = Object.assign({}, Object.freeze(state));
     switch (action.type) {
+        case RECEIVE_MESSAGES:
+            return { ...newState, ...action.messages };
         case RECEIVE_MESSAGE:
             newState[action.message.id] = action.message;
             return newState;
         case REMOVE_MESSAGE:
-            delete newState[action.mmessageId];
+            delete newState[action.messageId];
             return newState;
         default:
             return state;

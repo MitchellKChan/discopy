@@ -21,12 +21,12 @@ const Content = () => {
     const isValidServerId = (serverId) => servers && Object.keys(servers).includes(serverId);
 
     useEffect(() => {
-        if (isValidServerId(serverId) && !server) dispatch(fetchServer(serverId));
+        if (isValidServerId(serverId)) dispatch(fetchServer(serverId));
     }, [serverId]);
 
     if (serverId !== "@me" && !isValidServerId(serverId)) return <Redirect to="/channels/@me" />;
 
-    let serversChannels = {};
+    let serversChannels = [];
     if (channels) serversChannels = Object.values(channels).filter(channel => channel.serverId == serverId);
 
     let joinedServer;

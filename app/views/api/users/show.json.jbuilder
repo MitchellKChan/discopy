@@ -21,12 +21,40 @@ json.servers do
     created_servers.each do |server|
         json.set! server.id do
             json.extract! server, :id, :name, :creator_id, :public
+            json.member_ids do
+                server.members.each do |member|
+                    json.set! member.id do
+                        json.extract! member, :id
+                    end
+                end
+            end
+            json.channel_ids do
+                server.channels.each do |channel|
+                    json.set! channel.id do
+                        json.extract! channel, :id
+                    end
+                end
+            end
         end
     end
     # create objects for all servers the current_user has joined
     joined_servers.each do |joined_server|
         json.set! joined_server.server.id do
             json.extract! joined_server.server, :id, :name, :creator_id, :public
+            json.member_ids do
+                joined_server.server.members.each do |member|
+                    json.set! member.id do
+                        json.extract! member, :id
+                    end
+                end
+            end
+            json.channel_ids do
+                joined_server.server.channels.each do |channel|
+                    json.set! channel.id do
+                        json.extract! channel, :id
+                    end
+                end
+            end
         end    
     end
 end

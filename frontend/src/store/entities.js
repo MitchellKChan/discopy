@@ -2,6 +2,7 @@ import serversReducer, * as ServerApiUtil from '../utils/serverApiUtils';
 import joinedServersReducer, * as JoinedServerApiUtil from '../utils/joinedServerApiUtils';
 import channelsReducer, * as ChannelApiUtil from '../utils/channelApiUtils';
 import messagesReducer, * as MessageApiUtil from '../utils/messageApiUtils';
+import usersReducer, * as UserApiUtil from '../utils/userApiUtils';
 import csrfFetch, { storeCSRFToken } from './csrf';
 
 // action constants
@@ -95,6 +96,7 @@ const entitiesReducer = (state = initialState, action) => {
                 newState["joinableServers"] = action.user.joinableServers;
                 newState["channels"] = action.user.channels;
                 newState["messages"] = {};
+                newState["users"] = {};
             }
             return newState;
         case REMOVE_CURRENT_USER:
@@ -115,6 +117,10 @@ const entitiesReducer = (state = initialState, action) => {
             newState["joinedServers"] = joinedServersReducer(newState["joinedServers"], action);
             storeCurrentEntities(newState);
             return newState;
+        case ChannelApiUtil.RECEIVE_CHANNELS:
+            newState["channels"] = channelsReducer(newState["channels"], action);
+            storeCurrentEntities(newState);
+            return newState;
         case ChannelApiUtil.RECEIVE_CHANNEL:
             newState["channels"] = channelsReducer(newState["channels"], action);
             storeCurrentEntities(newState);
@@ -123,12 +129,28 @@ const entitiesReducer = (state = initialState, action) => {
             newState["channels"] = channelsReducer(newState["channels"], action);
             storeCurrentEntities(newState);
             return newState;
+        case MessageApiUtil.RECEIVE_MESSAGES:
+            newState["messages"] = messagesReducer(newState["messages"], action);
+            storeCurrentEntities(newState);
+            return newState;
         case MessageApiUtil.RECEIVE_MESSAGE:
             newState["messages"] = messagesReducer(newState["messages"], action);
             storeCurrentEntities(newState);
             return newState;
         case MessageApiUtil.REMOVE_MESSAGE:
             newState["messages"] = messagesReducer(newState["messages"], action);
+            storeCurrentEntities(newState);
+            return newState;
+        case UserApiUtil.RECEIVE_USERS:
+            newState["users"] = usersReducer(newState["users"], action);
+            storeCurrentEntities(newState);
+            return newState;
+        case UserApiUtil.RECEIVE_USER:
+            newState["users"] = usersReducer(newState["users"], action);
+            storeCurrentEntities(newState);
+            return newState;
+        case UserApiUtil.REMOVE_USER:
+            newState["users"] = usersReducer(newState["users"], action);
             storeCurrentEntities(newState);
             return newState;
         default:

@@ -1,11 +1,19 @@
 import csrfFetch from "../store/csrf";
-import { receiveMessage } from "./messageApiUtils";
+import { receiveMessages } from "./messageApiUtils";
 
 // channel action constants
+export const RECEIVE_CHANNELS = 'entities/receiveChannels';
 export const RECEIVE_CHANNEL = 'entities/receiveChannel';
 export const REMOVE_CHANNEL = 'entities/removeChannel';
 
 // channel action creators
+export const receiveChannels = (channels) => {
+    return ({
+        type: RECEIVE_CHANNELS,
+        channels
+    });
+}
+
 export const receiveChannel = (channel) => {
     return ({
         type: RECEIVE_CHANNEL,
@@ -24,8 +32,9 @@ export const removeChannel = (channelId) => {
 export const fetchChannel = (channelId) => async (dispatch) => {
     const res = await csrfFetch(`/api/channels/${channelId}`);
     const payload = await res.json();
+    if (payload.messages) dispatch(receiveMessages(payload.messages));
+    delete payload.messages;
     dispatch(receiveChannel(payload));
-    if (payload.messages) receiveMessages(dispatch, payload.messages);
     return res;
 }
 
@@ -59,15 +68,12 @@ export const deleteChannel = (channelId) => async (dispatch) => {
     return res;
 }
 
-// servers helper function
-export const receiveMessages = (dispatch, messages) => {
-    Object.values(messages).forEach(message => dispatch(receiveMessage(message)));
-}
-
 // channels reducer for managing slice of state within entities
 const channelsReducer = (state = {}, action) => {
     const newState = Object.assign({}, Object.freeze(state));
     switch (action.type) {
+        case RECEIVE_CHANNELS:
+            return { ... newState, ...action.channels };
         case RECEIVE_CHANNEL:
             newState[action.channel.id] = action.channel;
             return newState;
