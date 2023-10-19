@@ -1,6 +1,6 @@
 import './BodyItem.css';
 
-const BodyItem = ({ message, author }) => {
+const BodyItem = ({ message, author = {} }) => {
     return (
         <div className="body-item-container">
             <div className="body-item-icon">

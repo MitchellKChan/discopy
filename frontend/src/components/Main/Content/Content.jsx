@@ -5,6 +5,7 @@ import { showEditServerModal } from '../../../store/modal';
 import { logout } from '../../../store/entities';
 import Body from './Body';
 import { fetchServer } from '../../../utils/serverApiUtils';
+import Sidebar from './Sidebar';
 
 const Content = () => {
     const dispatch = useDispatch();
@@ -67,21 +68,22 @@ const Content = () => {
                 </div>
                 <div className="content-sidebar-item-container">
                     {serverId === "@me" ?
-                        <div>directMessages</div> :
-                        <div>
-                            {serversChannels.map(channel => {
-                                return (
-
-                                    <NavLink 
-                                        key={channel.id} 
-                                        to={`${url}/${channel.id}`}
-                                        className="navlink"
-                                    >
-                                        <div>{channel.name}</div>
-                                    </NavLink>
-                                );
-                            })}
-                        </div>
+                        <div>Direct Messages</div> :
+                        <Sidebar />
+                        // <div>
+                        //     <div>Text Channels</div>
+                        //     {serversChannels.map(channel => {
+                        //         return (
+                        //             <NavLink 
+                        //                 key={channel.id} 
+                        //                 to={`${url}/${channel.id}`}
+                        //                 className="navlink"
+                        //             >
+                        //                 <div>#{channel.name}</div>
+                        //             </NavLink>
+                        //         );
+                        //     })}
+                        // </div>
                     }
                 </div>
                 <div className="user-container">
