@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchChannel } from '../../../utils/channelApiUtils';
 import BodyItem from './BodyItem';
-import { createMessage } from '../../../utils/messageApiUtils';
+import { createMessage, receiveMessage } from '../../../utils/messageApiUtils';
 import consumer from '../../../consumer';
 
 import './Body.css';
@@ -27,7 +27,8 @@ const Body = ({ serverId = "@me", type }) => {
             { channel: "ChannelsChannel", id: channelId },
             {
                 received: message => {
-                    console.log("Received message: ", message)
+                    dispatch(receiveMessage(message))
+                    // console.log("Received message: ", message)
                 }
             }
         );
