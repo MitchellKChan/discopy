@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, NavLink, Route, useRouteMatch, Redirect, Switch } from 'react-router-dom';
+import { useParams, Route, useRouteMatch, Redirect, Switch } from 'react-router-dom';
 import { showEditServerModal } from '../../../store/modal';
 import { logout } from '../../../store/entities';
 import Body from './Body';
@@ -26,9 +26,6 @@ const Content = () => {
     }, [serverId]);
 
     if (serverId !== "@me" && !isValidServerId(serverId)) return <Redirect to="/channels/@me" />;
-
-    let serversChannels = [];
-    if (channels) serversChannels = Object.values(channels).filter(channel => channel.serverId == serverId);
 
     let joinedServer;
     if (joinedServers) joinedServer = Object.values(joinedServers).find(joinedServer => {
@@ -70,20 +67,6 @@ const Content = () => {
                     {serverId === "@me" ?
                         <div>Direct Messages</div> :
                         <Sidebar />
-                        // <div>
-                        //     <div>Text Channels</div>
-                        //     {serversChannels.map(channel => {
-                        //         return (
-                        //             <NavLink 
-                        //                 key={channel.id} 
-                        //                 to={`${url}/${channel.id}`}
-                        //                 className="navlink"
-                        //             >
-                        //                 <div>#{channel.name}</div>
-                        //             </NavLink>
-                        //         );
-                        //     })}
-                        // </div>
                     }
                 </div>
                 <div className="user-container">
