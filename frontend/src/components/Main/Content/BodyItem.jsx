@@ -6,7 +6,7 @@ const BodyItem = ({ message, author }) => {
             <div className="body-item-icon">
                 {message.authorId}
             </div>
-            <div className="body-item-content">
+            <div className="body-item-content-container">
                 <div className="body-item-author">
                     {author.username}
                 </div>

@@ -3,6 +3,8 @@
     margin-top: 17px;
     padding: 2px 48px 2px 72px;
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .body-item-icon {
@@ -11,11 +13,16 @@
     width: 40px;
 }
 
-.body-item-content {
+.body-item-content-container {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .body-item-author {
     font-family: 'Noto Sans Medium';
+}
+
+.body-item-content {
+    overflow-wrap: break-word;
 }

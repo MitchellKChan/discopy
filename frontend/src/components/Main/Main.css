@@ -104,16 +104,19 @@
     display: flex;
     flex-grow: 1;
     border-top: 1px solid #000000;
+    width: 100%;
 }
 
 .body-content-items-container {
     flex-grow: 1;
     position: relative;
+    max-width: calc(100vw - 552px);
 }
 
 /* body content sidebar layout styling */
 
 .body-content-sidebar-container {
     background-color: var(--content-body-sidebar);
-    width: 340px;
+    width: 100%;
+    max-width: 240px;
 }
