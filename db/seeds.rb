@@ -45,10 +45,25 @@ ApplicationRecord.transaction do
     # Create some initial joined_servers with server_ids and member_ids:
     JoinedServer.create!(server_id: 1,member_id: 1)
     JoinedServer.create!(server_id: 1,member_id: 2)
+    JoinedServer.create!(server_id: 1,member_id: 3)
     JoinedServer.create!(server_id: 1,member_id: 4)
     JoinedServer.create!(server_id: 1,member_id: 5)
     JoinedServer.create!(server_id: 2,member_id: 2)
+    JoinedServer.create!(server_id: 2,member_id: 4)
     JoinedServer.create!(server_id: 2,member_id: 5)
+    JoinedServer.create!(server_id: 3,member_id: 5)
+    JoinedServer.create!(server_id: 4,member_id: 5)
+    JoinedServer.create!(server_id: 5,member_id: 5)
+    JoinedServer.create!(server_id: 6,member_id: 5)
+    JoinedServer.create!(server_id: 7,member_id: 5)
+    JoinedServer.create!(server_id: 8,member_id: 5)
+    JoinedServer.create!(server_id: 9,member_id: 5)
+    JoinedServer.create!(server_id: 10,member_id: 5)
+    JoinedServer.create!(server_id: 11,member_id: 5)
+    JoinedServer.create!(server_id: 12,member_id: 5)
+    JoinedServer.create!(server_id: 13,member_id: 5)
+    JoinedServer.create!(server_id: 14,member_id: 5)
+    JoinedServer.create!(server_id: 15,member_id: 5)
 
     puts "Creating channels..."
     # Create some initial channels with names and server_ids:

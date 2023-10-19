@@ -15,7 +15,6 @@ const Content = () => {
     const servers = useSelector(state => state.entities.servers);
     const joinedServers = useSelector(state => state.entities.joinedServers);
     const channels = useSelector(state => state.entities.channels ? state.entities.channels : null);
-    const users = useSelector(state => state.entities.users ? state.entities.users : null);
 
     const server = servers ? servers[serverId] : null;
 
@@ -29,13 +28,6 @@ const Content = () => {
 
     let serversChannels = [];
     if (channels) serversChannels = Object.values(channels).filter(channel => channel.serverId == serverId);
-
-    let members = [];
-    if (serverId !== "@me") {
-        let memberIds = [];
-        if (server.memberIds) memberIds = Object.keys(server.memberIds);
-        members = Object.values(users).filter(user => memberIds.includes(String(user.id)));
-    }
 
     let joinedServer;
     if (joinedServers) joinedServer = Object.values(joinedServers).find(joinedServer => {
