@@ -108,6 +108,7 @@
 
 .body-content-items-container {
     flex-grow: 1;
+    position: relative;
 }
 
 /* body content sidebar layout styling */

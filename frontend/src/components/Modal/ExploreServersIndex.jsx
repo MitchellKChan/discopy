@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { joinServer } from "../../utils/joinedServerApiUtils";
 
 import './ExploreServersIndex.css';
-import { fetchServer, receiveServer } from "../../utils/serverApiUtils";
+import { fetchServer } from "../../utils/serverApiUtils";
 
 const ExploreServersIndex = () => {
     const dispatch = useDispatch();
@@ -55,6 +55,10 @@ const ExploreServersIndex = () => {
                                 >
                                     {server.name}
                                 </button>
+                            );
+                        } else {
+                            return (
+                                <></>
                             );
                         }
                     })}

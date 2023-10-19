@@ -5,9 +5,11 @@ class Api::MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    debugger
     if @message.save
-      render :show
+      # Add the following line to broadcast to subscribers of @message.room:
+      ChannelsChannel.broadcast_to @message.sendable,
+        from_template("api/messages/show", message: @message)
+      render json: {hello: "hello"}
     else
       render json: {errors: @message.errors.full_messages}, status: 422
     end
