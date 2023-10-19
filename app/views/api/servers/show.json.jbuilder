@@ -1,5 +1,4 @@
 json.partial! 'server', server: @server
-# debugger
 channels = @server.channels.includes(:messages)
 members = @server.members
 

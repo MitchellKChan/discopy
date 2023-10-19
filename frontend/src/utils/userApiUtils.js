@@ -28,11 +28,11 @@ export const removeUser = (userId) => {
 }
 
 // members selector
-export const getMembers = (serverId) => (state) => {
-    if (serverId === "@me") return {};
-    const memberIds = Object.keys(state.entities.servers[serverId].memberIds);
-    return Object.values(state.entities.users).filter(user => memberIds.includes(user.id));
-}
+// export const getMembers = (serverId) => (state) => {
+//     if (serverId === "@me") return {};
+//     const memberIds = Object.keys(state.entities.servers[serverId].memberIds);
+//     return Object.values(state.entities.users).filter(user => memberIds.includes(user.id));
+// }
 
 // user thunk action creators
 export const fetchUser = (userId) => async (dispatch) => {

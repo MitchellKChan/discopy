@@ -41,7 +41,7 @@ const Body = ({ serverId = "@me", type }) => {
     if (channel) title = channel.name;
 
     let channelsMessages = [];
-    if (isValidChannelId(channelId)) channelsMessages = Object.values(messages).filter(message => message.sendableId == channelId);
+    if (isValidChannelId(channelId) && messages) channelsMessages = Object.values(messages).filter(message => message.sendableId == channelId);
 
     const handleChange = (e) => {
         e.preventDefault();

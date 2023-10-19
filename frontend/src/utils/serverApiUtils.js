@@ -33,9 +33,8 @@ export const removeServer = (serverId) => {
 export const fetchServer = (serverId) => async (dispatch) => {
     const res = await csrfFetch(`/api/servers/${serverId}`);
     const payload = await res.json();
-    // debugger;
-    if (payload.channels) dispatch(receiveChannels(payload.channels));
-    if (payload.members) dispatch(receiveUsers(payload.members));
+    dispatch(receiveChannels(payload.channels));
+    dispatch(receiveUsers(payload.members));
     delete payload.channels;
     delete payload.members;
     dispatch(receiveServer(payload));
@@ -50,6 +49,7 @@ export const createServer = (server) => async (dispatch) => {
     const payload = await res.json();
     dispatch(receiveServer(payload));
     dispatch(receiveChannels(payload.channels));
+    dispatch(receiveUsers(payload.members));
     return res;
 }
 
@@ -71,15 +71,6 @@ export const deleteServer = (serverId) => async (dispatch) => {
     dispatch(removeServer(payload.serverId));
     return res;
 }
-
-// servers helper functions
-// export const receiveChannels = (dispatch, channels) => {
-//     // Object.values(channels).forEach(channel => dispatch(receiveChannel(channel)));
-// }
-
-// export const receiveMembers = (dispatch, members) => {
-//     // Object.values(members).forEach(member => dispatch(receiveUser(member)));
-// }
 
 // servers reducer for managing slice of state within entities
 const serversReducer = (state = {}, action) => {
