@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, NavLink, Route, useRouteMatch, Redirect, Switch } from 'react-router-dom';
 import { showEditServerModal } from '../../../store/modal';

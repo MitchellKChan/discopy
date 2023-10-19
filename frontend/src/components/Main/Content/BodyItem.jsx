@@ -1,6 +1,6 @@
 import './BodyItem.css';
 
-const BodyItem = ({ message }) => {
+const BodyItem = ({ message, author }) => {
     return (
         <div className="body-item-container">
             <div className="body-item-icon">
@@ -8,7 +8,7 @@ const BodyItem = ({ message }) => {
             </div>
             <div className="body-item-content">
                 <div className="body-item-author">
-                    author placeholder
+                    {author.username}
                 </div>
                 <div className="body-item-content">
                     {message.body}
