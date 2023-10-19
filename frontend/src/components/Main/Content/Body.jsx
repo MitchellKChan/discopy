@@ -66,7 +66,7 @@ const Body = ({ serverId = "@me", type }) => {
             </div>
             <div className="body-content-container">
                 <div className="body-content-items-container">
-                    <div>
+                    <div className="body-content-items-wrapper">
                         {channelsMessages.length > 0 ? channelsMessages.map(message => {
                             return (
                                 <BodyItem key={message.id} message={message} />

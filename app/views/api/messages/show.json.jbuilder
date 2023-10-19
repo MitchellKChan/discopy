@@ -1,1 +1,2 @@
-json.partial! 'message', message: @message
+# debugger
+json.partial! 'message', message: message

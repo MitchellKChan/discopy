@@ -1,3 +1,7 @@
+.body-content-items-wrapper {
+    overflow: scroll;
+}
+
 .body-content-items-form {
     position: absolute;
     bottom: 0;
