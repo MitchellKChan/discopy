@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, NavLink, Route, useRouteMatch, Redirect, Switch } from 'react-router-dom';
+import { useParams, Route, useRouteMatch, Redirect, Switch } from 'react-router-dom';
 import { showEditServerModal } from '../../../store/modal';
 import { logout } from '../../../store/entities';
 import Body from './Body';
 import { fetchServer } from '../../../utils/serverApiUtils';
+import Sidebar from './Sidebar';
 
 const Content = () => {
     const dispatch = useDispatch();
@@ -21,13 +22,10 @@ const Content = () => {
     const isValidServerId = (serverId) => servers && Object.keys(servers).includes(serverId);
 
     useEffect(() => {
-        if (isValidServerId(serverId) && !server) dispatch(fetchServer(serverId));
+        if (isValidServerId(serverId)) dispatch(fetchServer(serverId));
     }, [serverId]);
 
     if (serverId !== "@me" && !isValidServerId(serverId)) return <Redirect to="/channels/@me" />;
-
-    let serversChannels = {};
-    if (channels) serversChannels = Object.values(channels).filter(channel => channel.serverId == serverId);
 
     let joinedServer;
     if (joinedServers) joinedServer = Object.values(joinedServers).find(joinedServer => {
@@ -67,21 +65,8 @@ const Content = () => {
                 </div>
                 <div className="content-sidebar-item-container">
                     {serverId === "@me" ?
-                        <div>directMessages</div> :
-                        <div>
-                            {serversChannels.map(channel => {
-                                return (
-
-                                    <NavLink 
-                                        key={channel.id} 
-                                        to={`${url}/${channel.id}`}
-                                        className="navlink"
-                                    >
-                                        <div>{channel.name}</div>
-                                    </NavLink>
-                                );
-                            })}
-                        </div>
+                        <div>Direct Messages</div> :
+                        <Sidebar />
                     }
                 </div>
                 <div className="user-container">

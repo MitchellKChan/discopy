@@ -16,6 +16,8 @@ const Body = ({ serverId = "@me", type }) => {
     const messages = useSelector(state => state.entities.messages);
     const isValidChannelId = (channelId) => channels && Object.keys(channels).includes(channelId);
     const channel = (isValidChannelId(channelId)) ? channels[channelId] : null;
+    const server = useSelector(state => serverId !== "@me" ? state.entities.servers[serverId] : null)
+    const users = useSelector(state => state.entities.users ? state.entities.users : null);
 
     const [newMessage, setNewMessage] = useState("");
 
@@ -28,7 +30,6 @@ const Body = ({ serverId = "@me", type }) => {
             {
                 received: message => {
                     dispatch(receiveMessage(message))
-                    // console.log("Received message: ", message)
                 }
             }
         );
@@ -40,8 +41,15 @@ const Body = ({ serverId = "@me", type }) => {
     let title = "@me";
     if (channel) title = channel.name;
 
-    let channelsMessages = {};
-    if (isValidChannelId(channelId)) channelsMessages = Object.values(messages).filter(message => message.sendableId == channelId);
+    let channelsMessages = [];
+    if (isValidChannelId(channelId) && messages) channelsMessages = Object.values(messages).filter(message => message.sendableId == channelId);
+
+    let members = [];
+    if (serverId !== "@me" && users) {
+        let memberIds = [];
+        if (server.memberIds) memberIds = Object.keys(server.memberIds);
+        members = Object.values(users).filter(user => memberIds.includes(String(user.id)));
+    }
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -68,9 +76,13 @@ const Body = ({ serverId = "@me", type }) => {
             <div className="body-content-container">
                 <div className="body-content-items-container">
                     <div className="body-content-items-wrapper">
-                        {channelsMessages.length > 0 ? channelsMessages.map(message => {
+                        {channelsMessages.length > 0 && users ? channelsMessages.map(message => {
                             return (
-                                <BodyItem key={message.id} message={message} />
+                                <BodyItem
+                                    key={message.id}
+                                    message={message}
+                                    author={users[message.authorId]}
+                                />
                             );
                         }) : <></>}
                     </div>
@@ -88,7 +100,11 @@ const Body = ({ serverId = "@me", type }) => {
 
                 </div>
                 <div className="body-content-sidebar-container">
-                    ActiveNowIndex / UserProfile / MemberListIndex Container Placeholder
+                    {members.map(member => {
+                        return (
+                            <div key={member.id}>{member.username}</div>
+                        );
+                    })}
                 </div>
             </div>
         </div>

@@ -17,7 +17,8 @@ class Api::ServersController < ApplicationController
     if @server.save
       # auto create a 'general' channel for new servers
       general_channel = Channel.new(name: "general", server_id: @server.id)
-      if general_channel.save
+      joined_server = JoinedServer.new(member_id: params[:creator_id], server_id: @server.id)
+      if general_channel.save && joined_server.save
         render :show
       end
     else

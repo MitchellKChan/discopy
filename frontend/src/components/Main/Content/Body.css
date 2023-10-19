@@ -1,8 +1,24 @@
 .body-content-items-wrapper {
-    overflow: scroll;
+    max-height: calc(100vh - 116px);
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.body-content-items-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.body-content-items-wrapper::-webkit-scrollbar-track {
+    background-color: inherit;
+}
+
+.body-content-items-wrapper::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 10px;
 }
 
 .body-content-items-form {
     position: absolute;
     bottom: 0;
+    height: 68px;
 }
