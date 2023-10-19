@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, useParams, useRouteMatch } from 'react-router-dom';
+import { useParams, useRouteMatch } from 'react-router-dom';
 import SidebarItem from './SidebarItem';
 
 const Sidebar = () => {
@@ -20,13 +20,6 @@ const Sidebar = () => {
                         channel={channel}
                         className="navlink"
                     />
-                    // <NavLink
-                    //     key={channel.id}
-                    //     to={`${url}/${channel.id}`}
-                    //     className="navlink"
-                    // >
-                    //     <div>#{channel.name}</div>
-                    // </NavLink>
                 );
             })}
         </div>
