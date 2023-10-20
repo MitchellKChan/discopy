@@ -31,6 +31,9 @@
 
     /* sidebar components colors */
     --active-sidebar-item-bg: rgba(78, 80, 88, 0.6);
+
+    /* body content form colors */
+    --input-bg: rgb(56, 58, 64);
 }
 
 body {

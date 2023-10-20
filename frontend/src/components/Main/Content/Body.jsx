@@ -87,11 +87,12 @@ const Body = ({ serverId = "@me", type }) => {
                             );
                         }) : <></>}
                     </div>
-                    {serverId !== "@me" ? <div className="body-content-items-form">
+                    {serverId !== "@me" ? <div className="body-content-form-wrapper">
                         <form onSubmit={handleSubmit}>
                             <label className="new-message-label">
                                 <input
                                     type="text"
+                                    className="new-message-input"
                                     onChange={(e => handleChange(e))}
                                     value={newMessage}
                                 />

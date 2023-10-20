@@ -30,9 +30,9 @@
 }
 
 .body-content-items-container {
-    flex-grow: 1;
     position: relative;
-    max-width: calc(100vw - 552px);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .body-content-items-wrapper {
@@ -58,10 +58,32 @@
     border-radius: 10px;
 }
 
-.body-content-items-form {
+/* body content item form layout styling */
+
+.body-content-form-wrapper {
     position: absolute;
     bottom: 0;
     height: 68px;
+    width: 100%;
+}
+
+.new-message-label {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 10px 0;
+}
+
+.new-message-input {
+    width: 95%;
+    line-height: 22px;
+    font-family: 'Whitney Medium';
+    background-color: var(--input-bg);
+    border: none;
+    padding: 8px;
+    color: var(--off-white);
+    font-size: 16px;
+    border-radius: 8px;
 }
 
 /* body content sidebar layout styling */
