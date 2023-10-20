@@ -104,7 +104,17 @@ const Body = ({ serverId = "@me", type }) => {
                 <div className="body-content-sidebar-container">
                     {members.map(member => {
                         return (
-                            <div key={member.id}>{member.username}</div>
+                            <div
+                                key={member.id}
+                                className="body-sidebar-item-container"
+                            >
+                                <div className="body-sidebar-item-icon">
+                                    {member.username.substring(0, 3)}
+                                </div>
+                                <div className="body-sidebar-item-username">
+                                    {member.username}
+                                </div>
+                            </div>
                         );
                     })}
                 </div>

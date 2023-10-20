@@ -96,4 +96,26 @@
     background-color: var(--content-body-sidebar);
     width: 100%;
     max-width: 240px;
+    display: flex;
+    flex-direction: column;
+}
+
+.body-sidebar-item-container {
+    margin: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.body-sidebar-item-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-sidebar-item-username {
+    margin-left: 32px;
 }
