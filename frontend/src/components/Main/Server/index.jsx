@@ -13,7 +13,7 @@ const ServerIndex = () => {
 
     return (
         <div className="main-servers-container">
-            <NavLink to={`/channels/@me`} className="navlink">
+            <NavLink to={`/channels/@me`} className="navlink server-index-item">
                 <ServerItem symbol="DMs" />
             </NavLink>
             <div className="main-servers-child servers-separator-container">
