@@ -8,8 +8,7 @@ const ServerItem = ({ server, symbol }) => {
     const dispatch = useDispatch();
 
     const containerClassNames = () => {
-        const dmClass = symbol === "DMs" ? "dm" : "";
-        return `main-servers-child server-item-container ${dmClass}`
+        return `main-servers-child server-item-container`;
     }
 
     const itemClassNames = () => {
@@ -25,10 +24,6 @@ const ServerItem = ({ server, symbol }) => {
         return (
             <div className="server-initial">{initials}</div>
         );
-    }
-
-    const handleHover = (e) => {
-        // console.log("hovering");
     }
 
     const handleClick = (e) => {
@@ -49,8 +44,6 @@ const ServerItem = ({ server, symbol }) => {
     return (
         <div 
             className={containerClassNames()} 
-            onMouseEnter={handleHover}
-            onMouseLeave={handleHover}
             onClick={handleClick}
         >
             <div className="server-item-wrapper">

@@ -1,7 +1,48 @@
+/* content body layout styling */
+
+.content-body-container {
+    background-color: var(--form-dark-bg);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.body-header-container {
+    height: 32px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    color: var(--off-white)
+}
+
+.hashtag {
+    color: var(--content-text);
+    margin: 0 8px;
+}
+
+/* body content layout styling */
+
+.body-content-container {
+    display: flex;
+    flex-grow: 1;
+    border-top: 1px solid #000000;
+    width: 100%;
+}
+
+.body-content-items-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .body-content-items-wrapper {
     max-height: calc(100vh - 116px);
     width: 100%;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 68px;
 }
 
 .body-content-items-wrapper::-webkit-scrollbar {
@@ -17,8 +58,64 @@
     border-radius: 10px;
 }
 
-.body-content-items-form {
+/* body content item form layout styling */
+
+.body-content-form-wrapper {
     position: absolute;
     bottom: 0;
     height: 68px;
+    width: 100%;
+}
+
+.new-message-label {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 10px 0;
+}
+
+.new-message-input {
+    width: 95%;
+    line-height: 22px;
+    font-family: 'Whitney Medium';
+    background-color: var(--input-bg);
+    border: none;
+    padding: 8px;
+    color: var(--off-white);
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.new-message-input:focus {
+    outline: none;
+}
+
+/* body content sidebar layout styling */
+
+.body-content-sidebar-container {
+    background-color: var(--content-body-sidebar);
+    width: 100%;
+    max-width: 240px;
+    display: flex;
+    flex-direction: column;
+}
+
+.body-sidebar-item-container {
+    margin: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.body-sidebar-item-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-sidebar-item-username {
+    margin-left: 32px;
 }

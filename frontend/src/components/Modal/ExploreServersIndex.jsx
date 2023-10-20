@@ -52,6 +52,7 @@ const ExploreServersIndex = () => {
                                 <button
                                     onClick={(e) => handleClick(e, server.id)}
                                     key={server.id}
+                                    className="blue-button large-button explore-server-item"
                                 >
                                     {server.name}
                                 </button>

@@ -22,18 +22,26 @@ const SidebarItem = ({ to, channel }) => {
         <NavLink
             key={channel.id}
             to={to}
-            className="navlink"
+            className="navlink sidebar-item-link"
         >
             <div className="sidebar-item-container">
-                <div className="sidebar-item-name">#{channel.name}</div>
-                {server.creatorId === currentUser.id ?
-                    <div
-                        className="sidebar-item-settings"
-                        onClick={handleClick}
-                    >
-                        Edit Channel
-                    </div> : <></>
-                }
+                <div className="sidebar-item">
+                    <div className="sidebar-item-name">
+                        <span className="hashtag">#</span>
+                        {channel.name.length > 12 ? 
+                            `${channel.name.substring(0,11)}...`  : 
+                            channel.name
+                        }
+                    </div>
+                    {server.creatorId === currentUser.id ?
+                        <div
+                            className="sidebar-item-settings"
+                            onClick={handleClick}
+                        >
+                            edit
+                        </div> : <></>
+                    }
+                </div>
             </div>
         </NavLink>
     );

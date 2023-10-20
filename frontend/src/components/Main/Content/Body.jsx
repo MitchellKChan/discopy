@@ -71,6 +71,7 @@ const Body = ({ serverId = "@me", type }) => {
     return (
         <div className="content-body-container">
             <div className="body-header-container">
+                <span className="hashtag">#</span>
                 {title}
             </div>
             <div className="body-content-container">
@@ -86,11 +87,12 @@ const Body = ({ serverId = "@me", type }) => {
                             );
                         }) : <></>}
                     </div>
-                    {serverId !== "@me" ? <div className="body-content-items-form">
+                    {serverId !== "@me" ? <div className="body-content-form-wrapper">
                         <form onSubmit={handleSubmit}>
                             <label className="new-message-label">
                                 <input
                                     type="text"
+                                    className="new-message-input"
                                     onChange={(e => handleChange(e))}
                                     value={newMessage}
                                 />
@@ -102,7 +104,17 @@ const Body = ({ serverId = "@me", type }) => {
                 <div className="body-content-sidebar-container">
                     {members.map(member => {
                         return (
-                            <div key={member.id}>{member.username}</div>
+                            <div
+                                key={member.id}
+                                className="body-sidebar-item-container"
+                            >
+                                <div className="body-sidebar-item-icon">
+                                    {member.username.substring(0, 3)}
+                                </div>
+                                <div className="body-sidebar-item-username">
+                                    {member.username}
+                                </div>
+                            </div>
                         );
                     })}
                 </div>

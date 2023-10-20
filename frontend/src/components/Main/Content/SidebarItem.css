@@ -3,8 +3,24 @@
     justify-content: space-between;
 }
 
-.sidebar-item-active {
+.sidebar-item-link {
+    margin: 1px 0;
+    border-radius: 4px;
+}
+
+.sidebar-item-link:hover {
     background-color: var(--form-dark-bg);
+}
+
+.sidebar-item-link.active {
+    background-color: var(--active-sidebar-item-bg);
+}
+
+.sidebar-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 6px 8px;
 }
 
 .sidebar-item-container:hover .sidebar-item-settings {
@@ -13,8 +29,9 @@
 
 .sidebar-item-settings {
     opacity: 0;
+    color: var(--content-text);
 }
 
 .sidebar-item-settings:hover {
-    background-color: #000000;
+    color: var(--off-white);
 }
