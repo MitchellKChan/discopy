@@ -26,6 +26,17 @@
     color: var(--off-white);
 }
 
+.body-item-header {
+    display: flex;
+    align-items: baseline;
+}
+
+.body-item-time {
+    margin-left: 8px;
+    font-size: 12px;
+    font-family: 'Whitney Light';
+}
+
 .body-item-author {
     font-family: 'Noto Sans Medium';
 }
