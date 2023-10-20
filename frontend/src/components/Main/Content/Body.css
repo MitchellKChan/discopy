@@ -15,6 +15,11 @@
     color: var(--off-white)
 }
 
+.hashtag {
+    color: var(--content-text);
+    margin: 0 8px;
+}
+
 /* body content layout styling */
 
 .body-content-container {

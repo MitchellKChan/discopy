@@ -71,6 +71,7 @@ const Body = ({ serverId = "@me", type }) => {
     return (
         <div className="content-body-container">
             <div className="body-header-container">
+                <span className="hashtag">#</span>
                 {title}
             </div>
             <div className="body-content-container">

@@ -28,6 +28,9 @@
     /* server components colors */
     --servers-tool-item: hsl(145, 65%, 39.2%);
     --servers-separator: hsl(228, 6%, 33%);
+
+    /* sidebar components colors */
+    --active-sidebar-item-bg: rgba(78, 80, 88, 0.6);
 }
 
 body {
