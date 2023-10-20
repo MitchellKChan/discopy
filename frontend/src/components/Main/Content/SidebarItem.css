@@ -2,3 +2,19 @@
     display: flex;
     justify-content: space-between;
 }
+
+.sidebar-item-active {
+    background-color: var(--form-dark-bg);
+}
+
+.sidebar-item-container:hover .sidebar-item-settings {
+    opacity: 1;
+}
+
+.sidebar-item-settings {
+    opacity: 0;
+}
+
+.sidebar-item-settings:hover {
+    background-color: #000000;
+}

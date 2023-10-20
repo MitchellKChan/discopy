@@ -15,7 +15,6 @@ const Content = () => {
     const currentUser = useSelector(state => state.entities.currentUser);
     const servers = useSelector(state => state.entities.servers);
     const joinedServers = useSelector(state => state.entities.joinedServers);
-    const channels = useSelector(state => state.entities.channels ? state.entities.channels : null);
 
     const server = servers ? servers[serverId] : null;
 

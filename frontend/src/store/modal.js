@@ -1,6 +1,8 @@
 // action constants
 export const SHOW_MODAL = 'modal/SHOW_MODAL';
 export const SHOW_EDIT_SERVER_MODAL = 'modal/SHOW_EDIT_SERVER_MODAL';
+export const SHOW_NEW_CHANNEL_MODAL = 'modal/SHOW_NEW_CHANNEL_MODAL';
+export const SHOW_EDIT_CHANNEL_MODAL = 'modal/SHOW_EDIT_CHANNEL_MODAL';
 export const HIDE_MODAL = 'modal/HIDE_MODAL';
 
 // action creators
@@ -20,6 +22,22 @@ export const showEditServerModal = (modal, server, joinedServer) => {
     });
 }
 
+export const showNewChannelModal = (modal, serverId) => {
+    return ({
+        type: SHOW_NEW_CHANNEL_MODAL,
+        modal, 
+        serverId
+    });
+}
+
+export const showEditChannelModal = (modal, channel) => {
+    return ({
+        type: SHOW_EDIT_SERVER_MODAL,
+        modal,
+        channel
+    });
+}
+
 export const hideModal = () => {
     return ({
         type: HIDE_MODAL
@@ -31,6 +49,10 @@ const modalReducer = (state = null, action) => {
         case SHOW_MODAL:
             return action;
         case SHOW_EDIT_SERVER_MODAL:
+            return action;
+        case SHOW_NEW_CHANNEL_MODAL:
+            return action;
+        case SHOW_EDIT_CHANNEL_MODAL:
             return action;
         case HIDE_MODAL:
             return null;
