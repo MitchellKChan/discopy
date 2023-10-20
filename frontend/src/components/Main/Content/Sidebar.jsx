@@ -9,6 +9,7 @@ const Sidebar = () => {
     const channels = useSelector(state => state.entities.channels ? state.entities.channels : null);
     let serversChannels = [];
     if (channels) serversChannels = Object.values(channels).filter(channel => channel.serverId == serverId);
+    
     return (
         <div>
             <div>Text Channels</div>
@@ -18,7 +19,6 @@ const Sidebar = () => {
                         key={channel.id}
                         to={`${url}/${channel.id}`}
                         channel={channel}
-                        className="navlink"
                     />
                 );
             })}

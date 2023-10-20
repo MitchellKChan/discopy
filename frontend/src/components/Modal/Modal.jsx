@@ -5,6 +5,7 @@ import ServerForm from './ServerForm';
 
 import './Modal.css';
 import ExploreServersIndex from './ExploreServersIndex';
+import ChannelForm from './ChannelForm';
 
 const Modal = () => {
     const dispatch = useDispatch();
@@ -26,6 +27,15 @@ const Modal = () => {
             break;
         case "joinServer":
             component = <ExploreServersIndex />
+            break;
+        case "newChannel":
+            component = <ChannelForm type="new" />;
+            break
+        case "editChannel":
+            component = <ChannelForm
+                type="edit"
+                channel={modal.channel}
+            />;
             break;
         case "other":
             break;

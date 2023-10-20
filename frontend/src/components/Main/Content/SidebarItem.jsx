@@ -1,32 +1,39 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { showEditChannelModal } from '../../../store/modal';
 
 import './SidebarItem.css';
-import { showModal } from '../../../store/modal';
 
-const SidebarItem = ({ to, channel, className }) => {
+const SidebarItem = ({ to, channel }) => {
     const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.entities.currentUser);
+    const server = useSelector(state => state.entities.servers[channel.serverId]);
 
     const handleClick = (e) => {
         e.preventDefault();
-        dispatch(showModal("other"));
+        dispatch(showEditChannelModal(
+            "editChannel",
+            channel
+        ));
     }
 
     return (
         <NavLink
             key={channel.id}
             to={to}
-            className={className}
+            className="navlink"
         >
             <div className="sidebar-item-container">
                 <div className="sidebar-item-name">#{channel.name}</div>
-                <div
-                    className="sidebar-item-settings"
-                    onClick={handleClick}
-                >
-                    Settings
-                </div>
+                {server.creatorId === currentUser.id ?
+                    <div
+                        className="sidebar-item-settings"
+                        onClick={handleClick}
+                    >
+                        Edit Channel
+                    </div> : <></>
+                }
             </div>
         </NavLink>
     );
