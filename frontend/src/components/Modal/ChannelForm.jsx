@@ -1,12 +1,10 @@
 import { useDispatch } from "react-redux";
 import { hideModal } from '../../store/modal';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { createServer, deleteServer, removeServer, updateServer } from '../../utils/serverApiUtils';
-import { leaveServer } from '../../utils/joinedServerApiUtils';
+import { createChannel, deleteChannel, updateChannel } from "../../utils/channelApiUtils";
 
-const ChannelForm = ({ type, channel = {} }) => {
+const ChannelForm = ({ type, channel = {}, serverId }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -17,7 +15,8 @@ const ChannelForm = ({ type, channel = {} }) => {
     );
 
     const handleChange = (name) => {
-        setChannelName(name);
+        // const dashedName = 
+        setChannelName(name.replace(" ", "-"));
     }
 
     const handleSubmit = (e) => {
@@ -25,29 +24,25 @@ const ChannelForm = ({ type, channel = {} }) => {
         if (type === "new") {
             const newChannel = {
                 name: channelName,
-                // serverId: user.id
+                serverId
             };
-            // dispatch(createServer(newChannel));
+            dispatch(createChannel(newChannel));
         } else {
             const updatedChannel = {
                 ...channel,
                 name: channelName
             }
-            // dispatch(updateServer(updatedChannel));
+            dispatch(updateChannel(updatedChannel));
+            history.push(`/channels/${channel.serverId}/${channel.id}`);
         }
         dispatch(hideModal());
     }
 
     const handleDelete = (e) => {
         e.preventDefault();
-        // if (server.creatorId === user.id) {
-        //     dispatch(deleteServer(server.id));
-        // } else {
-        //     dispatch(leaveServer(joinedServer.id));
-        //     dispatch(removeServer(server.id));
-        // }
-        // dispatch(hideModal());
-        history.push('/channels/@me');
+        dispatch(deleteChannel(channel.id))
+        dispatch(hideModal());
+        history.push(`/channels/${channel.serverId}`);
     }
 
     return (

@@ -29,7 +29,10 @@ const Modal = () => {
             component = <ExploreServersIndex />
             break;
         case "newChannel":
-            component = <ChannelForm type="new" />;
+            component = <ChannelForm
+                type="new"
+                serverId={modal.serverId}
+            />;
             break
         case "editChannel":
             component = <ChannelForm

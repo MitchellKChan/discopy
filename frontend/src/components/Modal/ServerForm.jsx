@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { hideModal } from '../../store/modal';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { createServer, deleteServer, removeServer, updateServer } from '../../utils/serverApiUtils';
 import { leaveServer } from '../../utils/joinedServerApiUtils';
 
