@@ -7,6 +7,8 @@ import Body from './Body';
 import { fetchServer } from '../../../utils/serverApiUtils';
 import Sidebar from './Sidebar';
 
+import './Content.css';
+
 const Content = () => {
     const dispatch = useDispatch();
     const { url } = useRouteMatch();
