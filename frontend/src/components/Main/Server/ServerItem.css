@@ -4,10 +4,6 @@
     align-items: center;
 }
 
-.dm {
-    margin-top: 8px;
-}
-
 .server-item-wrapper {
     width: 48px;
     height: 48px;
@@ -24,7 +20,7 @@
 }
 
 .server-item:hover {
-    background-color: #000000;
+    background-color: var(--brand-blue);
     border-radius: 25%;
     cursor: pointer;
 }
@@ -33,12 +29,14 @@
     background-color: var(--form-dark-bg);
 }
 
-.dm-item {
-    background-color: var(--brand-blue);
+.tool-item {
+    color: var(--servers-tool-item);
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.tool-item {
+.tool-item:hover {
     background-color: var(--servers-tool-item);
+    color: inherit;
 }
 
 .server-initial {

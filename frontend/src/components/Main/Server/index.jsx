@@ -31,7 +31,7 @@ const ServerIndex = () => {
                 }
 
                 return (
-                    <NavLink key={server.id} to={link} className="navlink">
+                    <NavLink key={server.id} to={link} className="navlink server-index-item">
                         <ServerItem server={server} />
                     </NavLink>
                 );

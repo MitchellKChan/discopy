@@ -6,3 +6,12 @@
 .explore-servers-message {
     width: 100%;
 }
+
+.explore-server-item {
+    border: none;
+    margin: 8px 16px;
+}
+
+.explore-server-item:hover {
+    cursor: pointer;
+}

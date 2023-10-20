@@ -6,7 +6,7 @@ const BodyItem = ({ message, author = {} }) => {
     return (
         <div className="body-item-container">
             <div className="body-item-icon">
-                {author.username.substring(0, 3)}
+                {author.username ? author.username.substring(0, 3) : ""}
             </div>
             <div className="body-item-content-container">
                 <div className="body-item-header">

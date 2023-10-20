@@ -4,17 +4,24 @@
     display: flex;
     flex-direction: column;
     overflow: scroll;
+    padding-top: 8px;
 }
 
 .main-servers-container::-webkit-scrollbar {
     width: 0;
 }
+
 .main-servers-container::-webkit-scrollbar-track {
     background-color: var(--servers-bar);
 }
 
 .main-servers-child {
     margin: 0 0 8px;
+}
+
+.server-index-item.active .server-item {
+    background-color: var(--brand-blue);
+    border-radius: 25%;
 }
 
 .servers-separator-container {
