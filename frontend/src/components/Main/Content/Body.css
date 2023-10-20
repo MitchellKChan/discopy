@@ -86,6 +86,10 @@
     border-radius: 8px;
 }
 
+.new-message-input:focus {
+    outline: none;
+}
+
 /* body content sidebar layout styling */
 
 .body-content-sidebar-container {

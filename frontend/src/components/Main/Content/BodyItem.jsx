@@ -4,7 +4,7 @@ const BodyItem = ({ message, author = {} }) => {
     return (
         <div className="body-item-container">
             <div className="body-item-icon">
-                {message.authorId}
+                {author.username.substring(0,3)}
             </div>
             <div className="body-item-content-container">
                 <div className="body-item-author">
