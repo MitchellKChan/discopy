@@ -3,6 +3,8 @@
 .main-content-container {
     display: flex;
     flex-grow: 1;
+    font-family: 'Whitney Medium';
+    color: var(--content-text);
 }
 
 .content-sidebar-container {
@@ -49,6 +51,7 @@
 
 .content-sidebar-item-container {
     border-top: 1px solid #000000;
+    padding: 8px;
 }
 
 .user-container {

@@ -66,7 +66,7 @@ const Content = () => {
                 </div>
                 <div className="content-sidebar-item-container">
                     {serverId === "@me" ?
-                        <div>Direct Messages</div> :
+                        <div className="content-sidebar-item-header">Direct Messages</div> :
                         <Sidebar />
                     }
                 </div>

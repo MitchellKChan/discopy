@@ -23,6 +23,7 @@
     --servers-bar: hsl(225, 6%, 13%);
     --content-sidebar: hsl(220, 7%, 18%);
     --content-body-sidebar: hsl(228, 7%, 15%);
+    --content-text: rgb(148, 155, 164);
 
     /* server components colors */
     --servers-tool-item: hsl(145, 65%, 39.2%);

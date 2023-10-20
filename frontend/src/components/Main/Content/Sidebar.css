@@ -1,0 +1,21 @@
+.content-sidebar-item-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-sidebar-item-header {
+    text-transform: uppercase;
+    font-family: 'Noto Sans Bold';
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.channel-add {
+    font-size: 20px;
+}
+
+.channel-add:hover {
+    color: var(--off-white);
+    cursor: pointer;
+}
