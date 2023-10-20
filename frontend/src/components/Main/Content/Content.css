@@ -21,13 +21,15 @@
 }
 
 .content-sidebar-header-container:hover {
-    background-color: var(--form-dark-bg);
+    cursor: pointer;
+    background-color: var(--form-light-input-text);
 }
 
 .content-sidebar-header {
     height: 24px;
     padding: 12px;
     width: 100%;
+    color: var(--off-white);
 }
 
 .content-sidebar-header-dm {
@@ -41,7 +43,7 @@
 }
 
 .content-sidebar-header-server:hover {
-    cursor: pointer;
+
 }
 
 .angle-down {

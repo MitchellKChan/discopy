@@ -12,6 +12,7 @@
     padding: 8px;
     display: flex;
     align-items: center;
+    color: var(--off-white)
 }
 
 /* body content layout styling */
@@ -33,6 +34,10 @@
     max-height: calc(100vh - 116px);
     width: 100%;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 68px;
 }
 
 .body-content-items-wrapper::-webkit-scrollbar {
