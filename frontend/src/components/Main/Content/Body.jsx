@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchChannel } from '../../../utils/channelApiUtils';
@@ -19,7 +19,13 @@ const Body = ({ serverId = "@me", type }) => {
     const server = useSelector(state => serverId !== "@me" ? state.entities.servers[serverId] : null)
     const users = useSelector(state => state.entities.users ? state.entities.users : null);
 
+    const messageDivRef = useRef(null);
+
     const [newMessage, setNewMessage] = useState("");
+
+    useEffect(() => {
+        scrollToBottom();
+    })
 
     useEffect(() => {
         if (isValidChannelId(channelId)) dispatch(fetchChannel(channelId));
@@ -37,6 +43,10 @@ const Body = ({ serverId = "@me", type }) => {
         // unsubscribe when leaving 
         return () => subscription?.unsubscribe();
     }, [channelId]);
+
+    const scrollToBottom = () => {
+        messageDivRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
 
     let title = "@me";
     if (channel) title = channel.name;
@@ -86,6 +96,7 @@ const Body = ({ serverId = "@me", type }) => {
                                 />
                             );
                         }) : <></>}
+                    <div ref={messageDivRef} />
                     </div>
                     {serverId !== "@me" ? <div className="body-content-form-wrapper">
                         <form onSubmit={handleSubmit}>
