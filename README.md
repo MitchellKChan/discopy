@@ -8,7 +8,7 @@ can create, edit and update their own servers, as well as text channels within t
 They can also send and receive messages in real-time with other members of the same server
 in a particular channel.
 
-![Alt text](image.png)
+![intro](intro.png)
 
 ## Technologies
 * PostgreSQL - backend relational database
