@@ -1,14 +1,14 @@
 # Discopy
 
-[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://discopy-edqd.onrender.com)
+[![Live Site](https://img.shields.io/badge/site-online-green.svg)](https://discopy-edqd.onrender.com)
 
 Discopy is a full-stack project clone of the popular social messaging platform Discord.
 Users may register for the site or log in with the demo account.  Once logged in, they
-can create, edit and update their own servers, as well as text channels within those servers.
+can create, edit and delete their own servers, as well as text channels within those servers.
 They can also send and receive messages in real-time with other members of the same server
 in a particular channel.
 
-![intro](intro.png)
+![intro](frontend/public/intro.png)
 
 ## Technologies
 * PostgreSQL - backend relational database
