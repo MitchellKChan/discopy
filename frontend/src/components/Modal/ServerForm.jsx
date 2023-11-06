@@ -26,14 +26,14 @@ const ServerForm = ({ type, server = {}, joinedServer = {} }) => {
         e.preventDefault();
         if (type === "new") {
             const newServer = {
-                name: serverName,
+                name: serverName.trim(),
                 creatorId: user.id
             };
             dispatch(createServer(newServer));
         } else {
             const updatedServer = {
                 ...server,
-                name: serverName
+                name: serverName.trim()
             }
             dispatch(updateServer(updatedServer));
         }
