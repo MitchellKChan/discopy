@@ -120,7 +120,7 @@ const ServerForm = ({ type, server = {}, joinedServer = {} }) => {
                         className="form-button"
                         type="submit"
                         form="newServerForm"
-                        disabled={serverName.length < 1}
+                        disabled={serverName.length < 1 || serverName.trim().length < 1}
                     >
                         <div className="server-form-button-label">
                             {type === "new" ?

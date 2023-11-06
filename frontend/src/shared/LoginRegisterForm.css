@@ -123,3 +123,8 @@
     background-color: #3e48b9;
     cursor: pointer;
 }
+
+.form-button:disabled {
+    background-color: #808080;
+    cursor: default;
+}
