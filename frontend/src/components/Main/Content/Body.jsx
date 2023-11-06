@@ -68,14 +68,16 @@ const Body = ({ serverId = "@me", type }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const message = {
-            body: newMessage,
-            authorId: currentUser.id,
-            sendableType: type,
-            sendableId: channelId
-        };
-        dispatch(createMessage(message));
-        setNewMessage("");
+        if (newMessage.trim().length > 0) {
+            const message = {
+                body: newMessage.trim(),
+                authorId: currentUser.id,
+                sendableType: type,
+                sendableId: channelId
+            };
+            dispatch(createMessage(message));
+            setNewMessage("");
+        }
     }
 
     return (

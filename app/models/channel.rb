@@ -14,5 +14,6 @@ class Channel < ApplicationRecord
     belongs_to :server
 
     has_many :messages,
-        as: :sendable
+        as: :sendable,
+        dependent: :destroy
 end
