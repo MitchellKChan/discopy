@@ -10,10 +10,18 @@ ApplicationRecord.transaction do
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
+    Server.destroy_all
+    JoinedServer.destroy_all
+    Channel.destroy_all
+    Message.destroy_all
   
     puts "Resetting primary keys..."
-    # For easy testing, so that after seeding, the first `User` has `id` of 1
+    # For easy testing, so that after seeding, the first `User` has `id` of 1, and the same for other models
     ApplicationRecord.connection.reset_pk_sequence!('users')
+    ApplicationRecord.connection.reset_pk_sequence!('servers')
+    ApplicationRecord.connection.reset_pk_sequence!('joined_servers')
+    ApplicationRecord.connection.reset_pk_sequence!('channels')
+    ApplicationRecord.connection.reset_pk_sequence!('messages')
   
     puts "Creating users..."
     # Create some initial users with usernames, display_names, emails, passwords, and statuses:
